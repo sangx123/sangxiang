@@ -59,9 +59,8 @@ private final BluetoothGattCallback mGattCallback = new BluetoothGattCallback() 
 				mBluetoothGatt.writeDescriptor(descriptor);
 			}
 		}
-		//读取到蓝牙的数据时候回调
-    
-    @Override
+		//读取到蓝牙的数据
+                @Override
 		public void onCharacteristicRead(BluetoothGatt gatt,
 				BluetoothGattCharacteristic characteristic, int status) {
 			if (status == BluetoothGatt.GATT_SUCCESS) {
@@ -83,7 +82,7 @@ private final BluetoothGattCallback mGattCallback = new BluetoothGattCallback() 
                 sendBroadcast(intent);
 			}
 		}
-
+                //发送蓝牙指令  
 		@Override
 		public void onCharacteristicWrite(BluetoothGatt gatt,
 				BluetoothGattCharacteristic characteristic, int status) {
@@ -123,4 +122,10 @@ private final BluetoothGattCallback mGattCallback = new BluetoothGattCallback() 
 
             super.onDescriptorWrite(gatt, descriptor, status);
 		}
-
+//发送指令
+linkLossService = mBluetoothGatt.getService(BleUVConfig.SERVICE_UV_UUID);
+alertLevel = linkLossService.getCharacteristic(BleUVConfig.SERVICE_UV_CONF_UUID);
+alertLevel.setValue(bb);
+alertLevel.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE);
+mBluetoothGatt.writeCharacteristic(alertLevel);
+在发现蓝牙服务的时候调用蓝牙通知
