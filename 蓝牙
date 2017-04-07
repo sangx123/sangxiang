@@ -59,6 +59,7 @@ private final BluetoothGattCallback mGattCallback = new BluetoothGattCallback() 
 				mBluetoothGatt.writeDescriptor(descriptor);
 			}
 		}
+		//读取到蓝牙的数据时候回调
     
     @Override
 		public void onCharacteristicRead(BluetoothGatt gatt,
@@ -67,7 +68,7 @@ private final BluetoothGattCallback mGattCallback = new BluetoothGattCallback() 
 
 			}
 		}
-
+                //蓝牙数据改变时候回调		
 		@Override
 		public void onCharacteristicChanged(BluetoothGatt gatt,
 				BluetoothGattCharacteristic characteristic) {
