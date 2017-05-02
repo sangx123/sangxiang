@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -52,6 +53,8 @@ public class WebViewDemo extends Activity {
          * This is not called on the UI thread. Post a runnable to invoke
          * loadUrl on the UI thread.
          */
+
+        @JavascriptInterface
         public void clickOnAndroid() {
             mHandler.post(new Runnable() {
                 public void run() {

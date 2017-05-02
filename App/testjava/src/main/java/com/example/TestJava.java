@@ -3,9 +3,43 @@ package com.example;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import sun.rmi.runtime.Log;
 
 public class TestJava {
+
+    private static int count;
+    private static Timer timer=new Timer();
+
     public static void main(String[] args){
+        count=0;
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+                if(count>9) {
+                    timer.cancel();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            System.out.println(count++);
+                        }
+                    },1000,1000);
+                }
+                System.out.println(count++);
+            }
+        },1000,1000);
+
+
+
+
+
+
+    }
+    
+   /* public static void main(String[] args){
         //假设今天是怀孕第一天
         Date date=new Date();
         int timespan=getTrueDaysBetween(date.getTime(),getBday(date));
@@ -14,7 +48,7 @@ public class TestJava {
         long lastday=getBday(date);
         System.out.println(lastday-now);
         System.out.println(24192000000L - 1000 * 60 * 60 * 24);
-    }
+    }*/
     public static int getTrueDaysBetween(long a, long b) {
         /*if (b < a) {
             return -getDaysBetween(b, a);

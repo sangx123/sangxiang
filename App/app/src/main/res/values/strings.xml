@@ -3,4 +3,5 @@
     <string name="title_activity_test">TestActivity</string>
     <string name="year_month_day">%1$d年%2$d月%3$d日</string>
     <string name="due_date_menstruation_cycle_select">周期%1$d天</string>
+    <string name="mall_grid_price">¥ %s</string>
 </resources>

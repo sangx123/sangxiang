@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -31,7 +32,7 @@ public class MainActivity extends LogActivity {
         for (int i = 0; i < 100; i++) {
             date.add("我是第" + i + "个");
         }
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
         mRecyclerView.setAdapter(new BaseQuickAdapter<String, BaseViewHolder>(R.layout.adapter_main, date) {
                                      @Override
                                      protected void convert(BaseViewHolder helper, String item) {
@@ -39,7 +40,6 @@ public class MainActivity extends LogActivity {
                                      }
                                  }
         );
-        mRecyclerView.addItemDecoration(new MyItemDecoration());
     }
 
     public class MyItemDecoration extends RecyclerView.ItemDecoration {

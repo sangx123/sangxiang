@@ -7,4 +7,7 @@ import android.support.v7.app.AppCompatActivity;
  */
 
 public class LogActivity extends AppCompatActivity implements LogUtil {
+    public AppCompatActivity getActivity(){
+        return this;
+    }
 }
