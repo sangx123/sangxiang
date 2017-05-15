@@ -5,14 +5,22 @@ package com.sangxiang.app;
  */
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+import com.google.gson.Gson;
+
+import static android.webkit.WebSettings.LOAD_NO_CACHE;
+
 /**
  * Demonstrates how to embed a WebView in your activity. Also demonstrates how
  * to have javascript in the WebView call into the activity, and how the activity
@@ -28,7 +36,7 @@ import android.webkit.WebView;
  * code paths for this sort of communication.
  *
  */
-public class WebViewDemo extends Activity {
+public class WebViewDemo extends LogActivity {
     private static final String LOG_TAG = "WebViewDemo";
     private WebView mWebView;
     private Handler mHandler = new Handler();
@@ -38,13 +46,38 @@ public class WebViewDemo extends Activity {
         setContentView(R.layout.main);
         mWebView = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = mWebView.getSettings();
-        webSettings.setSavePassword(false);
-        webSettings.setSaveFormData(false);
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setSupportZoom(false);
+        webSettings.setCacheMode(LOAD_NO_CACHE);
+        mWebView.addJavascriptInterface(new JsBridge(), "bridge");
+        mWebView.setWebViewClient(new WebViewClient());
         mWebView.setWebChromeClient(new MyWebChromeClient());
-        mWebView.addJavascriptInterface(new DemoJavaScriptInterface(), "demo");
-        mWebView.loadUrl("file:///android_asset/demo.html");
+        mWebView.loadUrl("http://192.168.0.167:10008/gp/cart");
+        //mWebView.loadUrl("file:///android_asset/demo.html");
+    }
+
+    final class JsBridge{
+        JsBridge(){
+
+        }
+
+        /**
+         * This is not called on the UI thread. Post a runnable to invoke
+         * loadUrl on the UI thread.
+         */
+        @JavascriptInterface
+        public void customerService(){
+                       Log.e(TAG, "customerService: ");
+        }
+        @JavascriptInterface
+        public void backToMallHome(){
+
+            Log.e(TAG, "backToMallHome: ");
+        }
+
+        @JavascriptInterface
+        public void productShare(String data) {
+            Log.e(TAG, "productShare: ");
+        }
     }
     final class DemoJavaScriptInterface {
         DemoJavaScriptInterface() {
@@ -53,6 +86,14 @@ public class WebViewDemo extends Activity {
          * This is not called on the UI thread. Post a runnable to invoke
          * loadUrl on the UI thread.
          */
+        @JavascriptInterface
+        public void showMobile(){
+            Log.e(TAG, "showMobile: ");
+        }
+        @JavascriptInterface
+        public void showName(){
+            Log.e(TAG, "showName: ");
+        }
 
         @JavascriptInterface
         public void clickOnAndroid() {
@@ -62,6 +103,23 @@ public class WebViewDemo extends Activity {
                 }
             });
         }
+    }
+    @JavascriptInterface
+    public void showMobile(){
+        Log.e(TAG, "showMobile: ");
+    }
+    @JavascriptInterface
+    public void showName(){
+        Log.e(TAG, "showName: ");
+    }
+
+    @JavascriptInterface
+    public void clickOnAndroid() {
+        mHandler.post(new Runnable() {
+            public void run() {
+                mWebView.loadUrl("javascript:wave()");
+            }
+        });
     }
     /**
      * Provides a hook for calling "alert" from javascript. Useful for

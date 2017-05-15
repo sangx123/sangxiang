@@ -1,5 +1,6 @@
 package com.sangxiang.app;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -9,30 +10,39 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 public class MainActivity extends LogActivity {
 
     RecyclerView mRecyclerView;
+
+    @Bind(R.id.btn)
+    Button btn;
     private ArrayList<String> date = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         mRecyclerView = (RecyclerView) findViewById(R.id.mRecyclerView);
 
 
         for (int i = 0; i < 100; i++) {
             date.add("我是第" + i + "个");
         }
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mRecyclerView.setAdapter(new BaseQuickAdapter<String, BaseViewHolder>(R.layout.adapter_main, date) {
                                      @Override
                                      protected void convert(BaseViewHolder helper, String item) {
@@ -40,6 +50,13 @@ public class MainActivity extends LogActivity {
                                      }
                                  }
         );
+    }
+
+    @OnClick(R.id.btn)
+    public void onViewClicked() {
+        Intent intent= new Intent(MainActivity.this,Main2Activity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        MainActivity.this.startActivity(intent);
     }
 
     public class MyItemDecoration extends RecyclerView.ItemDecoration {

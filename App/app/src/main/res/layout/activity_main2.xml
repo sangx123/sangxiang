@@ -1,119 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/mSwipeRefreshLayout"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-        <LinearLayout
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#eee"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:id="@+id/mall_banner_container"
-                android:layout_width="match_parent"
-                android:layout_height="70dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="#fff"
-
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <LinearLayout
-
-                    android:id="@+id/mXinbiLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-                        android:src="@drawable/icon_mall_xinbi" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="我的心币: 1000"
-                        android:textColor="#333333"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="#eee" />
-                <RelativeLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    >
-                    <LinearLayout
-                        android:layout_centerInParent="true"
-                        android:gravity="center"
-                        android:id="@+id/mShoppingCatLayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_marginRight="5dp"
-                            android:src="@drawable/icon_mall_shoppingcat" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="我的购物车 3件"
-                            android:textColor="#333333"
-                            android:textSize="14sp"
-                            android:id="@+id/textView4" />
-                    </LinearLayout>
-                    <com.sangxiang.app.widgets.TextView.CircleTextView
-                        android:layout_marginLeft="-5dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_toRightOf="@+id/mShoppingCatLayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="173"
-                        android:textSize="11sp"
-                        android:gravity="center"
-                        android:textColor="#fff"
-                        app:fill_color="#ef426f"
-                        />
-                </RelativeLayout>
-
-            </LinearLayout>
-            <android.support.v7.widget.RecyclerView
-                android:layout_height="88dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="#fff"
-                android:layout_width="match_parent"
-                >
-            </android.support.v7.widget.RecyclerView>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/goods_recycleview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#eee" />
-        </LinearLayout>
-    </ScrollView>
-</android.support.v4.widget.SwipeRefreshLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn"
+        android:text="跳转"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn1"
+        android:text="下一步"
+        />
+</LinearLayout>
