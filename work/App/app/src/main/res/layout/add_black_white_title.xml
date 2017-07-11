@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/main_title_bg"
+	>
+	<Button
+	    android:id="@+id/btnaddblack_white_back"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="10.0dip"
+		android:layout_alignParentLeft="true"
+		android:layout_centerVertical="true"
+		android:background="@drawable/btnbackonclick"
+		/>
+	<Button
+	    android:id="@+id/btnaddblack_white_save"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginRight="10.0dip"
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"
+		android:background="@drawable/btnsaveonclick"
+		/>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerVertical="true"
+		android:layout_centerHorizontal="true"
+		android:text=" "
+		android:textStyle="bold"
+		android:textSize="20dp"
+		android:id="@+id/tvaddblack_white_title"
+		/>
+</RelativeLayout>

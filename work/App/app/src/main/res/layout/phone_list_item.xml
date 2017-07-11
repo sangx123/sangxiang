@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:layout_margin="10dp"
+  android:background="@drawable/listviewitemonclick"
+  >
+  
+  <TextView
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:id="@+id/tvusername"
+  android:layout_weight="1"
+  android:text="张三"
+  android:layout_gravity="center"
+  android:gravity="center"
+  android:textColor="#000000"
+  android:textSize="18dp"
+  />
+  <TextView
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:id="@+id/tvuseruserphonenumber"
+  android:layout_weight="1"
+  android:text="13288888888"
+   android:layout_gravity="center"
+  android:gravity="center"
+    android:textColor="#000000"
+  android:textSize="18dp"
+  /> 
+</LinearLayout>

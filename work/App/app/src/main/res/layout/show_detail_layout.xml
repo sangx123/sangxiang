@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:minHeight="200dp"
+  android:minWidth="250dp"
+  android:id="@+id/llshowdetail_id"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+   <TextView
+   android:layout_width="fill_parent"
+   android:layout_height="wrap_content"
+   android:id="@+id/tvshowdetail_policy"
+   android:textColor="#FF0000"
+   android:textSize="20dp"
+   android:textStyle="bold"
+   android:layout_margin="5dp"
+   />
+ <View
+ android:layout_width="fill_parent"
+ android:layout_height="2dp"
+ android:background="@drawable/line"
+ />
+   <TextView
+   android:layout_width="fill_parent"
+   android:layout_height="wrap_content"
+   android:id="@+id/tvshowdetail_content"
+     android:layout_margin="5dp"
+   />
+  
+</LinearLayout>

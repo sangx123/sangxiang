@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout    
+         xmlns:android="http://schemas.android.com/apk/res/android"    
+         android:layout_height="wrap_content"    
+         android:paddingBottom="4dip"
+         android:layout_width="fill_parent"
+         >   
+         <ImageView    
+               android:layout_height="wrap_content"    
+               android:id="@+id/gridview_item_ImageView"    
+               android:layout_width="wrap_content"  
+               android:layout_marginTop="5dp"  
+               android:layout_centerHorizontal="true">    
+         </ImageView>   
+         <TextView    
+               android:layout_below="@+id/gridview_item_ImageView"    
+               android:text="TextView01"    
+               android:id="@+id/tvshowresous" 
+               android:layout_centerHorizontal="true" 
+               android:gravity="center"
+               android:textColor="#ffffff"
+               android:layout_width="fill_parent" 
+               android:layout_height="wrap_content">   
+         </TextView>
+         <TextView    
+               android:layout_width="0dp"        
+               android:layout_height="0dp"    
+               android:text="TextView01"    
+               android:layout_centerHorizontal="true"    
+               android:id="@+id/gridview_item_tiaojian"
+                android:visibility="invisible">   
+         </TextView>
+         <TextView    
+               android:layout_width="0dp"    
+               android:layout_height="0dp"    
+               android:text="TextView01"    
+               android:layout_centerHorizontal="true"    
+               android:id="@+id/gridview_item_tiaojian2" 
+               android:visibility="invisible">
+         </TextView>   
+</RelativeLayout>   

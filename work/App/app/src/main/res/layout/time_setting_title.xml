@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/main_title_bg"
+	>
+	<Button
+		android:gravity="left"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="10.0dip"
+		android:layout_alignParentLeft="true"
+		android:layout_centerVertical="true"
+		android:background="@drawable/dssz_sec_aditonclick"
+		android:id="@+id/btn_time_setting_edit"
+		/>
+	 <Button
+		android:gravity="left"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginRight="10.0dip"
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"
+		android:background="@drawable/dssz_sec_addonclick"
+		android:id="@+id/btn_time_setting_add"
+		/>
+	<TextView
+		android:gravity="center"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerVertical="true"
+		android:layout_centerHorizontal="true"
+		android:text="定时设置"
+		android:textStyle="bold"
+		android:textSize="20dp"
+		/>
+</RelativeLayout>

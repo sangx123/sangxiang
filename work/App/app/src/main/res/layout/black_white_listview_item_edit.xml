@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:padding="5dp"
+  android:descendantFocusability="blocksDescendants"
+   android:background="@drawable/listviewitemonclick"
+  >
+  <Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:id="@+id/btndeleteblack_orwhite_edit"
+  android:layout_alignParentLeft="true"
+  android:background="@drawable/btndeleteonclick"
+  android:layout_centerVertical="true"
+  />
+ 
+ 
+  <LinearLayout
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical"
+  android:layout_centerVertical="true"
+  android:layout_marginLeft="5dp"
+  android:layout_toRightOf="@id/btndeleteblack_orwhite_edit"
+  android:id="@+id/llblack_white_detail"
+  >
+    <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="张三"
+    android:id="@+id/tvblack_white_phone_name"
+    android:textColor="#000000"
+    />
+      <TextView
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:text="15167212121"
+     android:id="@+id/tvblack_white_phone_number"
+     android:textColor="#000000"
+    />
+       <TextView
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/tvblack_whitelistitem_id_edit"
+     android:textColor="#000000"
+     android:visibility="gone"
+    />
+     
+  </LinearLayout>
+   <ImageView
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:background="@drawable/timesetting_pic"
+   android:layout_alignParentRight="true"
+   android:layout_centerVertical="true"
+   android:layout_marginRight="5dp"
+   />
+</RelativeLayout>
