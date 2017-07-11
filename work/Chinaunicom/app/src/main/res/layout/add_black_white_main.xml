@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:id="@+id/lladd_black_whitetop"
+    >
+     <include
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       layout="@layout/add_black_white_title"
+     />
+    </LinearLayout>
+     <LinearLayout
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent"
+   android:background="@drawable/fjwr_main_bg"
+   android:layout_below="@id/lladd_black_whitetop"
+   >
+    <LinearLayout
+   android:layout_width="fill_parent"
+   android:layout_height="wrap_content"
+   android:orientation="vertical"
+   android:background="@drawable/temp_bg"
+   android:layout_margin="5dp"
+   >
+	 
+	     <RelativeLayout
+	      android:layout_width="fill_parent"
+	      android:layout_height="wrap_content"
+	      android:padding="10dp"
+	      android:id="@+id/rlrepeat_day"
+	      >
+	         <TextView
+	         android:layout_width="70dp"
+	         android:layout_height="wrap_content"
+	         android:text="号码"
+	         android:layout_alignParentLeft="true"
+	         android:id="@+id/tvshow_name"
+	         android:gravity="center"
+	         android:layout_centerVertical="true"
+	         android:textColor="#000000"
+	         android:textStyle="bold"
+	         android:textSize="20dp"
+	         />
+	           
+	          <EditText
+	          android:id="@+id/et_phone_number"
+	          android:layout_width="fill_parent"
+	          android:layout_height="wrap_content"
+	          android:textColor="#CC2B30"
+	          android:layout_marginRight="3dp"
+	          android:layout_toRightOf="@id/tvshow_name"
+	           android:singleLine="true"
+	           android:numeric="integer"
+	         />
+	     </RelativeLayout>
+	     <View
+	     android:layout_width="fill_parent"
+	     android:layout_height="1dp"
+	     android:background="@drawable/line"
+	     />
+	             <RelativeLayout
+	      android:layout_width="fill_parent"
+	      android:layout_height="wrap_content"
+	      android:padding="10dp"
+	      android:id="@+id/rlrepeat_day"
+	      >
+	         <TextView
+	         android:layout_width="70dp"
+	         android:layout_height="wrap_content"
+	         android:text="姓名"
+	         android:layout_alignParentLeft="true"
+	         android:id="@+id/tvshow_name"
+	         android:gravity="center"
+	         android:layout_centerVertical="true"
+	         android:textColor="#000000"
+	         android:textStyle="bold"
+	         android:textSize="20dp"
+	         />
+	           
+	          <EditText
+	          android:id="@+id/et_phone_name"
+	         android:layout_width="fill_parent"
+	         android:layout_height="wrap_content"
+	          android:textColor="#CC2B30"
+	          android:layout_marginRight="3dp"
+	          android:layout_toRightOf="@id/tvshow_name"
+	          android:singleLine="true"
+	          android:maxLength="13"
+	         />
+	     </RelativeLayout>
+	     <View
+	     android:layout_width="fill_parent"
+	     android:layout_height="1dp"
+	     android:background="@drawable/line"
+	     />
+	        <RelativeLayout
+	      android:layout_width="fill_parent"
+	      android:layout_height="wrap_content"
+	      android:padding="10dp"
+	      android:id="@+id/rlrepeat_day"
+	      >
+	         <TextView
+	         android:layout_width="70dp"
+	         android:layout_height="wrap_content"
+	         android:text="备注 "
+	         android:layout_alignParentLeft="true"
+	         android:id="@+id/tvshow_name"
+	         android:gravity="center"
+	         android:layout_centerVertical="true"
+	             android:textColor="#000000"
+	         android:textStyle="bold"
+	         android:textSize="20dp"
+	         />
+	           
+	          <EditText
+	          android:id="@+id/et_phone_beizhu"
+	          android:layout_width="fill_parent"
+	          android:layout_height="wrap_content"
+	          android:layout_marginRight="3dp"
+	          android:layout_toRightOf="@id/tvshow_name"
+	           android:singleLine="true"
+	           android:maxLength="16"
+	             android:textColor="#CC2B30"
+	          
+	         />
+	     </RelativeLayout>
+
+	     <Button
+	      android:layout_width="fill_parent"
+	      android:layout_height="wrap_content"
+	      android:text="从联系人列表中添加"
+	      android:layout_marginTop="10dp"
+	      android:id="@+id/btngetdatafromuserphonelist"
+      />
+	        
+	    
+      </LinearLayout>
+   
+   </LinearLayout>
+</RelativeLayout>
