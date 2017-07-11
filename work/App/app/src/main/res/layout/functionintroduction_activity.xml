@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<RelativeLayout android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:orientation="vertical"
+		 android:id="@+id/hide"
+		 >
+		<android.support.v4.view.ViewPager
+	     android:id="@+id/viewPager1"
+	     android:layout_width="fill_parent"
+	     android:layout_height="fill_parent"
+	     android:layout_centerVertical="true"  
+	     /> 
+		<RelativeLayout android:id="@+id/rlbottom"
+			android:layout_width="fill_parent" android:layout_height="30dp"
+			android:layout_alignParentBottom="true"
+			android:layout_centerHorizontal="true">
+			<LinearLayout android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_centerVertical="true"
+				android:layout_centerInParent="true">
+				<ImageView android:id="@+id/ivfirstimage"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:src="@drawable/initdot3" />
+				<ImageView android:id="@+id/ivsecondimage"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:src="@drawable/initdot1" />
+				<ImageView android:id="@+id/ivthreeimage"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:src="@drawable/initdot1" />
+				<ImageView android:id="@+id/ivfourimage"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:src="@drawable/initdot1" />
+			</LinearLayout>
+		</RelativeLayout>
+	</RelativeLayout>
+</RelativeLayout>

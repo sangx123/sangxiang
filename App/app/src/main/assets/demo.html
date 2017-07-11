@@ -1,15 +1,24 @@
 <html>
+<title>demo</title>
 <script language="javascript">
-        /* This function is invoked by the activity */
         function wave() {
-            alert("1");
-            document.getElementById("droid").src="android_normal.png";
-            alert("2");
+          if(window.xksJsBridge){
+            console.log('111')
+            var a = {title:'hihihi'};
+            var b={title:'hihihi',url:false};;
+            window.xksJsBridge.productShare(JSON.stringify(a));
+            window.xksJsBridge.productShare(JSON.stringify({url:b}));
+            window.xksJsBridge.productShare(JSON.stringify({url:1}));
+            window.xksJsBridge.productShare(JSON.stringify({url:0}));
+
+          }else{
+            console.log('222')
+            window.xksJsBridge.customerService();
+          }
         }
     </script>
 <body>
-<!-- window.demo.clickOnAndroid()  Calls into the javascript interface for the activity -->
-<a onClick="window.bridge.backToMallHome();"><div style="width:80px;
+<a href="index.html" onClick="wave()" ><div style="width:80px;
             margin:0px auto;
             padding:10px;
             text-align:center;

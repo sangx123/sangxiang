@@ -6,11 +6,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.widget.TextView;
 
-import com.sangxiang.app.DisplayUtil;
 import com.sangxiang.app.R;
+import com.sangxiang.app.tools.DisplayUtil;
 
 /**
  * Created by sangxiang on 26/4/17.

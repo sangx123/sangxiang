@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:orientation="vertical"
+  android:layout_height="fill_parent">
+  <LinearLayout
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:layout_alignParentTop="true"
+  android:id="@+id/lltimesettingtop"
+  >
+     <include
+      layout="@layout/time_setting_title"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+     />
+  </LinearLayout>
+	  <LinearLayout
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:layout_alignParentBottom="true"
+	  android:id="@+id/lltimesettingbottom"
+	  android:visibility="gone"
+	  >
+		  <include
+		  android:layout_width="fill_parent"
+		  android:layout_height="wrap_content"
+		  layout="@layout/timesetting_bottom"
+		  />
+	  </LinearLayout>
+	  <winway.mdr.chinaunicom.current.listview.MyListView
+	  android:id="@+id/lvtimesettinglistview"
+	  android:layout_width="fill_parent"
+	  android:layout_height="fill_parent"
+	  android:layout_below="@id/lltimesettingtop"
+	  android:layout_above="@id/lltimesettingbottom"
+	  android:background="@drawable/fjwr_main_bg"
+	  android:divider="@drawable/line"
+	  android:cacheColorHint="#00000000"
+	  style="@style/listview"
+	  />
+</RelativeLayout>

@@ -1,45 +1,44 @@
 package com.example;
-
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import sun.rmi.runtime.Log;
+import java.util.Random;
 
 public class TestJava {
 
-    private static int count;
-    private static Timer timer=new Timer();
-
-    public static void main(String[] args){
-        count=0;
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-
-                if(count>9) {
-                    timer.cancel();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            System.out.println(count++);
-                        }
-                    },1000,1000);
-                }
-                System.out.println(count++);
-            }
-        },1000,1000);
-
-
-
-
+    public static void main(String[] args) {
+        Integer[] data=new Integer[100];
+        for(int i=0;i<100;i++){
+            data[i]=i;
+        }
+        Random random=new Random();
+        randomout(data,random);
 
 
     }
+
+    public enum Day {
+        MONDAY,
+        TUESDAY,
+        WEDNESDAY,
+        THURSDAY,
+        FRIDAY,
+        SATURDAY,
+        SUNDAY
+    }
+
+    public static  class UserDayEnum {
+        public String _name;
+        public String email;
+        public boolean isDeveloper;
+        public int age;
+        public Day day = Day.FRIDAY;
+    }
+
     
-   /* public static void main(String[] args){
+
+    /* public static void main(String[] args){
         //假设今天是怀孕第一天
         Date date=new Date();
         int timespan=getTrueDaysBetween(date.getTime(),getBday(date));

@@ -5,11 +5,12 @@
     android:layout_height="fill_parent"
     >
 
-    <TextView
+    <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="11"
+        android:text="点击事件"
         android:padding="4dip"
+        android:id="@+id/btn"
         android:textSize="16sp"
         />
 

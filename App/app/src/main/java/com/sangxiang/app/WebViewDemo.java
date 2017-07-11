@@ -6,18 +6,34 @@ package com.sangxiang.app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.webkit.ClientCertRequest;
+import android.webkit.ConsoleMessage;
+import android.webkit.HttpAuthHandler;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static android.webkit.WebSettings.LOAD_NO_CACHE;
 
@@ -27,7 +43,6 @@ import static android.webkit.WebSettings.LOAD_NO_CACHE;
  * can invoke javascript.
  * <p>
  * In this example, clicking on the android in the WebView will result in a call into
- * the activities code in {@link DemoJavaScriptInterface#clickOnAndroid()}. This code
  * will turn around and invoke javascript using the {@link WebView#loadUrl(String)}
  * method.
  * <p>
@@ -44,15 +59,19 @@ public class WebViewDemo extends LogActivity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.main);
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mWebView.loadUrl("file:///android_asset/index.html");
+            }
+        });
         mWebView = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setCacheMode(LOAD_NO_CACHE);
-        mWebView.addJavascriptInterface(new JsBridge(), "bridge");
-        mWebView.setWebViewClient(new WebViewClient());
+        mWebView.addJavascriptInterface(new JsBridge(), "xksJsBridge");
+        mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.setWebChromeClient(new MyWebChromeClient());
-        mWebView.loadUrl("http://192.168.0.167:10008/gp/cart");
-        //mWebView.loadUrl("file:///android_asset/demo.html");
+        mWebView.loadUrl("file:///android_asset/demo.html");
     }
 
     final class JsBridge{
@@ -69,58 +88,18 @@ public class WebViewDemo extends LogActivity {
                        Log.e(TAG, "customerService: ");
         }
         @JavascriptInterface
-        public void backToMallHome(){
+        public void backToMallHome(int aa){
 
             Log.e(TAG, "backToMallHome: ");
         }
 
         @JavascriptInterface
         public void productShare(String data) {
-            Log.e(TAG, "productShare: ");
-        }
-    }
-    final class DemoJavaScriptInterface {
-        DemoJavaScriptInterface() {
-        }
-        /**
-         * This is not called on the UI thread. Post a runnable to invoke
-         * loadUrl on the UI thread.
-         */
-        @JavascriptInterface
-        public void showMobile(){
-            Log.e(TAG, "showMobile: ");
-        }
-        @JavascriptInterface
-        public void showName(){
-            Log.e(TAG, "showName: ");
-        }
 
-        @JavascriptInterface
-        public void clickOnAndroid() {
-            mHandler.post(new Runnable() {
-                public void run() {
-                    mWebView.loadUrl("javascript:wave()");
-                }
-            });
+            //Log.e(TAG, "title="+title+",url="+url);
         }
-    }
-    @JavascriptInterface
-    public void showMobile(){
-        Log.e(TAG, "showMobile: ");
-    }
-    @JavascriptInterface
-    public void showName(){
-        Log.e(TAG, "showName: ");
     }
 
-    @JavascriptInterface
-    public void clickOnAndroid() {
-        mHandler.post(new Runnable() {
-            public void run() {
-                mWebView.loadUrl("javascript:wave()");
-            }
-        });
-    }
     /**
      * Provides a hook for calling "alert" from javascript. Useful for
      * debugging your javascript.
@@ -131,6 +110,128 @@ public class WebViewDemo extends LogActivity {
             Log.d(LOG_TAG, message);
             result.confirm();
             return true;
+        }
+
+        @Override
+        public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+            Log.e("webview", consoleMessage.message());
+            return super.onConsoleMessage(consoleMessage);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mWebView.canGoBack()) {
+            mWebView.goBack();
+        } else {
+            super.onBackPressed();
+            //mWebView.loadUrl(ABOUT_BLANK);
+        }
+    }
+    public class MyWebViewClient extends WebViewClient{
+        //控制新的连接在当前WebView中打开
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            Log.e(TAG, "shouldOverrideUrlLoading: " );
+            return super.shouldOverrideUrlLoading(view, request);
+        }
+        //网页开始加载
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            Log.e(TAG, "onPageStarted: " );
+            super.onPageStarted(view, url, favicon);
+        }
+        //网页加载完毕
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            Log.e(TAG, "onPageFinished: " );
+            Log.e(TAG, "onPageFinished: "+view.getTitle() );
+            super.onPageFinished(view, url);
+        }
+        //加载指定地址提供的资源
+        @Override
+        public void onLoadResource(WebView view, String url) {
+            Log.e(TAG, "onLoadResource: " );
+            super.onLoadResource(view, url);
+        }
+
+        //
+        @Override
+        public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+            Log.e(TAG, "shouldInterceptRequest: " );
+            return super.shouldInterceptRequest(view, url);
+        }
+
+        @Override
+        public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+            Log.e(TAG, "shouldInterceptRequest: " );
+            return super.shouldInterceptRequest(view, request);
+        }
+        //报告错误信息
+        @Override
+        public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+            Log.e(TAG, "onReceivedError: ");
+            super.onReceivedError(view, request, error);
+        }
+
+        @Override
+        public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
+            Log.e(TAG, "onReceivedHttpError: ");
+            super.onReceivedHttpError(view, request, errorResponse);
+        }
+
+        @Override
+        public void onFormResubmission(WebView view, Message dontResend, Message resend) {
+            Log.e(TAG, "onFormResubmission: ");
+            super.onFormResubmission(view, dontResend, resend);
+        }
+
+        @Override
+        public void doUpdateVisitedHistory(WebView view, String url, boolean isReload) {
+            Log.e(TAG, "doUpdateVisitedHistory: ");
+            super.doUpdateVisitedHistory(view, url, isReload);
+        }
+
+        @Override
+        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+            Log.e(TAG, "onReceivedSslError: " );
+            super.onReceivedSslError(view, handler, error);
+        }
+
+        @Override
+        public void onReceivedClientCertRequest(WebView view, ClientCertRequest request) {
+            Log.e(TAG, "onReceivedClientCertRequest: ");
+            super.onReceivedClientCertRequest(view, request);
+        }
+
+        @Override
+        public void onReceivedHttpAuthRequest(WebView view, HttpAuthHandler handler, String host, String realm) {
+            Log.e(TAG, "onReceivedHttpAuthRequest: " );
+            super.onReceivedHttpAuthRequest(view, handler, host, realm);
+        }
+
+        @Override
+        public boolean shouldOverrideKeyEvent(WebView view, KeyEvent event) {
+            Log.e(TAG, "shouldOverrideKeyEvent: " );
+            return super.shouldOverrideKeyEvent(view, event);
+        }
+
+        @Override
+        public void onUnhandledKeyEvent(WebView view, KeyEvent event) {
+            Log.e(TAG, "onUnhandledKeyEvent: ");
+            super.onUnhandledKeyEvent(view, event);
+        }
+
+        @Override
+        public void onScaleChanged(WebView view, float oldScale, float newScale) {
+            Log.e(TAG, "onScaleChanged: " );
+            super.onScaleChanged(view, oldScale, newScale);
+        }
+
+        @Override
+        public void onReceivedLoginRequest(WebView view, String realm, String account, String args) {
+            Log.e(TAG, "onReceivedLoginRequest: " );
+            super.onReceivedLoginRequest(view, realm, account, args);
         }
     }
 }

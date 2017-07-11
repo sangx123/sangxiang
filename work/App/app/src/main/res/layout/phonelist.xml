@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:background="#ffffff"
+  android:minHeight="200dp"
+  >
+   <LinearLayout
+   android:layout_width="fill_parent"
+   android:layout_height="wrap_content"
+   android:layout_marginTop="10dp"
+   android:layout_marginBottom="5dp"
+   >
+     <TextView
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:text="姓名"
+     android:layout_gravity="center"
+     android:gravity="center"
+     android:textColor="#000000"
+     android:textSize="20dp"
+     android:textStyle="bold"
+     android:layout_weight="1"
+     />
+      <TextView
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:text="电话号码"
+     android:layout_gravity="center"
+     android:gravity="center"
+     android:textColor="#000000"
+     android:textSize="20dp"
+     android:textStyle="bold"
+     android:layout_weight="1"
+     />
+   </LinearLayout>
+   <View
+   android:layout_width="fill_parent"
+   android:layout_height="2dp"
+   android:background="@drawable/line"
+   />
+     <ListView
+     android:id="@+id/lvphonelist"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     android:divider="@drawable/line"
+     android:cacheColorHint="#00000000"
+     />
+   
+  
+</LinearLayout>

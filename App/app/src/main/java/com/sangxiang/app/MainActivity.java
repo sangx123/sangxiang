@@ -6,17 +6,17 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.sangxiang.app.widgets.RecyclerView.MyAdapter;
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,6 +29,7 @@ public class MainActivity extends LogActivity {
 
     @Bind(R.id.btn)
     Button btn;
+    TextView mTxtHeader;
     private ArrayList<String> date = new ArrayList<>();
 
     @Override
@@ -42,19 +43,19 @@ public class MainActivity extends LogActivity {
         for (int i = 0; i < 100; i++) {
             date.add("我是第" + i + "个");
         }
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        mRecyclerView.setAdapter(new BaseQuickAdapter<String, BaseViewHolder>(R.layout.adapter_main, date) {
-                                     @Override
-                                     protected void convert(BaseViewHolder helper, String item) {
-                                         helper.setText(R.id.mTxt, item);
-                                     }
-                                 }
-        );
+
+        View view= LayoutInflater.from(getActivityInstance()).inflate(R.layout.txt,null);
+        mTxtHeader=(TextView)view.findViewById(R.id.mTxtHeader);
+        mTxtHeader.setText("sangxiang");
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        MyAdapter adapter = new MyAdapter(date, getActivityInstance());
+        mRecyclerView.setAdapter(adapter);
+        adapter.addHeaderView(view);
     }
 
     @OnClick(R.id.btn)
     public void onViewClicked() {
-        Intent intent= new Intent(MainActivity.this,Main2Activity.class);
+        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         MainActivity.this.startActivity(intent);
     }
