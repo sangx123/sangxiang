@@ -94,6 +94,7 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 	LinearLayout llindex,llzhixun,llzhibo,lldianbo,llmore;
 	ImageButton ibindex,ibfjwr,ibqhdr,ibdssz,ibmore,ibtnhelpaboutmysoft;
 	ImageButton ib_forback,ib_refresh,ib_about;
+	Button cancel;
 	TextView tvaboutcontent,tvtitle_name;
 	ImageView ivaboutlogo; 
 	int defaultposition=1;
@@ -217,25 +218,29 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 			detail=data.getStringExtra("detail");
 			tvshowseconduserdetail.setText(user_phone+",欢迎回来");
 		    if(!"正常状态".equals(phone_status)){
-		    	ivthiscurrentimage.setVisibility(View.VISIBLE);
-		    	scene=phone_status.substring(0, phone_status.indexOf("("));
-		    	policy=phone_status.substring(phone_status.indexOf("(")+1, phone_status.length()-1);
-		    	ivthiscurrentimage.setImageResource(ArrayUnits.GetPolicyIconPosition(policy, scene));
-                tvthiscurrentendtime.setVisibility(View.VISIBLE);
-                String durations=detail.substring(detail.lastIndexOf(",")+1,detail.length());
-                  year=detail.substring(detail.indexOf("年")+1, detail.indexOf(","));
-            	  month=detail.substring(detail.indexOf("月")+1, detail.indexOf("日")-1);
-            	  day=detail.substring(detail.indexOf("日")+1, detail.indexOf("时")-1);
-		    	 thisstrh=Integer.valueOf(detail.substring(detail.indexOf("时")+1, detail.indexOf("分")-1));
-		         thisstrm=Integer.valueOf(detail.substring(detail.indexOf("分")+1, detail.lastIndexOf(",")));
-		         endtime_detail=getEndTime(Integer.valueOf(year),Integer.valueOf(month),Integer.valueOf(day),thisstrh, thisstrm, Integer.valueOf(durations));
-		         tvthiscurrentendtime.setText("结束时间:"+endtime_detail.substring(10, endtime_detail.length()));
-		         System.out.println("登录的detail信息---->>>>"+detail);
+				ivthiscurrentimage.setVisibility(View.VISIBLE);
+				scene = phone_status.substring(0, phone_status.indexOf("("));
+				policy = phone_status.substring(phone_status.indexOf("(") + 1, phone_status.length() - 1);
+				ivthiscurrentimage.setImageResource(ArrayUnits.GetPolicyIconPosition(policy, scene));
+				tvthiscurrentendtime.setVisibility(View.VISIBLE);
+				String durations = detail.substring(detail.lastIndexOf(",") + 1, detail.length());
+				year = detail.substring(detail.indexOf("年") + 1, detail.indexOf(","));
+				month = detail.substring(detail.indexOf("月") + 1, detail.indexOf("日") - 1);
+				day = detail.substring(detail.indexOf("日") + 1, detail.indexOf("时") - 1);
+				thisstrh = Integer.valueOf(detail.substring(detail.indexOf("时") + 1, detail.indexOf("分") - 1));
+				thisstrm = Integer.valueOf(detail.substring(detail.indexOf("分") + 1, detail.lastIndexOf(",")));
+				endtime_detail = getEndTime(Integer.valueOf(year), Integer.valueOf(month), Integer.valueOf(day), thisstrh, thisstrm, Integer.valueOf(durations));
+				tvthiscurrentendtime.setText("结束时间:" + endtime_detail.substring(10, endtime_detail.length()));
+				System.out.println("登录的detail信息---->>>>" + detail);
 		    }else{
 		    	ivthiscurrentimage.setVisibility(View.GONE);
 		    	tvthiscurrentendtime.setVisibility(View.GONE);
 		    }
-			tvpolicyscene.setText(phone_status);
+			 if(phone_status.contains("防呼死你")) {
+				 tvpolicyscene.setText("防呼死你 ");
+			 }else {
+				 tvpolicyscene.setText(phone_status);
+			 }
 			if("dssz".equals(dssz)){
 				dssz="";
 				new GetAllTimeScenes().execute(new String[] {});
@@ -327,6 +332,13 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 			@Override
 			public void onClick(View v) {
 				mSettingClick();
+			}
+		});
+		cancel=(Button)this.findViewById(R.id.btn_cancel);
+		cancel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				goBack();
 			}
 		});
 		ibtnhelpaboutmysoft.setOnClickListener(this);
@@ -1230,7 +1242,11 @@ public boolean CheckInputIsnotEntity(){
 	        			    	 ivthiscurrentimage.setVisibility(View.GONE);
 	        			    	 tvthiscurrentendtime.setVisibility(View.GONE);
 	        			    }
-	        			 tvpolicyscene.setText(phone_status);
+						 if(phone_status.contains("防呼死你")) {
+							 tvpolicyscene.setText("防呼死你 ");
+						 }else {
+							 tvpolicyscene.setText(phone_status);
+						 }
 	                  }else if("failed_ss_error_status".equals(result)){
 	                	  Toast.makeText(MainActivity.this, "设置状态失败，请稍后再试。如果多次尝试失败，请拨打客服电话10010获取帮助", 3).show();
 	                  }else if("failed_not_registed".equals(result)){
@@ -1499,7 +1515,11 @@ public boolean CheckInputIsnotEntity(){
 						    	ivthiscurrentimage.setVisibility(View.GONE);
 						    	tvthiscurrentendtime.setVisibility(View.GONE);
 						    }
+						if(phone_status.contains("防呼死你")) {
+							tvpolicyscene.setText("防呼死你 ");
+						}else {
 							tvpolicyscene.setText(phone_status);
+						}
 		        	} 
 	        	}else{
 	        		if(dataAccess.getLastError().HTTP_NEED_RELOGIN.toString().equals(dataAccess.getLastError().toString())){
@@ -2017,7 +2037,20 @@ public boolean CheckInputIsnotEntity(){
 		lvkjsz_list.setAdapter(quickSetupServices.getadapter(1));
 		mRefresh();
 	}
-
+  private void goBack(){
+	  if(null != alertUpdate && alertUpdate.isShowing() && updateCanOrMust.equals("must_update"))
+	  {
+		  alertUpdate.hide();
+		  CookieManager.getInstance().removeAllCookie();
+		  android.os.Process.killProcess(android.os.Process.myPid());
+	  }
+	  else if(defaultposition!=1){
+		  mHomeClick();
+	  }else
+	  {
+		  showDialog();
+	  }
+  }
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK)

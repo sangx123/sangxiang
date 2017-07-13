@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+	android:background="@drawable/fjwr_main_bg"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+
+	<LinearLayout
+		android:orientation="vertical"
+
   android:layout_width="fill_parent"
   android:layout_height="fill_parent">
     <LinearLayout
@@ -17,10 +25,9 @@
     </LinearLayout>
   <LinearLayout
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
+  android:layout_height="wrap_content"
   android:layout_below="@id/lltemptop"
   android:orientation="vertical"
-  android:background="@drawable/fjwr_main_bg"
   > 
 	        <LinearLayout
 	        android:id="@+id/fjwr_top_layout"
@@ -131,7 +138,7 @@
 					        android:layout_width="fill_parent"
 					        android:layout_height="wrap_content"
 			             >
-			             <ListView
+			             <winway.mdr.chinaunicom.activity.ListViewForScrollView
 			             android:layout_width="fill_parent"
 			             android:layout_height="wrap_content"
 			             android:id="@+id/lvchoosescene"
@@ -146,4 +153,37 @@
 			 </LinearLayout>
                        
   </LinearLayout>
-</RelativeLayout>
+		<LinearLayout
+			android:layout_marginTop="15dp"
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			<LinearLayout
+				android:layout_weight="1"
+				android:gravity="center"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content">
+				<Button
+					android:id="@+id/btnfjwrsave"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="确定"
+					/>
+			</LinearLayout>
+			<LinearLayout
+				android:gravity="center"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content">
+				<Button
+					android:id="@+id/btn_cancel"
+					android:gravity="center"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="取消"
+					/>
+			</LinearLayout>
+		</LinearLayout>
+
+	</LinearLayout>
+	</ScrollView>

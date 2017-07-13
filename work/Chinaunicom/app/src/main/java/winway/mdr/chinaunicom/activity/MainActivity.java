@@ -97,7 +97,8 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 	ImageButton ibindex,ibfjwr,ibqhdr,ibdssz,ibmore,ibtnhelpaboutmysoft;
 	ImageButton ib_forback,ib_refresh,ib_about;
 	TextView tvaboutcontent,tvtitle_name;
-	ImageView ivaboutlogo; 
+	ImageView ivaboutlogo;
+	Button cancel;
 	int defaultposition=1;
 	CustomListView lvhfzc=null;//ª÷∏¥’˝≥£µƒListView
 	CustomListView lvkjsz_list=null;//øÏΩ›…Ë÷√µƒListView–≈œ¢
@@ -234,8 +235,13 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 		    	ivthiscurrentimage.setVisibility(View.GONE);
 		    	tvthiscurrentendtime.setVisibility(View.GONE);
 		    }
-			tvpolicyscene.setText(phone_status);
-			if("dssz".equals(dssz)){
+			 if(phone_status.contains("∑¿∫ÙÀ¿ƒ„")) {
+				 tvpolicyscene.setText("∑¿∫ÙÀ¿ƒ„ ");
+			 }else {
+				 tvpolicyscene.setText(phone_status);
+			 }
+
+			 if("dssz".equals(dssz)){
 				dssz="";
 				new GetAllTimeScenes().execute(new String[] {});
 			}
@@ -327,6 +333,15 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 				mSettingClick();
 			}
 		});
+
+		cancel=(Button)this.findViewById(R.id.btn_cancel);
+		cancel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				goBack();
+			}
+		});
+
 
 		ibtnhelpaboutmysoft=(ImageButton) this.findViewById(R.id.ibtnhelpaboutmysoft);
 		ibtnhelpaboutmysoft.setOnClickListener(this);
@@ -1228,7 +1243,11 @@ public boolean CheckInputIsnotEntity(){
 	        			    	 ivthiscurrentimage.setVisibility(View.GONE);
 	        			    	 tvthiscurrentendtime.setVisibility(View.GONE);
 	        			    }
-	        			 tvpolicyscene.setText(phone_status);
+						 if(phone_status.contains("∑¿∫ÙÀ¿ƒ„")) {
+							 tvpolicyscene.setText("∑¿∫ÙÀ¿ƒ„ ");
+						 }else {
+							 tvpolicyscene.setText(phone_status);
+						 }
 	                  }else if("failed_ss_error_status".equals(result)){
 	                	  Toast.makeText(MainActivity.this, "…Ë÷√◊¥Ã¨ ß∞‹£¨«Î…‘∫Û‘Ÿ ‘°£»Áπ˚∂‡¥Œ≥¢ ‘ ß∞‹£¨«Î≤¶¥ÚøÕ∑˛µÁª∞10010ªÒ»°∞Ô÷˙", 3).show();
 	                  }else if("failed_not_registed".equals(result)){
@@ -1475,7 +1494,11 @@ public boolean CheckInputIsnotEntity(){
 						    	ivthiscurrentimage.setVisibility(View.GONE);
 						    	tvthiscurrentendtime.setVisibility(View.GONE);
 						    }
+						if(phone_status.contains("∑¿∫ÙÀ¿ƒ„")) {
+							tvpolicyscene.setText("∑¿∫ÙÀ¿ƒ„ ");
+						}else {
 							tvpolicyscene.setText(phone_status);
+						}
 		        	} 
 	        	}else{
 	        		if(dataAccess.getLastError().HTTP_NEED_RELOGIN.toString().equals(dataAccess.getLastError().toString())){
@@ -1549,7 +1572,11 @@ public boolean CheckInputIsnotEntity(){
 						    	ivthiscurrentimage.setVisibility(View.GONE);
 						    	tvthiscurrentendtime.setVisibility(View.GONE);
 						    }
-							tvpolicyscene.setText(phone_status);
+						  if(phone_status.contains("∑¿∫ÙÀ¿ƒ„")) {
+							  tvpolicyscene.setText("∑¿∫ÙÀ¿ƒ„ ");
+						  }else {
+							  tvpolicyscene.setText(phone_status);
+						  }
 		        	} 
 	        	}else{
 	        		  Toast.makeText(MainActivity.this,commentTools.GetEcption(dataAccess.getLastError().toString()), 3).show();
@@ -2172,5 +2199,21 @@ public boolean CheckInputIsnotEntity(){
 
 		}
 	}
-		 
+
+	private void goBack(){
+		if(null != alertUpdate && alertUpdate.isShowing() && updateCanOrMust.equals("must_update"))
+		{
+			alertUpdate.hide();
+			CookieManager.getInstance().removeAllCookie();
+			android.os.Process.killProcess(android.os.Process.myPid());
+		}
+		else if(defaultposition!=1){
+			mHomeClick();
+		}else
+		{
+			showDialog();
+		}
+	}
+
+
 }
