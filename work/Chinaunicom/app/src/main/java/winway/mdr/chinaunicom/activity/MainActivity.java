@@ -920,7 +920,7 @@ class BlackOrWhiteonitemClickEvent implements OnItemClickListener{
 	 * @return 输入完整返回true 否则返回false
 	 */
 public boolean CheckInputIsnotEntity(){
-	if(defaultposition==6)savescence="xx";
+	if(defaultposition==6)savescence="ty";
 
 	if(TextUtils.isEmpty(etkeepdays.getText().toString())||TextUtils.isEmpty(etkeephours.getText().toString())||TextUtils.isEmpty(etkeepminutes.getText().toString())){
 		Toast.makeText(this, "请设置持续时间", 3).show();
