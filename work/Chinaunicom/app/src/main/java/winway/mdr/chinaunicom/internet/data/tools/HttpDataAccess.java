@@ -80,6 +80,8 @@ import com.liz.cptr.TSetDurationSceneRsp;
 import com.liz.cptr.TSetMultipleOptionsReq;
 import com.liz.cptr.TSetMultipleOptionsResult;
 import com.liz.cptr.TSetMultipleOptionsRsp;
+import com.liz.cptr.TSetPhoneReq;
+import com.liz.cptr.TSetPhoneRsp;
 import com.liz.cptr.TSetPhonebooksReq;
 import com.liz.cptr.TSetPhonebooksRsp;
 import com.liz.cptr.TTimeSceneData;
@@ -792,8 +794,11 @@ public class HttpDataAccess {
 					_temp="非急勿扰";
 				} else if (TCallPolicyState.GJ.equals(policy)) {
 					_temp="请勿打扰";
+				} else if(TCallPolicyState.DJ.equals(policy)){
+					_temp="防呼死你";
 				}
-				TScenesState.Enum scene = data.getScene();
+
+			    TScenesState.Enum scene = data.getScene();
 				// 情景
 				int info=data.getDurations(); // 持续时长
 				System.out.println("持续时长------------->>>>>"+info);
@@ -950,4 +955,30 @@ public class HttpDataAccess {
 		}
 		return "";
 	}
+
+
+	/**
+	 * the login request.
+	 *
+	 * @param msisdn
+	 * @param password
+	 * @return
+	 */
+	public TUserLoginResult.Enum setPhoneRequest(String phone) {
+		lastError=LastError.SUCCESS;
+		if (msisdn == null || msisdn.length() < 11) {
+			return null;
+		}
+		TSetPhoneReq request = TSetPhoneReq.Factory.newInstance();
+		request.setSeqId(getSeqId());
+		request.setMsisdn(msisdn);
+		request.setPhone(phone);
+		IPacket response = httpInvoke(request);
+		if (response != null) {
+			TUserLoginResult.Enum result = ((TSetPhoneRsp) response).getResult();
+			return result;
+		}
+		return null;
+	}
+
 }

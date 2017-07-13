@@ -13,7 +13,8 @@ import java.net.URL;
  */
 public class NetWorkConnectionUtil {
 	 public static boolean getServerStatus(String path){
-			try {
+		return true;
+		 /*try {
 				URL url = new URL(path);
 				HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
 				if(urlConn.getResponseCode()==200)return true;
@@ -22,6 +23,6 @@ public class NetWorkConnectionUtil {
 				return false;
 			} catch (IOException e) {
 				return false;
-			}
+			}*/
 	    }
 }

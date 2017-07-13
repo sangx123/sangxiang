@@ -6,14 +6,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * ÍøÂçÁ¬½Ó
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * @date:   2012-2-5
  * @type:   NetWorkConnectionUtil
  *
  */
 public class NetWorkConnectionUtil {
 	 public static boolean getServerStatus(String path){
-			try {
+		 return true;
+			/*try {
 				URL url = new URL(path);
 				HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
 				if(urlConn.getResponseCode()==200)return true;
@@ -23,5 +24,6 @@ public class NetWorkConnectionUtil {
 			} catch (IOException e) {
 				return false;
 			}
+		   */
 	    }
 }

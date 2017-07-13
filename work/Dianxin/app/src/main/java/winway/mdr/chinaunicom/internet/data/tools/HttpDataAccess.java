@@ -821,6 +821,8 @@ public class HttpDataAccess {
 					_temp="·Ç¼±ÎğÈÅ";
 				} else if (TCallPolicyState.GJ.equals(policy)) {
 					_temp="ÇëÎğ´òÈÅ";
+				}else if(TCallPolicyState.DJ.equals(policy)){
+					_temp="·ÀºôËÀÄã";
 				}
 				TScenesState.Enum scene = data.getScene();
 				// Çé¾°

@@ -83,10 +83,22 @@ public class BaseActivity extends Activity {
 		  String[] from={"image","resources"};
 		  int[] to={R.id.ivitemicon,R.id.tvitemtext};
 		  ArrayList<Map<String, Object>> lists=new ArrayList<Map<String,Object>>();
-			 Map<String, Object> map=new HashMap<String, Object>();
-			 map.put("image", R.drawable.hfzc);
-			 map.put("resources","恢复为正常状态");
-			 lists.add(map);
+		  Map<String, Object> map=new HashMap<String, Object>();
+		  map.put("image", R.drawable.hfzc);
+		  map.put("resources","设为非急勿扰状态");
+		  lists.add(map);
+		  map=new HashMap<String, Object>();
+		  map.put("image", R.drawable.hfzc);
+		  map.put("resources","设为请勿打扰状态");
+		  lists.add(map);
+		  map=new HashMap<String, Object>();
+		  map.put("image", R.drawable.hfzc);
+		  map.put("resources","设为防呼死你状态");
+		  lists.add(map);
+		  map=new HashMap<String, Object>();
+		  map.put("image", R.drawable.hfzc);
+		  map.put("resources","恢复为正常状态");
+		  lists.add(map);
 		  adapter=new MyAdapter(BaseActivity.this,lists,R.layout.listhfzc_item, from, to);
 		  return adapter;
 	  }

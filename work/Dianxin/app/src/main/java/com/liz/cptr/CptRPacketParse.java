@@ -162,6 +162,10 @@ public class CptRPacketParse {
 			return com.liz.cptr.TSetMultipleOptionsRsp.parse(parse);
 		}else if(name.equals(CHANGE_PWD_RSP)){
 			return TEditPasswordRsp.parse(parse);
+		}else if(name.equals(SetPhone)){
+			return com.liz.cptr.TSetPhoneReq.parse(parse);
+		}else if(name.equals(SetPhone_Rsp)){
+			return com.liz.cptr.TSetPhoneRsp.parse(parse);
 		}
 
 		return null;

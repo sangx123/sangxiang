@@ -41,6 +41,8 @@ public class CptRPacketParse {
 	public static final String SET_MULTIPLE_OPTIONS_RSP = "set_multiple_options_rsp";
 	public static final String CHANGE_PWD_REQ="change_pwd_req";
 	public static final String CHANGE_PWD_RSP="change_pwd_rsp";
+	public static final String SetPhone="set_dj_phonenumber_req";
+	public static final String SetPhone_Rsp="set_dj_phonenumber_rsp";
 
 	/**
 	 * parse the packet
@@ -159,9 +161,14 @@ public class CptRPacketParse {
 			return com.liz.cptr.TSetMultipleOptionsRsp.parse(parse);
 		}else if(name.equals(CHANGE_PWD_RSP)){
 			return TEditPasswordRsp.parse(parse);
+		}else if(name.equals(SetPhone)){
+		return com.liz.cptr.TSetPhoneReq.parse(parse);
+		}else if(name.equals(SetPhone_Rsp)){
+			return com.liz.cptr.TSetPhoneRsp.parse(parse);
 		}
 
-		return null;
+
+	return null;
 
 	}
 	

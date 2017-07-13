@@ -7,10 +7,14 @@ public class TCallPolicyState {
 	public static final Enum ZC = Enum.forString("zc"); // Õý³£×´Ì¬
 	public static final Enum SM = Enum.forString("sm"); // ·Ç¼±ÎðÈÅ
 	public static final Enum GJ = Enum.forString("gj"); // ÇëÎð´òÈÅ
+	public static final Enum DJ = Enum.forString("dj"); //
+
 
 	public static final int INT_ZC = 1;
 	public static final int INT_SM = 2;
 	public static final int INT_GJ = 3;
+	public static final int INT_DJ = 4;
+
 
 	static final public class Enum extends StringEnumTable {
 		public static Enum forString(java.lang.String s) {
@@ -33,7 +37,10 @@ public class TCallPolicyState {
 				return SM;
 			case INT_GJ:
 				return GJ;
-			default:
+				case INT_DJ:
+					return DJ;
+
+				default:
 				return null;
 			}
 		}
@@ -47,6 +54,8 @@ public class TCallPolicyState {
 					new Enum("zc", INT_ZC),
 					new Enum("sm", INT_SM),
 					new Enum("gj", INT_GJ),
+						new Enum("dj", INT_DJ),
+
 				}
 		);
 		private static final long serialVersionUID = 1L;
