@@ -95,6 +95,7 @@ public interface DataResours {
 //		   "不在服务区","出国",
 		   "通用"};
    int[] moreicon={
+		   R.drawable.dssz_item,
 		   R.drawable.more_hmd,
 		   R.drawable.more_bmd,
 		   R.drawable.more_sz,
@@ -105,7 +106,7 @@ public interface DataResours {
 		   R.drawable.more_jcgx,
 		   R.drawable.more_about
    };
-   String[] moretext={"黑名单","白名单","设置","修改密码","开通业务","新手引导","业务帮助","检查更新","关于"};
+   String[] moretext={"定时设置","黑名单","白名单","设置","修改密码","开通业务","新手引导","业务帮助","检查更新","关于"};
    String[] allValues={ 
 		    "上海联通",
 		    "湖北联通",

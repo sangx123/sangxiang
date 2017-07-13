@@ -101,6 +101,7 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 	CustomListView lvkjsz_list=null;//快捷设置的ListView信息
 	ListView lvchoosescene=null;//非急勿扰和请忽打扰的ListView
 	ListView lvmoredetail;
+	LinearLayout mLayout;//情景设置布局
 	SharedPreferences share_first;
 	QuickSetupServices quickSetupServices;
 	RelativeLayout relation_main,relation_qhdr_orfjwr,relation_dssz_setting,relation_more;
@@ -162,6 +163,8 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 	RelativeLayout rlloginlayout,rldetailLayout;
 	String status="";
 	private GestureDetector mGestureDetector;
+	private ImageButton mSetting;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -318,6 +321,14 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 		ibdssz=(ImageButton) this.findViewById(R.id.ibdssz);
 		ibmore=(ImageButton) this.findViewById(R.id.ibmore);
 		ibtnhelpaboutmysoft=(ImageButton) this.findViewById(R.id.ibtnhelpaboutmysoft);
+		mSetting=(ImageButton)this.findViewById(R.id.mSetting);
+		mLayout=(LinearLayout)this.findViewById(R.id.mLayout);
+		mSetting.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mSettingClick();
+			}
+		});
 		ibtnhelpaboutmysoft.setOnClickListener(this);
 		tvtitle_name=(TextView) this.findViewById(R.id.tvtitle_name);
 		ibtneditquick=(ImageButton) this.findViewById(R.id.ibtneditquick);
@@ -378,26 +389,11 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 					updateAsynTask.execute();
 		    }
 	}
- 
-	
-	  @Override
-	  public boolean onKeyDown(int keyCode, KeyEvent event) {
-			if (keyCode == KeyEvent.KEYCODE_BACK)
-			{
-				if(null != alertUpdate && alertUpdate.isShowing() && updateCanOrMust.equals("must_update"))
-				{
-		    		alertUpdate.hide();
-					CookieManager.getInstance().removeAllCookie();
-					android.os.Process.killProcess(android.os.Process.myPid());
-				}
-				else
-				{
-					showDialog();
-				}
-				return true;
-			}
-			return super.onKeyDown(keyCode, event);
-		}
+
+
+
+
+
 	 
   class MycontOnclickEvent implements OnClickListener{
 	  @Override
@@ -462,7 +458,8 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 		  @Override
 		protected void onResume() {
 			  phone_num_user=preferences.getString("user_phone_number", "");
-		      phone_pwd_user=preferences.getString("user_phone_pwd", "");
+			  Log.e("sangxiang ", "onResume: "+phone_num_user );
+			  phone_pwd_user=preferences.getString("user_phone_pwd", "");
 			  if(getSharedPreferences("Isonline", MODE_PRIVATE).getInt("isline_status", 0)!=0){
 				  if(getServerStatus()){
 					  statusrefish="statusrefish";
@@ -572,6 +569,23 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 		relation_dssz_setting.setVisibility(View.GONE);
 		relation_more.setVisibility(View.VISIBLE);
 		break;
+	case 6:
+		dssz="";
+		llzhixun.setBackgroundResource(R.drawable.item_bg);
+		ibfjwr.setBackgroundResource(R.drawable.fjwr_item_on);
+		llindex.setBackgroundColor(0x00000000);
+		ibindex.setBackgroundResource(R.drawable.index);
+		llzhibo.setBackgroundColor(0x00000000);
+		ibqhdr.setBackgroundResource(R.drawable.qhdr_item);
+		lldianbo.setBackgroundColor(0x00000000);
+		ibdssz.setBackgroundResource(R.drawable.dssz_item);
+		llmore.setBackgroundColor(0x00000000);
+		ibmore.setBackgroundResource(R.drawable.more);
+		relation_main.setVisibility(View.GONE);
+		relation_qhdr_orfjwr.setVisibility(View.VISIBLE);
+		relation_dssz_setting.setVisibility(View.GONE);
+		relation_more.setVisibility(View.GONE);
+		break;
 	}
   }
 
@@ -670,6 +684,9 @@ public void onClick(View v) {
 			}else{
 			  try {
 				  if(getServerStatus()){
+					   if(savepolicy.equals("dj")){
+						  new SetPhoneTask().execute();
+					   }else
 				       new SaveMyScenceTask().execute();
 				  }else{
 					  Toast.makeText(MainActivity.this, "访问服务器数据失败，可能是网络忙或者服务器正在维护！", 3).show();
@@ -824,8 +841,10 @@ class BlackOrWhiteonitemClickEvent implements OnItemClickListener{
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) 
 		{
 			  switch (position)
-			  {
-				 case 0:
+			  {case 0:
+				  mDingShiSheZhi();
+				  break;
+				 case 1:
 					 if(CheckHasLogin()){
 							 if(getServerStatus()){
 								 Intent black_intent=new Intent(MainActivity.this, BlackWhiteListActivity.class);
@@ -836,7 +855,7 @@ class BlackOrWhiteonitemClickEvent implements OnItemClickListener{
 							 }
 						}
 					break;
-		         case 1:
+		         case 2:
 		        	 if(CheckHasLogin()){
 		        		 if(getServerStatus()){
 				        	 Intent write_intent=new Intent(MainActivity.this, BlackWhiteListActivity.class);
@@ -847,7 +866,7 @@ class BlackOrWhiteonitemClickEvent implements OnItemClickListener{
 		        		 }
 		        	 }
 					break;
-		         case 2:
+		         case 3:
 		        	   if(CheckHasLogin()){
 		        		   if(getServerStatus()){
 		        		      startActivity(new Intent(MainActivity.this, SettingActivity.class));
@@ -856,28 +875,28 @@ class BlackOrWhiteonitemClickEvent implements OnItemClickListener{
 		        		   }
 		        	   }
 		 			break;
-		         case 3:
+		         case 4:
 		        	 if(CheckHasLogin())
 		        	 {
 		        		 startActivity(new Intent(MainActivity.this, EditPwdActivity.class));	
 		        	 }
 		        	 break;
-		          case 4:
+		          case 5:
 		        	   myDialogKaiTong(1);
 		 			break;
-		          case 5:
+		          case 6:
 		        	  startActivity(new Intent(MainActivity.this, FunctionIntroductionActivity.class));
 		        	  break;
-		          case 6:
+		          case 7:
 //		        	  myDialogKaiTong(2);
 		        	  startActivity(new Intent(MainActivity.this, YeWuActivity.class));
 		  			break;
-		          case 7:
+		          case 8:
 		        	  yesorno="yesorno";
 		     		 UpdateAsynTask_MDR asynTask=new UpdateAsynTask_MDR();
 		     		 asynTask.execute();
 		        	  break;
-		          case 8:
+		          case 9:
 		        	  AboutMDR();
 		        	  break;
 			 }
@@ -889,6 +908,7 @@ class BlackOrWhiteonitemClickEvent implements OnItemClickListener{
 	 * @return 输入完整返回true 否则返回false
 	 */
 public boolean CheckInputIsnotEntity(){
+	if(defaultposition==6)savescence="xx";
 	if(TextUtils.isEmpty(etkeepdays.getText().toString())||TextUtils.isEmpty(etkeephours.getText().toString())||TextUtils.isEmpty(etkeepminutes.getText().toString())){
 		Toast.makeText(this, "请设置持续时间", 3).show();
 		return false;
@@ -919,9 +939,9 @@ public boolean CheckInputIsnotEntity(){
         Toast.makeText(this, "超过系统最大的时间限制", 3).show();
 		 return false;
 	}
-	if(TextUtils.isEmpty(savescence)){
-		Toast.makeText(this, "请设置情景", 3).show();
-		return false;
+	if (TextUtils.isEmpty(savescence)) {
+			Toast.makeText(this, "请设置情景", 3).show();
+			return false;
 	}
    return true;		 
 }
@@ -1019,7 +1039,7 @@ public boolean CheckInputIsnotEntity(){
 	  class HfzcOnitemClickEvent implements OnItemClickListener{
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-           if(position==0){
+           if(position==3){
         	   
         	   if(line_or_offline.getInt("isline_status", 0)==0){
         		   Toast.makeText(MainActivity.this, "您尚未登录",3).show();
@@ -1034,11 +1054,19 @@ public boolean CheckInputIsnotEntity(){
         	   }
         		    
 //        	  MyDialog();
-           }
+           }else if(position==0){
+			   mFeiJiWuRao();
+		   }else if(position==1){
+			   mQingWuDaRao();
+		   }else if(position==2){
+			   mFangHuSiNi();
+		   }
 		}
 		   
 	  }
-	  /*****************************************
+
+
+	/*****************************************
 		 * 恢复正常状态的异步方法
 		 * @author zhaohao
 		 *当用户点击恢复正常的时候进行恢复正常
@@ -1906,5 +1934,160 @@ public boolean CheckInputIsnotEntity(){
 			}
 			return false;
 		}
-		 
+
+	//跳转到非急勿扰状态
+	private void mFeiJiWuRao() {
+		mLayout.setVisibility(View.VISIBLE);
+		positionValues=1;
+		defaultposition=2;
+		savepolicy="sm";
+		tvtitle_name.setText("非急勿扰");
+		lvchoosescene.setAdapter(InitMyAdapter(DataResours.fjwricons,DataResours.fjwrValues));
+		mRefresh();
+	}
+	//跳转到请勿打扰状态
+	private void mQingWuDaRao() {
+		mLayout.setVisibility(View.VISIBLE);
+		positionValues=2;
+		defaultposition=3;
+		savepolicy="gj";
+		tvtitle_name.setText("请勿打扰");
+		lvchoosescene.setAdapter(InitMyAdapter(DataResours.qhdricons,DataResours.qhdrValues));
+		mRefresh();
+	}
+	//跳转到设置界面
+	private void mSettingClick() {
+		defaultposition=5;
+		lvmoredetail.setAdapter(InitMyAdapter_more());
+		mRefresh();
+	}
+
+	//跳转到防呼死你
+	private void mFangHuSiNi(){
+		defaultposition=6;
+		savepolicy="dj";
+		savescence="xx";
+		tvtitle_name.setText("防呼死你");
+		mLayout.setVisibility(View.GONE);
+
+		mRefresh();
+		//lvchoosescene.setAdapter(InitMyAdapter(DataResours.qhdricons,DataResours.qhdrValues));
+	}
+	private void mRefresh(){
+		if(defaultposition!=6) {
+			etkeepdays.setText("00");
+			etkeephours.setText("02");
+			etkeepminutes.setText("00");
+		}else {
+			etkeepdays.setText("01");
+			etkeephours.setText("00");
+			etkeepminutes.setText("00");
+		}
+		DsszIsEdit=true;
+		savescence="";
+		if(adapter!=null)
+			adapter.ForBack();
+		refresh(defaultposition);
+	}
+	//设置定时设置
+	private void mDingShiSheZhi(){
+		defaultposition=4;
+		linestatus=getSharedPreferences("Isonline", MODE_PRIVATE).getInt("isline_status", 0);
+		if(linestatus==1){
+			if(getServerStatus()){
+				new GetAllTimeScenes().execute(new String[] {});
+			}else{
+				Toast.makeText(MainActivity.this, "访问服务器数据失败，可能是网络忙或者服务器正在维护！", 3).show();
+			}
+		}else{
+			dssz="dssz";
+			Toast.makeText(MainActivity.this, "您尚未登录", 3).show();
+			Intent intent_login_detail=new  Intent(MainActivity.this, LoginActivity.class);
+			startActivityForResult(intent_login_detail, DataResours.REQUEST_LOGIN_CODE);
+
+		}
+		mRefresh();
+	}
+
+	private void mHomeClick(){
+		defaultposition=1;
+		IsEdit=true;
+		ibtneditquxiaoquick.setVisibility(View.GONE);
+		ibtneditquick.setVisibility(View.VISIBLE);
+		lvkjsz_list.setAdapter(quickSetupServices.getadapter(1));
+		mRefresh();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK)
+		{
+			if(null != alertUpdate && alertUpdate.isShowing() && updateCanOrMust.equals("must_update"))
+			{
+				alertUpdate.hide();
+				CookieManager.getInstance().removeAllCookie();
+				android.os.Process.killProcess(android.os.Process.myPid());
+			}
+			else if(defaultposition!=1){
+				mHomeClick();
+			}else
+			{
+				showDialog();
+			}
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	/***************************************
+	 * 保存情景的任务信息
+	 * @author zhaohao
+	 * 相关说明:根据选择的场景进行相关的保存
+	 */
+	class SetPhoneTask extends AsyncTask<String, String, String> {
+
+		protected String doInBackground(String... params)
+		{
+			TUserLoginResult.Enum result=dataAccess.setPhoneRequest("02158541240");
+			if(GetLastErrorStatus()){
+				if("success".equals(result.toString())){
+					return result.toString();
+				}else {
+					return "error";
+				}
+			}else{
+				return dataAccess.getLastError().toString();
+			}
+
+		}
+		protected void onCancelled() {
+			super.onCancelled();
+		}
+		@SuppressWarnings("static-access")
+		protected void onPostExecute(String result)
+		{
+			if(GetLastErrorStatus()){
+				if(result.equals(TSetDurationSceneResult.SUCCESS.toString())){
+					//手机带设号码成功之后保存数据
+					new SaveMyScenceTask().execute();
+
+				}else if(result.equals(TSetDurationSceneResult.SYSTEM_ERROR.toString())){
+					Toast.makeText(MainActivity.this, "状态设置失败，请稍后再试",3).show();
+				}
+			}else{
+				if(dataAccess.getLastError().HTTP_NEED_RELOGIN.toString().equals(dataAccess.getLastError().toString())){
+					Intent intent=new  Intent(MainActivity.this, LoginActivity.class);
+					startActivityForResult(intent,111);
+				}
+				Toast.makeText(MainActivity.this, commentTools.GetEcption(dataAccess.getLastError().toString()), 3).show();
+			}
+			dialog.hide();
+		}
+		protected void onPreExecute() {
+			dialog.show();
+		}
+		protected void onProgressUpdate(Integer... values) {
+
+		}
+	}
 }

@@ -80,6 +80,8 @@ import com.liz.cptr.TSetDurationSceneRsp;
 import com.liz.cptr.TSetMultipleOptionsReq;
 import com.liz.cptr.TSetMultipleOptionsResult;
 import com.liz.cptr.TSetMultipleOptionsRsp;
+import com.liz.cptr.TSetPhoneReq;
+import com.liz.cptr.TSetPhoneRsp;
 import com.liz.cptr.TSetPhonebooksReq;
 import com.liz.cptr.TSetPhonebooksRsp;
 import com.liz.cptr.TTimeSceneData;
@@ -329,6 +331,30 @@ public class HttpDataAccess {
 			if (TUserLoginResult.SUCCESS.equals(result)) {
 				this.msisdn = msisdn;
 			}
+			return result;
+		}
+		return null;
+	}
+
+	/**
+	 * the login request.
+	 *
+	 * @param msisdn
+	 * @param password
+	 * @return
+	 */
+	public TUserLoginResult.Enum setPhoneRequest(String phone) {
+		lastError=LastError.SUCCESS;
+		if (msisdn == null || msisdn.length() < 11) {
+			return null;
+		}
+		TSetPhoneReq request = TSetPhoneReq.Factory.newInstance();
+		request.setSeqId(getSeqId());
+		request.setMsisdn(msisdn);
+		request.setPhone(phone);
+		IPacket response = httpInvoke(request);
+		if (response != null) {
+			TUserLoginResult.Enum result = ((TSetPhoneRsp) response).getResult();
 			return result;
 		}
 		return null;

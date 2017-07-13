@@ -42,6 +42,9 @@ public class CptRPacketParse {
 	public static final String CHANGE_PWD_REQ="change_pwd_req";
 	public static final String CHANGE_PWD_RSP="change_pwd_rsp";
 
+	public static final String SetPhone="set_dj_phonenumber_req";
+	public static final String SetPhone_Rsp="set_dj_phonenumber_rsp";
+
 	/**
 	 * parse the packet
 	 * @param text
