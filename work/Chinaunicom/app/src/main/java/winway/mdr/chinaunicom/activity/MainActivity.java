@@ -237,6 +237,7 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 		    }
 			 if(phone_status.contains("·ÀºôËÀÄã")) {
 				 tvpolicyscene.setText("·ÀºôËÀÄã ");
+				 ivthiscurrentimage.setVisibility(View.GONE);
 			 }else {
 				 tvpolicyscene.setText(phone_status);
 			 }
@@ -1245,6 +1246,7 @@ public boolean CheckInputIsnotEntity(){
 	        			    }
 						 if(phone_status.contains("·ÀºôËÀÄã")) {
 							 tvpolicyscene.setText("·ÀºôËÀÄã ");
+							 ivthiscurrentimage.setVisibility(View.GONE);
 						 }else {
 							 tvpolicyscene.setText(phone_status);
 						 }
@@ -1496,6 +1498,7 @@ public boolean CheckInputIsnotEntity(){
 						    }
 						if(phone_status.contains("·ÀºôËÀÄã")) {
 							tvpolicyscene.setText("·ÀºôËÀÄã ");
+							ivthiscurrentimage.setVisibility(View.GONE);
 						}else {
 							tvpolicyscene.setText(phone_status);
 						}
@@ -1574,6 +1577,7 @@ public boolean CheckInputIsnotEntity(){
 						    }
 						  if(phone_status.contains("·ÀºôËÀÄã")) {
 							  tvpolicyscene.setText("·ÀºôËÀÄã ");
+							  ivthiscurrentimage.setVisibility(View.GONE);
 						  }else {
 							  tvpolicyscene.setText(phone_status);
 						  }

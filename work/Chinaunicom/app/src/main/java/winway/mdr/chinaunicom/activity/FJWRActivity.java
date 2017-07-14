@@ -74,7 +74,7 @@ public class FJWRActivity extends Activity
     * 功能说明:初始化相关控件信息
     ****************************************************************/
    public void initMyCurrent(){
-	   btnfjwrback=(Button) this.findViewById(R.id.btnfjwrback);
+	   btnfjwrback=(Button) this.findViewById(R.id.btn_cancel);
 	   btnfjwrsave=(Button) this.findViewById(R.id.btnfjwrsave);
 	   etkeepdays=(EditText) this.findViewById(R.id.etkeepdays);
 	   etkeephours=(EditText) this.findViewById(R.id.etkeephours);
@@ -183,7 +183,7 @@ public class FJWRActivity extends Activity
 	@Override
 	public void onClick(View v) {
 		 switch (v.getId()) {
-		case R.id.btnfjwrback:
+		case R.id.btn_cancel:
 			adapter.ForBack();
 			finish();
 			break;
