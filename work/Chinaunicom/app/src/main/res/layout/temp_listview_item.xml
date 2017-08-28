@@ -17,6 +17,8 @@
   android:layout_gravity="center"
   />
    <TextView
+       android:layout_marginLeft="50dp"
+       android:textSize="17sp"
   android:layout_width="80dp"
   android:layout_height="wrap_content"
   android:text="休息"

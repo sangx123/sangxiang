@@ -24,6 +24,7 @@
                   android:screenOrientation="portrait"/>
         <!--  -->
           <activity android:name="MainActivity"
+              android:windowSoftInputMode="stateHidden|adjustResize"
                   android:theme="@android:style/Theme.NoTitleBar"
                   android:screenOrientation="portrait"/>
                        <!--主界面 -->

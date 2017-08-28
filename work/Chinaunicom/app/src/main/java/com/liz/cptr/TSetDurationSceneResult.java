@@ -13,6 +13,7 @@ public class TSetDurationSceneResult {
 	public static final Enum FAILED_SS_ERROR_STATUS = Enum.forString("failed_ss_error_status");
 	public static final Enum FAILED_USER_NOT_SUPPORT_DJ = Enum.forString("failed_user_not_support_dj");
 	public static final Enum FAILED_NO_DJ_PHONE_NUMBER = Enum.forString("failed_no_dj_phone_number");
+	public static final Enum failed_not_support_Error = Enum.forString("failed_not_support");
 
 	public static final int INT_SUCCESS = 1;
 	public static final int INT_INVALID_PARAMETERS = 2;
@@ -23,7 +24,7 @@ public class TSetDurationSceneResult {
 	public static final int INT_FAILED_SS_ERROR_STATUS = 7;
 	public static final int INT_FAILED_USER_NOT_SUPPORT_DJ = 8;
 	public static final int INT_FAILED_NO_DJ_PHONE_NUMBER = 9;
-
+	public static final int failed_not_support = 10;
 	static final public class Enum extends StringEnumTable {
 		public static Enum forString(java.lang.String s) {
 			return (Enum) table.forString(s);
@@ -57,6 +58,8 @@ public class TSetDurationSceneResult {
 				return FAILED_USER_NOT_SUPPORT_DJ;
 			case INT_FAILED_NO_DJ_PHONE_NUMBER:
 				return FAILED_NO_DJ_PHONE_NUMBER;
+			case failed_not_support:
+					return failed_not_support_Error;
 			default:
 				return null;
 			}
@@ -77,6 +80,7 @@ public class TSetDurationSceneResult {
 					new Enum("failed_ss_error_status", INT_FAILED_SS_ERROR_STATUS),
 					new Enum("failed_user_not_support_dj", INT_FAILED_USER_NOT_SUPPORT_DJ),
 					new Enum("failed_no_dj_phone_number", INT_FAILED_NO_DJ_PHONE_NUMBER),
+					new Enum("failed_not_support", failed_not_support)
 				}
 		);
 		private static final long serialVersionUID = 1L;

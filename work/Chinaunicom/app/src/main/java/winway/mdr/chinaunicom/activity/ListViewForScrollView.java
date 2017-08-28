@@ -20,7 +20,7 @@ public class ListViewForScrollView extends ListView {
 
     @Override
     /**
-     * é‡å†™è¯¥æ–¹æ³•ï¼Œè¾¾åˆ°ä½¿ListViewé€‚åº”ScrollViewçš„æ•ˆæžœ
+     * ÖØÐ´¸Ã·½·¨£¬´ïµ½Ê¹ListViewÊÊÓ¦ScrollViewµÄÐ§¹û
      */
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,

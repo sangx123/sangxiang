@@ -47,7 +47,9 @@ public class BaseActivity extends Activity {
     	Builder builder=new Builder(this);
     	builder.setTitle("关于");
     	builder.setMessage("当前版本号:"+thiscurrentversionname+"\n永为科技 版权所有"+"\n客服邮箱 mdrsupport@wo.com.cn");
-    	builder.create().show();
+		//builder.setMessage("当前版本号:"+"2.1"+"\n永为科技 版权所有"+"\n客服邮箱 mdrsupport@wo.com.cn");
+
+		builder.create().show();
 	}
 	 /*****************************************************************
 	  * 函数名称 :showDialog  
@@ -84,19 +86,19 @@ public class BaseActivity extends Activity {
 		  int[] to={R.id.ivitemicon,R.id.tvitemtext};
 		  ArrayList<Map<String, Object>> lists=new ArrayList<Map<String,Object>>();
 		  Map<String, Object> map=new HashMap<String, Object>();
-		  map.put("image", R.drawable.hfzc);
+		  map.put("image", R.drawable.feijiwurao);
 		  map.put("resources","设为非急勿扰状态");
 		  lists.add(map);
 		  map=new HashMap<String, Object>();
-		  map.put("image", R.drawable.hfzc);
+		  map.put("image", R.drawable.qingwudarao);
 		  map.put("resources","设为请勿打扰状态");
 		  lists.add(map);
 		  map=new HashMap<String, Object>();
-		  map.put("image", R.drawable.hfzc);
+		  map.put("image", R.drawable.fanghusini);
 		  map.put("resources","设为防呼死你状态");
 		  lists.add(map);
 		  map=new HashMap<String, Object>();
-		  map.put("image", R.drawable.hfzc);
+		  map.put("image", R.drawable.zhengchangzhuangtai);
 		  map.put("resources","恢复为正常状态");
 		  lists.add(map);
 		  adapter=new MyAdapter(BaseActivity.this,lists,R.layout.listhfzc_item, from, to);

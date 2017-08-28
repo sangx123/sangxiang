@@ -41,6 +41,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -62,6 +63,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.widget.AdapterView;
@@ -105,7 +107,10 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 	LinearLayout mLayout;//情景设置布局
 	SharedPreferences share_first;
 	QuickSetupServices quickSetupServices;
-	RelativeLayout relation_main,relation_qhdr_orfjwr,relation_dssz_setting,relation_more;
+	ViewGroup relation_main,slayout1, slayout2, slayout3;
+	View empty;
+	TextView stxt1,stxt2,stxt3;
+	RelativeLayout relation_qhdr_orfjwr,relation_dssz_setting,relation_more;
     ImageButton ibtneditquick,ibtnaddquick,ibtneditquxiaoquick;//快捷设置中的编辑按钮	和添加按钮
 	FQMyAdapter adapter=null;
 	String checkbacktext="";
@@ -236,6 +241,8 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 		    	ivthiscurrentimage.setVisibility(View.GONE);
 		    	tvthiscurrentendtime.setVisibility(View.GONE);
 		    }
+			 changeStatus(phone_status,scene,month+"-"+day+" "+thisstrh+":"+thisstrm+":00");
+
 			 if(phone_status.contains("防呼死你")) {
 				 tvpolicyscene.setText("防呼死你 ");
 				 ivthiscurrentimage.setVisibility(View.GONE);
@@ -271,6 +278,7 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 	public void InitMyCont(){
+		initNewView();
 		mGestureDetector = new GestureDetector(this);
         dataAccess=HttpDataAccess.getInstance();
         commentTools=HTTPCommentTools.getInstance();
@@ -305,7 +313,7 @@ public class MainActivity extends BaseActivity  implements OnClickListener,OnIte
 		lvkjsz_list.setHaveScrollbar(false);
 		lvkjsz_list.setOnTouchListener(this);
 		lvkjsz_list.setOnItemClickListener(new KjszListOnitemClickEvent());
-		relation_main=(RelativeLayout) this.findViewById(R.id.relation_main);
+		relation_main=(ViewGroup) this.findViewById(R.id.relation_main);
 		relation_qhdr_orfjwr=(RelativeLayout) this.findViewById(R.id.relation_qhdr_orfjwr);
 		relation_dssz_setting=(RelativeLayout) this.findViewById(R.id.relation_dssz_setting);
 		tvshowseconduserdetail=(TextView) this.findViewById(R.id.tvshowseconduserdetail);
@@ -687,6 +695,8 @@ public void onClick(View v) {
 		   }
 		break;
 	case R.id.btnfjwrsave:
+		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 		if(CheckInputIsnotEntity()){
 			       if(adapter!=null)
 				    adapter.ForBack();
@@ -976,6 +986,8 @@ public boolean CheckInputIsnotEntity(){
 					   return result.toString();
 				   }else if("failed_not_registed".equals(result.toString())){
 					   return "failed_not_registed";
+				   }else if("failed_not_support".equals(result.toString())){
+					   return "failed_not_support";
 				   }else{
 					   return "unkonwn_error";
 				   }
@@ -1002,7 +1014,9 @@ public boolean CheckInputIsnotEntity(){
 	        		   Toast.makeText(MainActivity.this, "状态设置失败，请稍后再试",3).show();
 	        	  }else if(result.equals(TSetDurationSceneResult.SYSTEM_ERROR.toString())){
 	        		      Toast.makeText(MainActivity.this, "状态设置失败，请稍后再试",3).show();
-	        	  }else if(result.equals("unkonwn_error")){
+	        	  }else if(result.equals("failed_not_support")){
+					  Toast.makeText(MainActivity.this, "不支持此功能",3).show();
+				  }else if(result.equals("unkonwn_error")){
 	        		     Toast.makeText(MainActivity.this, "状态设置失败，请稍后再试",3).show();
 	        	  }else if(result.equals(TSetDurationSceneResult.FAILED_NOT_REGISTED.toString())){
 	        		  MyDialog("您还没有开通免打扰业务。发送短信5到11631234立即开通。", "开通");
@@ -1112,7 +1126,9 @@ public boolean CheckInputIsnotEntity(){
 			        		  Toast.makeText(MainActivity.this,"恢复正常", 3).show();
 			        		  ivthiscurrentimage.setVisibility(View.GONE);
 			        		  tvthiscurrentendtime.setVisibility(View.GONE);
-			        	}
+							  changeStatus(phone_status,"","");
+
+						}
 		        	}else{
 		        		 
 		        		 Toast.makeText(MainActivity.this,commentTools.GetEcption(dataAccess.getLastError().toString()), 3).show();
@@ -1243,6 +1259,8 @@ public boolean CheckInputIsnotEntity(){
 	        			    	 ivthiscurrentimage.setVisibility(View.GONE);
 	        			    	 tvthiscurrentendtime.setVisibility(View.GONE);
 	        			    }
+						 changeStatus(phone_status,scene,month+"-"+day+" "+thisstrh+":"+thisstrm+":00");
+
 						 if(phone_status.contains("防呼死你")) {
 							 tvpolicyscene.setText("防呼死你 ");
 							 ivthiscurrentimage.setVisibility(View.GONE);
@@ -1517,6 +1535,8 @@ public boolean CheckInputIsnotEntity(){
 						    	ivthiscurrentimage.setVisibility(View.GONE);
 						    	tvthiscurrentendtime.setVisibility(View.GONE);
 						    }
+						changeStatus(phone_status,scene,month+"-"+day+" "+thisstrh+":"+thisstrm+":00");
+
 						if(phone_status.contains("防呼死你")) {
 							tvpolicyscene.setText("防呼死你 ");
 							ivthiscurrentimage.setVisibility(View.GONE);
@@ -2124,6 +2144,62 @@ public boolean CheckInputIsnotEntity(){
 		}
 		protected void onProgressUpdate(Integer... values) {
 
+		}
+	}
+
+	private void setStatus(){
+
+	}
+
+	private void initNewView(){
+		slayout1=(ViewGroup)findViewById(R.id.slayout1);
+		slayout2=(ViewGroup)findViewById(R.id.slayout2);
+		slayout3=(ViewGroup)findViewById(R.id.slayout3);
+		stxt1=(TextView)findViewById(R.id.stxt1);
+		stxt2=(TextView)findViewById(R.id.stxt2);
+		stxt3=(TextView)findViewById(R.id.stxt3);
+		empty=findViewById(R.id.empty);
+	}
+
+	private void changeStatus(String phone_status,String txt2,String txt3){
+		slayout1.setVisibility(View.VISIBLE);
+		if(phone_status.contains("正常状态")){
+			slayout2.setVisibility(View.INVISIBLE);
+			slayout3.setVisibility(View.INVISIBLE);
+			stxt1.setText(phone_status);
+			stxt1.setTextColor(Color.parseColor("#319A45"));
+			empty.setVisibility(View.GONE);
+		}else if(phone_status.contains("非急勿扰")) {
+			slayout2.setVisibility(View.VISIBLE);
+			slayout3.setVisibility(View.VISIBLE);
+			stxt1.setText("非急勿扰状态");
+			stxt1.setTextColor(Color.parseColor("#e3bc2f"));
+			stxt2.setText(txt2);
+			stxt2.setTextColor(Color.parseColor("#e3bc2f"));
+			stxt3.setText(txt3);
+			stxt3.setTextColor(Color.parseColor("#e3bc2f"));
+			empty.setVisibility(View.GONE);
+		}
+		else if(phone_status.contains("请勿打扰")) {
+			slayout2.setVisibility(View.VISIBLE);
+			slayout3.setVisibility(View.VISIBLE);
+			stxt1.setText("请勿打扰状态");
+			stxt1.setTextColor(Color.parseColor("#f0121d"));
+			stxt2.setText(txt2);
+			stxt2.setTextColor(Color.parseColor("#f0121d"));
+			stxt3.setText(txt3);
+			stxt3.setTextColor(Color.parseColor("#f0121d"));
+			empty.setVisibility(View.GONE);
+		}else if(phone_status.contains("防呼死你")) {
+			slayout2.setVisibility(View.GONE);
+			slayout3.setVisibility(View.VISIBLE);
+			stxt1.setText("防呼死你状态");
+			stxt1.setTextColor(Color.parseColor("#eda014"));
+			stxt2.setText(txt2);
+			stxt2.setTextColor(Color.parseColor("#eda014"));
+			stxt3.setText(txt3);
+			stxt3.setTextColor(Color.parseColor("#eda014"));
+			empty.setVisibility(View.VISIBLE);
 		}
 	}
 }

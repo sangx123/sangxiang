@@ -111,48 +111,58 @@ public interface DataResours {
 		    "上海联通",
 		    "湖北联通",
 			"福建联通",
-			"吉林联通",
+			//"吉林联通",
 			"宁夏联通",
 			"山东联通",
-			"山西联通",
+			//"山西联通",
 			"浙江联通",
-			"吉林移动",
+			//"吉林移动",
 			"陕西电信"};
 		String[] sendnum={
 				"10655185",
 				"10655185",
 				"10655185",
-				"10655185",
+				//"10655185",
 				"10655185",
 				"106551855",
-				"10655811",
+				//"10655811",
 				"11631234",
-				"10086",
+				//"10086",
 				"106592090"
 				};
 		String[] sendnum_pwd={
 				"10655185",
 				"10655185",
 				"10655185",
-				"10655185",
+				//"10655185",
 				"10655185",
 				"106551855",
-				"10655811",
+				//"10655811",
 				"11631234",
-				"10658678",
+				//"10658678",
 				"106592090"
 				};
-		String[] daima={"KT","KT","KT","KT","KT","KT","KT","5","KTZNMS","KT"};
+		String[] daima={
+				"KT",
+				"KT",
+				"KT",
+				//"KT",
+				"KT",
+				"KT",
+				//"KT",
+				"5",
+				//"KTZNMS",
+				"KT"};
 		String[] requesturl={ 
-				"http://sh.uc186.com/sac/android.r",
-				"http://hb.uc186.com/sac/android.r",
-				"http://fj.uc186.com/sac/android.r",
-				"http://jl.uc186.com/sac/android.r",
-				"http://nx.uc186.com/sac/android.r",
-				"http://sd.uc186.com/sac/android.r",
-				"http://sx.uc186.com/sac/android.r",
+				"http://sh.iwinway.com/sac/android.r",
+				"http://hb.iwinway.com/sac/android.r",
+				"http://fj.iwinway.com/sac/android.r",
+				//"http://jl.iwinway.com/sac/android.r",
+				"http://nx.iwinway.com/sac/android.r",
+				"http://sd.iwinway.com/sac/android.r",
+				//"http://sx.iwinway.com/sac/android.r",
 				"http://ms.zj165.com/sac/android.r",
-				"http://www.jlznms.com/sac/android.r",
+				//"http://www.jlznms.com/sac/android.r",
 				"http://www.9600930.com/sac/android.r"};
 		  /**
 		    * 首页欢迎图片

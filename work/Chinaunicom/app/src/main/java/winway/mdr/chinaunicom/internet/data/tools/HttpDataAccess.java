@@ -105,7 +105,7 @@ public class HttpDataAccess {
  
 	static final public String HTTP_SERVER_URL = "http://ms.zj165.com/sac/android.r";
 	static final public String HTTP_SERVER_URL_VERSION = "http://ms.zj165.com/sac/android.h";
-	static final public String HTTP_GETURL_SAC_BY_MISI="http://www.uc186.com/sac/android.h";
+	static final public String HTTP_GETURL_SAC_BY_MISI="http://sh.iwinway.com/sac/android.h";
 	public static String HttpServerUrl="";
  
 	public static String getHttpServerUrl() {
@@ -438,7 +438,7 @@ public class HttpDataAccess {
 	}
 
 	/**
-	 * 取回当前定时状态
+	 * ??????????
 	 * 
 	 * @param msisdn
 	 * @return
@@ -461,7 +461,7 @@ public class HttpDataAccess {
 	}
 
 	/**
-	 * 增加定时状态
+	 * ????????
 	 * 
 	 * @param data
 	 * @return
@@ -484,7 +484,7 @@ public class HttpDataAccess {
 	}
 
 	/**
-	 * 规换定时状态，如果不指定data，则就是将指定的定时状态删除。
+	 * ?????????????????data??????????????????????
 	 * 
 	 * @param index
 	 * @param data
@@ -513,7 +513,7 @@ public class HttpDataAccess {
 	}
 
 	/**
-	 * 取回黑名单名信息
+	 * ?????????????
 	 * 
 	 * @param listType
 	 * @param start
@@ -548,12 +548,12 @@ public class HttpDataAccess {
 	}
 
 	/**
-	 * 设置黑白名单信息，
+	 * ???ú???????????
 	 * 
 	 * @param originalNumber
-	 *            -- 修改以前号码时，要填写以前号码
+	 *            -- ????????????????д???????
 	 * @param info
-	 *            -- 新的号码信息，如果不指定 originalNumber 就是添加新号码
+	 *            -- ??????????????????? originalNumber ????????????
 	 * @return
 	 */
 	public TSetPhonebooksRsp setPhonebooks(String originalNumber, TPhonebookReturn info) {
@@ -583,11 +583,11 @@ public class HttpDataAccess {
 	}
 
 	/**
-	 * 删除黑白名单。
+	 * ????????????
 	 * 
 	 * @param state
 	 * @param phoneNumber
-	 *            -- 如果不指定号码，则表示清空指定的黑名单或白名单
+	 *            -- ????????????????????????????????????
 	 * @return
 	 */
 	public TDelPhonebooksResult.Enum delPhonebook(TBlackwhiteState.Enum state, String phoneNumber) {
@@ -615,8 +615,8 @@ public class HttpDataAccess {
 		return null;
 	}
    /************************************************************
-    * 配置选项中的基本设置相关的详细信息
-    * @return 请求后的基本信息
+    * ????????е??????????????????
+    * @return ????????????
     */
 	public TGetMultipleOptionsRsp getMultipleOptions() {
 		lastError=LastError.SUCCESS;
@@ -649,7 +649,7 @@ public class HttpDataAccess {
 		return null;
 	}
 	/************************************************************
-	    * 设置配置选项中的详细信息
+	    * ????????????е???????
 	    * @return 
 	    */
 		public TSetMultipleOptionsResult.Enum setMultipleOptions(int id,int value) {
@@ -700,19 +700,19 @@ public class HttpDataAccess {
 		return null;
 	}
 	/*******************************
-	 * 恢复正常函数调用
-	 * @return 是否恢复正常的标志
+	 * ???????????????
+	 * @return ?????????????
 	 */
 	public TSetDurationSceneResult.Enum Returntonormal(){
 		TSetDurationSceneResult.Enum result=setDurationScene("zc", null, 0);
 		return result;
 	}
 	/*****************************
-	 * 获取关于本号码的所有黑名单记录
+	 * ????????????????к????????
 	 */
 	public Vector<TPhonebookReturn> showBlackList(TBlackwhiteState.Enum mystatus) {
 		lastError=LastError.SUCCESS;
-		// 取回所以的黑名单
+		// ?????????????
 		TGetPhonebooksRsp response =getPhonebooks(mystatus, null, null);
 		if (response == null) {
 			return null;
@@ -724,27 +724,27 @@ public class HttpDataAccess {
 			return phoneBooks;
 //			@SuppressWarnings("unused")
 //			int count = phoneBooks.size();
-//			// 是否要保存到本地或者分页显示
+//			// ????????????????????
 //			for (TPhonebookReturn book : phoneBooks) {
-//				book.getPhoneNumber(); // 号码
-//				book.getUserName(); // 用户名
-//				book.getComment(); // 注释
+//				book.getPhoneNumber(); // ????
+//				book.getUserName(); // ?????
+//				book.getComment(); // ???
 //
 //			}
 		}
 		return null;
 	}
 	/**
-	 * 设置黑名单
+	 * ???ú?????
 	 * 
 	 * @param originalNumber
-	 *            旧的号码，当修改时使用此参数，不填写此参数表示增加
+	 *            ?????????????????????????д????????????
 	 * @param phoneNumber
-	 *            增加或修改的黑名单号码
+	 *            ??????????????????
 	 * @param name
-	 *            名单姓名
+	 *            ????????
 	 * @param comment
-	 *            名单备注
+	 *            ???????
 	 */
 	public TSetPhonebooksRsp setBlacklist(String originalNumber, String phoneNumber, String name, String comment,TBlackwhiteState.Enum black_or_white_enum) {
 		lastError=LastError.SUCCESS;
@@ -762,7 +762,7 @@ public class HttpDataAccess {
 		TSetPhonebooksRsp result =setPhonebooks(originalNumber, info);
          
 		return result;
-		// 处理返回结果
+		// ????????
 	}
 	
 	public  String getDurationThisScene() {
@@ -771,21 +771,21 @@ public class HttpDataAccess {
 		if (response == null) {
 			@SuppressWarnings("unused")
 			HttpDataAccess.LastError lastError = HttpDataAccess.getInstance().getLastError();
-			// TODO:由lastError 显示对应错误提示信息。
+			// TODO:??lastError ??????????????????
 
 			return "";
 		}
 
 		TGetDurationStateResult.Enum result = response.getResult();
 		if (TGetDurationStateResult.SUCCESS.equals(result)) {
-			// 取回成功
+			// ?????
 			TDurationSceneData data = response.getData();
 			if(data==null) {
 				return "正常状态";
 			}
 			TCallPolicyState.Enum policy = data.getPolicy();
 			if (TCallPolicyState.ZC.equals(policy)) {
-				// TODO: 正常状态
+				// TODO: ??????
 				return "正常状态";
 			} else {
 				String temp="";
@@ -799,28 +799,31 @@ public class HttpDataAccess {
 				}
 
 			    TScenesState.Enum scene = data.getScene();
-				// 情景
-				int info=data.getDurations(); // 持续时长
-				System.out.println("持续时长------------->>>>>"+info);
-				data.getStartTime(); // 开始时间
-				response.getLeftSeconds(); // 剩余秒数。
+				// ??
+				int info=data.getDurations(); // ???????
+				System.out.println("???????------------->>>>>"+info);
+				data.getStartTime(); // ??????
+				Calendar calendar=data.getStartTime();
+				calendar.add(Calendar.MINUTE,data.getDurations());
+				data.setStartTime(calendar);
+				response.getLeftSeconds(); // ?????????
 				temp+=ArrayUnits.getReturnResult(scene.toString())+"("+_temp+")"+",年"+data.getStartTime().get(Calendar.YEAR)
 				+",月"+(data.getStartTime().get(Calendar.MONTH)+1)+",日"+data.getStartTime().get(Calendar.DAY_OF_MONTH)+",时"
 				+data.getStartTime().get(Calendar.HOUR_OF_DAY)+",分"+data.getStartTime().get(Calendar.MINUTE)+","+data.getDurations();
 			    return temp;
 			}
 		} else if (TGetDurationStateResult.FAILED_NOT_REGISTED.equals(result)) {
-			// TODO: 提示没有注册错误
+			// TODO: ????????????
 			return "_error";
 		} else {
 			return "error_ok";
-			// TODO: 系统忙请稍后再试之类
+			// TODO: ???????????????
 		}
 	}
 	
 	/** 
-	 * 检查新的版本信息
-	 * @return   返回相关的版本请求
+	 * ????????????
+	 * @return   ???????????????
 	 */
 	public TCheckVersionRsp CheckNewVersion(String thiscurrent) {
 	   TCheckVersionReq request = TCheckVersionReq.Factory.newInstance();
@@ -832,7 +835,7 @@ public class HttpDataAccess {
 		}
 		return null;
 	}
-/********************************************单元测试模块开始******************************************************************/
+/********************************************???????????******************************************************************/
    public TGetSacUrlByMsisdnRsp getResultByMsis(String phonenum){
 	   lastError=LastError.SUCCESS;
 	   TGetSacUrlByMsisdnReq request=TGetSacUrlByMsisdnReq.Factory.newInstance();

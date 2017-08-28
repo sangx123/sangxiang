@@ -29,7 +29,7 @@ public class MdrBaseAdapter extends BaseAdapter {
 		return 0;
 	}
 	/**
-	 * è®¾ç½®é›†åˆ
+	 * ÉèÖÃ¼¯ºÏ
 	 * @param alObjects
 	 * @param boo
 	 */

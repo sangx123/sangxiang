@@ -3,14 +3,15 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#8D8D8D"
+    android:background="#f1f1f1"
     >
     
      <LinearLayout
-  android:layout_width="fill_parent"
+		 android:visibility="gone"
+
+		 android:layout_width="fill_parent"
   android:layout_height="wrap_content"
   android:layout_alignParentBottom="true"
-		 android:visibility="gone"
   android:id="@+id/llbottom"
    >
      <include
@@ -93,7 +94,8 @@
   
   
     <!-- 主页的布局文件 -->
-	   <RelativeLayout
+	   <LinearLayout
+		   android:orientation="vertical"
 	      android:id="@+id/relation_main"
 		  android:layout_width="fill_parent"
 		  android:layout_height="wrap_content"
@@ -109,29 +111,41 @@
 			  android:layout_gravity="center_vertical"
 			  android:layout_alignParentTop="true"
 			 />
+		   <LinearLayout
+			   android:layout_width="fill_parent"
+			   android:layout_height="fill_parent"
+			   android:layout_below="@id/lltoplayout"
+			   android:orientation="vertical"
+			   android:id="@+id/llmainshowmdr"
+			   >
+			   <include
+				   android:layout_width="fill_parent"
+				   android:layout_height="wrap_content"
+				   layout="@layout/second_main_index"
+				   />
+		   </LinearLayout>
+		   <TextView
+			   android:id="@+id/sttttt"
+			   android:layout_below="@+id/llmainshowmdr"
+			   android:layout_width="wrap_content"
+			   android:layout_height="wrap_content"
+			   android:text="状态设置"
+			   android:textSize="17sp"
+			   android:layout_marginTop="15dp"
+			   android:layout_marginBottom="5dp"
+			   android:layout_marginLeft="10dp"
+			   />
 			    <winway.mdr.chinaunicom.custom.controls.CustomListView
+					android:layout_below="@+id/sttttt"
 		   android:layout_width="fill_parent"
 		   android:layout_height="wrap_content"
 		   android:id="@+id/lvhfzc"
 		   style="@style/listview1"
 		   android:cacheColorHint="#00000000"
 		   android:dividerHeight="0dp"
-		   android:layout_alignParentBottom="true"
+					android:paddingBottom="5dp"
 		   android:layout_margin="5dp"
-		   />
-		       <LinearLayout
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:layout_below="@id/lltoplayout"
-			android:layout_above="@id/lvhfzc"
-			android:orientation="vertical"
-			android:id="@+id/llmainshowmdr"
-		    >
-			   <include
-			   android:layout_width="fill_parent"
-			   android:layout_height="wrap_content"
-			   layout="@layout/second_main_index"
-			   />
-		</LinearLayout>
-	</RelativeLayout>
+			/>
+
+	</LinearLayout>
 </RelativeLayout>

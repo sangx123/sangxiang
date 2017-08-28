@@ -10,6 +10,8 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.sangxiang.app.R;
+
 /**
  * 仿iphone带进度的进度条，线程安全的View，可直接在线程中更新进度
  * @author xiaanming

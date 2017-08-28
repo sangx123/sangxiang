@@ -23,6 +23,7 @@ import java.util.Map;
 
 import winway.mdr.telecomofchina.activity.R;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -214,7 +215,16 @@ public class MyAdapter extends BaseAdapter implements Filterable {
                     } else if (v instanceof TextView) {
                    
                         setViewText((TextView) v, text);
-                        
+                        setViewText((TextView) v, text);
+                        if("设为非急勿扰状态".equals(text)){
+                            ((TextView) v).setTextColor(Color.parseColor("#e3bc2f"));
+                        }else if("设为请勿打扰状态".equals(text)){
+                            ((TextView) v).setTextColor(Color.parseColor("#f0121d"));
+                        }else if("设为防呼死你状态".equals(text)){
+                            ((TextView) v).setTextColor(Color.parseColor("#eda014"));
+                        }else if("恢复为正常状态".equals(text)){
+                            ((TextView) v).setTextColor(Color.parseColor("#319A45"));
+                        }
                         
                     } else if (v instanceof ImageView) {
                     	

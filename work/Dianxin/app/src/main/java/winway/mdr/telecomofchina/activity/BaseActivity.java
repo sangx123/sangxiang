@@ -84,19 +84,19 @@ public class BaseActivity extends Activity {
 		  int[] to={R.id.ivitemicon,R.id.tvitemtext};
 		  ArrayList<Map<String, Object>> lists=new ArrayList<Map<String,Object>>();
 		  Map<String, Object> map=new HashMap<String, Object>();
-		  map.put("image", R.drawable.hfzc);
+		  map.put("image", R.drawable.feijiwurao);
 		  map.put("resources","ÉèÎª·Ç¼±ÎğÈÅ×´Ì¬");
 		  lists.add(map);
 		  map=new HashMap<String, Object>();
-		  map.put("image", R.drawable.hfzc);
+		  map.put("image", R.drawable.qingwudarao);
 		  map.put("resources","ÉèÎªÇëÎğ´òÈÅ×´Ì¬");
 		  lists.add(map);
 			map=new HashMap<String, Object>();
-			 map.put("image", R.drawable.hfzc);
+			 map.put("image", R.drawable.fanghusini);
 			 map.put("resources","ÉèÎª·ÀºôËÀÄã×´Ì¬");
 			 lists.add(map);
 		  map=new HashMap<String, Object>();
-		  map.put("image", R.drawable.hfzc);
+		  map.put("image", R.drawable.zhengchangzhuangtai);
 		  map.put("resources","»Ö¸´ÎªÕı³£×´Ì¬");
 		  lists.add(map);
 
