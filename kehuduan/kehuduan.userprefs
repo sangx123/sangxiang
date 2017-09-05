@@ -3,12 +3,6 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Game_Scenes/MyMahjongScript.cs">
     <Files>
       <File FileName="Assets/Script/Game_Scenes/MyMahjongScript.cs" Line="2476" Column="18" />
-      <File FileName="Assets/Script/Game_Scenes/Over_Game/GameOverScript.cs" Line="371" Column="3" />
-      <File FileName="Assets/Script/utilTool/HuUtil.cs" Line="210" Column="19" />
-      <File FileName="Assets/Script/Game_Scenes/FinalOverGame.cs" Line="75" Column="146" />
-      <File FileName="Assets/Script/Game_Scenes/MyMahjongScript的副本.cs" Line="335" Column="30" />
-      <File FileName="Assets/Script/Game_Scenes/ButtonActionScript.cs" Line="51" Column="36" />
-      <File FileName="Assets/Script/gameConfig/GameConfig.cs" Line="5" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
