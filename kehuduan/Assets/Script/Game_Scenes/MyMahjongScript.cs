@@ -62,10 +62,7 @@ public class MyMahjongScript : MonoBehaviour
 	private int gangKind;
 	private int otherGangType;
 	private GameObject cardOnTable;
-	/// <summary>
-	/// 
-	/// </summary>
-	private int useForGangOrPengOrChi;
+	private int useForGangOrPengOrChi;//目前用来做杠牌用的
     /// <summary>
     /// 杠的牌数
     /// </summary>
@@ -272,9 +269,8 @@ public class MyMahjongScript : MonoBehaviour
 
 		setAllPlayerReadImgVisbleToFalse ();
 		initMyCardListAndOtherCard (13,13,13);
-
-		ShowLeavedCardsNumForInit();
-
+        CardsNumChange();
+        moPai();
 		if (curDirString == DirectionEnum.Bottom) {
 			//isSelfPickCard = true;
 			GlobalDataScript.isDrag = true;
@@ -295,52 +291,8 @@ public class MyMahjongScript : MonoBehaviour
 		liujuEffectGame.SetActive (false);
 	}
 
-
-	public void ShowLeavedCardsNumForInit()
-	{
-		//RoomCreateVo roomCreateVo = GlobalDataScript.roomVo;
-
-		//bool hong = (bool) roomCreateVo.hong  ;
-		//int RoomType = (int) roomCreateVo.roomType;
-		//if (RoomType == 1)//转转麻将
-		//{
-			
-  //          if (hong)
-		//	{
-		//		LeavedCardsNum = 112;
-		//	}
-		//}
-		//else if (RoomType == 2)//划水麻将
-		//{
-		//	LeavedCardsNum = 108;
-		//	if (roomCreateVo.addWordCard) {
-		//		LeavedCardsNum = 136;
-		//	}
-		//}
-		//else if (RoomType == 3)
-		//{
-		//	LeavedCardsNum = 108;
-		//}
-        LeavedCardsNum = 108;
-		LeavedCardsNum = LeavedCardsNum - 53;
-		LeavedCastNumText.text = (LeavedCardsNum)+"";
-
-
-		/**
-		GlobalDataScript.roomVo.roundNumber--;
-		StartRoundNum = roomCreateVo.roundNumber;
-		LeavedRoundNumText.text = StartRoundNum + "";
-		*/
-	}
-
 	public void CardsNumChange()
 	{
-        //LeavedCardsNum--;
-        //if (LeavedCardsNum < 0)
-        //{
-        //	LeavedCardsNum = 0;
-        //}
-        //LeavedCastNumText.text = LeavedCardsNum+ "";
         LeavedCastNumText.text = allList.Count.ToString();
 	}
 
@@ -396,77 +348,9 @@ public class MyMahjongScript : MonoBehaviour
 		otherPickCardItem.transform.localScale = Vector3.one;//原大小
 
 	}
-
-	/// <summary>
-	/// 自己摸牌
-	/// </summary>
-	/// <param name="response">Response.</param>
-	public void pickCard(ClientResponse response)
-	{
-
-		UpateTimeReStart ();
-		CardVO cardvo = JsonMapper.ToObject<CardVO>(response.message);
-		MoPaiCardPoint = cardvo.cardPoint;
-		MyDebug.Log ("摸牌" + MoPaiCardPoint);
-		SelfAndOtherPutoutCard = MoPaiCardPoint; 
-		useForGangOrPengOrChi = cardvo.cardPoint;
-		putCardIntoMineList (MoPaiCardPoint);
-		moPai ();
-		curDirString = DirectionEnum.Bottom;
-		SetDirGameObjectAction ();
-		CardsNumChange();
-		//checkHuOrGangOrPengOrChi (MoPaiCardPoint,2);
-		GlobalDataScript.isDrag = true;
-	//	isSelfPickCard = true;
-	}
-	/// <summary>
-	/// 胡，杠，碰，吃，pass按钮显示.
-	/// </summary>
-	/// <param name="response">Response.</param>
-	//public void actionBtnShow(ClientResponse response){
-	//	GlobalDataScript.isDrag = false;
-	//	string[] strs=response.message.Split (new char[1]{','});
-	//	if (curDirString == DirectionEnum.Bottom) {
-	//		passType = "selfPickCard";
-	//	} else {
-	//		passType = "otherPickCard";
-	//	}
-
-	//	for (int i = 0; i < strs.Length; i++) {
-	//		if (strs [i].Equals ("hu")) {
-	//			btnActionScript.showBtn (1);
-
-	//		}else if(strs[i].Contains("qianghu")){
-				
-	//			try{
-	//				SelfAndOtherPutoutCard = int.Parse( strs[i].Split(new char[1]{':'})[1]);
-	//			}catch (Exception e){
-				
-	//			}
-
-	//			btnActionScript.showBtn (1);
-	//			isQiangHu = true;
-	//		}else if(strs[i].Contains("peng")){
-	//			btnActionScript.showBtn (3);
-	//			putOutCardPoint =int.Parse(strs [i].Split (new char[1]{ ':' }) [2]);
-
-
-	//		}else if(strs[i].Equals("chi")){
-	//			//btnActionScript.showBtn (3);
-	//		}
-	//		if(strs[i].Contains("gang")){
-				
-	//			btnActionScript.showBtn (2);
-	//			gangPaiList = strs [i].Split (new char[1]{ ':' });
-	//			List<string> gangPaiListTemp = gangPaiList.ToList ();
-	//			gangPaiListTemp.RemoveAt (0);
-	//			gangPaiList = gangPaiListTemp.ToArray ();
-	//		}
-	//	}
-	//}
-
 	private void initMyCardListAndOtherCard(int topCount,int leftCount,int rightCount){
-        addList(mineList,14);
+        //初始化自己的牌
+        addList(mineList,13);
 		for (int a = 0; a < mineList[0].Count; a++)//我的牌13张
 		{
 					GameObject gob = Instantiate(Resources.Load("prefab/card/Bottom_B")) as GameObject;
@@ -500,61 +384,6 @@ public class MyMahjongScript : MonoBehaviour
 			otherPickCardAndCreate (bankerId);
 		}
 	}
-
-
-
-
-	/// <summary>
-	/// 检测胡牌
-	/// </summary>
-	/**
-	private bool checkHuPai(){
-		RoomCreateVo roomvo = GlobalDataScript.roomVo;
-		if (roomvo.hong) {
-			if (naiziHu.isHu (mineList)) {
-				MyDebug.Log ("赖子胡牌了");
-				effectType = "hu";
-				pengGangHuEffectCtrl();
-				return true;
-
-			} else {
-				GlobalDataScript.isDrag = true;
-				return false;
-			}
-		} else {
-			if (roomvo.sevenDouble) {
-				int result = norHu.checkSevenDouble (mineList [0]);
-				if (result == 0) {
-				} else {
-					effectType = "hu";
-					pengGangHuEffectCtrl();
-					return true;
-				}
-			}
-			if (norHu.isHuPai (mineList [0]))
-			{
-				MyDebug.Log ("胡牌了");
-				effectType = "hu";
-				pengGangHuEffectCtrl();
-				return true;
-			} else {
-				GlobalDataScript.isDrag = true;
-				return false;
-			}
-		}
-
-	}
-	*/
-
-	/*
-	private bool addPointAndCheckHu(int cardPoint){
-		bool result = false;
-		putCardIntoMineList (cardPoint);
-		result = checkHuPai ();
-		pushOutFromMineList (cardPoint);
-		return result;
-	}
-	*/
 
 	private void setAllPlayerReadImgVisbleToFalse(){
 		for (int i = 0; i < playerItems.Count; i++) {
@@ -638,10 +467,21 @@ public class MyMahjongScript : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 
+	/// 摸牌的所有操作
 	/// </summary>
 	public void moPai() //摸牌
 	{
+        //先检测是否还有牌
+        checkLiuju();
+        //开始摸牌
+		MoPaiCardPoint = allList[0] / 4;
+		allList.RemoveAt(0);
+        //显示剩余牌数
+		LeavedCastNumText.text = allList.Count.ToString();
+		SelfAndOtherPutoutCard = MoPaiCardPoint;
+		useForGangOrPengOrChi = MoPaiCardPoint;
+		SetPosition(false);
+
 		pickCardItem = Instantiate(Resources.Load("prefab/card/Bottom_B")) as GameObject; //实例化当前摸的牌
 		MyDebug.Log ("摸牌 === >> "+MoPaiCardPoint);
 		if (pickCardItem != null) //有可能没牌了
@@ -655,8 +495,10 @@ public class MyMahjongScript : MonoBehaviour
 			pickCardItem.GetComponent<bottomScript>().setPoint(MoPaiCardPoint); //得到索引
 			insertCardIntoList(pickCardItem);
 		}
-		MyDebug.Log ("moPai  goblist count === >> "+ handerCardList[0].Count);
-
+		curDirString = DirectionEnum.Bottom;
+		SetDirGameObjectAction();
+		GlobalDataScript.isDrag = true;
+		checkGangHuFromSelf();
 	}
 
 	public void putCardIntoMineList(int cardPoint)
@@ -1326,6 +1168,8 @@ public class MyMahjongScript : MonoBehaviour
 			cardvo.cardPoint = putOutCardPointTemp;
 			putOutCardPointAvarIndex =getIndexByDir(getDirection(getMyIndexFromList ())) ;
 			//CustomSocket.getInstance ().sendMsg (new PutOutCardRequest(cardvo));
+            //牌打出去后清空自己的碰杠胡按钮
+            btnActionScript.cleanBtnShow();
 			toNext();
             Debug.Log("cardChange finish");
            
@@ -1423,7 +1267,6 @@ public class MyMahjongScript : MonoBehaviour
 			if (checkPengGangHuFromOthersPutCard())
 			{
 				//如果有碰，杠，胡的情况，什么都不做，等待别人点击碰，杠，胡
-
 			}
 			else
 			{
@@ -1516,6 +1359,9 @@ public class MyMahjongScript : MonoBehaviour
 		cleanArrayList (PengGangCardList); 
 		cleanArrayList (PengGangList_R);
 		cleanArrayList (PengGangList_T);
+        rightList.Clear();
+        topList.Clear();
+        leftList.Clear();
 		if (mineList != null) {
 			mineList.Clear ();
 		}
@@ -1776,10 +1622,13 @@ public class MyMahjongScript : MonoBehaviour
 	 * 退出房间请求
 	 */ 
 	public void quiteRoom(){
-		OutRoomRequestVo vo = new OutRoomRequestVo ();
-		vo.roomId = GlobalDataScript.roomVo.roomId ;
-		string sendMsg = JsonMapper.ToJson (vo);
-		CustomSocket.getInstance().sendMsg(new OutRoomRequest(sendMsg));
+        GameObject  panelExitDialog = Instantiate(Resources.Load("Prefab/Panel_Exit")) as GameObject;
+		panelExitDialog.transform.parent = gameObject.transform;
+		panelExitDialog.transform.localScale = Vector3.one;
+		//panelCreateDialog.transform.localPosition = new Vector3 (200f,150f);
+		panelExitDialog.GetComponent<RectTransform>().offsetMax = new Vector2(0f, 0f);
+		panelExitDialog.GetComponent<RectTransform>().offsetMin = new Vector2(0f, 0f);
+
 	}
 
 	public void outRoomCallbak(ClientResponse response){
@@ -2335,144 +2184,10 @@ public class MyMahjongScript : MonoBehaviour
 	}
 
 
-	//public void returnGameResponse(ClientResponse response){
-	//	string returnstr = response.message;
-	//	JsonData returnJsonData = new JsonData (returnstr);
-	//	//1.显示剩余牌的张数和圈数
-	//	JsonData returnJsonData = JsonMapper.ToObject(response.message);
-	//	string surplusCards = returnJsonData["surplusCards"].ToString();
-	//	LeavedCastNumText.text = surplusCards;
-	//	LeavedCardsNum = int.Parse(surplusCards);
-	//	int gameRound =int.Parse( returnJsonData ["gameRound"].ToString ());
-	//	LeavedRoundNumText.text =gameRound+ "";
-	//	GlobalDataScript.surplusTimes = gameRound;
-
-
-	//	int curAvatarIndexTemp = -1;//当前出牌人的索引
-	//	int pickAvatarIndexTemp = -1; //当前摸牌人的索引
-	//	int putOffCardPointTemp = -1;//当前打得点数
-	//	int currentCardPointTemp = -1;//当前摸的点数
-
-
-	//	//不是自己摸牌
-	//	try{
-
-	//		curAvatarIndexTemp =int.Parse( returnJsonData["curAvatarIndex"].ToString());//当前打牌人的索引
-	//		putOffCardPointTemp =int.Parse( returnJsonData["putOffCardPoint"].ToString());//当前打得点数
-
-	//		putOutCardPointAvarIndex =getIndexByDir(getDirection(curAvatarIndexTemp));
-
-	//		putOutCardPoint = putOffCardPointTemp;//碰
-	//		//useForGangOrPengOrChi = putOutCardPoint;//杠
-	//	//	selfGangCardPoint = useForGangOrPengOrChi;
-	//		SelfAndOtherPutoutCard = putOutCardPoint;
-	//		pickAvatarIndexTemp =int.Parse( returnJsonData["pickAvatarIndex"].ToString()); //当前摸牌牌人的索引
-
-	//		/**这句代码有可能引发catch  所以后面的 SelfAndOtherPutoutCard = currentCardPointTemp; 可能不执行**/
-	//		currentCardPointTemp =int.Parse( returnJsonData["currentCardPoint"].ToString());//当前摸得的点数  
-	//		SelfAndOtherPutoutCard = currentCardPointTemp; 
-
-
-	//	}catch( Exception ex){
-
-	//	}
-
-
-	//	if (pickAvatarIndexTemp == getMyIndexFromList()) {//自己摸牌
-	//		if (currentCardPointTemp == -2) {
-	//			MoPaiCardPoint = handerCardList[0][handerCardList[0].Count-1].GetComponent<bottomScript>().getPoint();
-	//			SelfAndOtherPutoutCard = MoPaiCardPoint; 
-	//			useForGangOrPengOrChi = curAvatarIndexTemp;
-	//			Destroy(handerCardList[0][handerCardList[0].Count-1]);
-	//			handerCardList[0].Remove(handerCardList[0][handerCardList[0].Count-1]);
-	//			SetPosition (false);
-	//			putCardIntoMineList (MoPaiCardPoint);
-	//			moPai ();
-	//			curDirString = DirectionEnum.Bottom;
-	//			SetDirGameObjectAction ();
-	//			GlobalDataScript.isDrag = true;	
-	//			MyDebug.Log ("自己摸牌");
-
-	//		} else {
-	//			if ((handerCardList [0].Count) % 3 != 1) {
-	//				MoPaiCardPoint = currentCardPointTemp;
-	//				MyDebug.Log ("摸牌" + MoPaiCardPoint);
-	//				SelfAndOtherPutoutCard = MoPaiCardPoint; 
-	//				useForGangOrPengOrChi = curAvatarIndexTemp;
-	//				for(int i=0;i<handerCardList[0].Count;i++){
-	//					if(handerCardList[0][i].GetComponent<bottomScript>().getPoint()== currentCardPointTemp){
-	//						Destroy(handerCardList[0][i]);
-	//						handerCardList[0].Remove(handerCardList[0][i]);
-	//						break;
-	//					}
-	//				}
-	//				SetPosition (false);
-	//				putCardIntoMineList (MoPaiCardPoint);
-	//				moPai ();
-	//				curDirString = DirectionEnum.Bottom;
-	//				SetDirGameObjectAction ();
-	//				GlobalDataScript.isDrag = true;	
-	//			}
-
-	//		}
-
-	//	} else { //别人摸牌
-	//		curDirString = getDirection(pickAvatarIndexTemp);
-	//		//	otherMoPaiCreateGameObject (curDirString);
-	//		SetDirGameObjectAction ();
-	//	}
-
-
-
-
-
-	//	//光标指向打牌人
-	//	int dirindex = getIndexByDir (getDirection(curAvatarIndexTemp) );
-	//	cardOnTable = tableCardList [dirindex] [tableCardList [dirindex].Count - 1];
-	//	if (tableCardList [dirindex] == null || tableCardList [dirindex].Count == 0) {//刚启动
-
-
-	//		/**
-	//		if (pickAvatarIndexTemp == getMyIndexFromList ()) {
-	//			int cardPoint = handerCardList [0] [handerCardList [0].Count - 1].GetComponent<bottomScript> ().getPoint ();
-
-	//			Destroy (handerCardList [0] [handerCardList [0].Count - 1]);
-	//			handerCardList [0].RemoveAt (handerCardList [0].Count - 1);
-
-	//			currentCardPointTemp = cardPoint;
-	//			MoPaiCardPoint = currentCardPointTemp;
-	//			MyDebug.Log ("摸牌" + MoPaiCardPoint);
-	//			SelfAndOtherPutoutCard = MoPaiCardPoint; 
-	//			useForGangOrPengOrChi = curAvatarIndexTemp;
-	//			putCardIntoMineList (MoPaiCardPoint);
-	//			moPai ();
-	//			curDirString = DirectionEnum.Bottom;
-	//			SetDirGameObjectAction ();
-	//			GlobalDataScript.isDrag = true;	
-	//		} else {//别人摸牌
-	//			curDirString = getDirection (pickAvatarIndexTemp);
-	//			SetDirGameObjectAction ();
-
-	//		}
-	//		*/
-	//	} else {
-	//		//otherPickCardItem = handerCardList[dirindex][0];
-	//	//	gameTool.setOtherCardObjPosition(handerCardList[dirindex],getDirection(curAvatarIndexTemp) , 1);
-	//		GameObject temp = tableCardList[dirindex][tableCardList[dirindex].Count-1]; 
-	//		setPointGameObject (temp);
-	//	}
-
-
-	//}
-
     //当自己打完牌之后轮到下家摸牌和打牌
 	public void toNext()
 	{
-        if (allList.Count == 0){
-			Invoke("openGameOverPanelSignal", 3);
-            //做流局结算
-            return;
-        } 
+        checkLiuju();
         //检测碰，杠，胡
         LeavedCastNumText.text = allList.Count.ToString();
         putOutCardPointAvarIndex = getIndexByDir(getDirection(curDirIndex));
@@ -2485,17 +2200,7 @@ public class MyMahjongScript : MonoBehaviour
 		
 		if (curDirIndex == getMyIndexFromList())
 		{//自己摸牌
-			MoPaiCardPoint =allList[0] / 4;
-            allList.RemoveAt(0);
-            LeavedCastNumText.text = allList.Count.ToString();
-			SelfAndOtherPutoutCard = MoPaiCardPoint;
-			useForGangOrPengOrChi = MoPaiCardPoint;
-			SetPosition(false);
 			moPai();
-			curDirString = DirectionEnum.Bottom;
-			SetDirGameObjectAction();
-			GlobalDataScript.isDrag = true;
-            checkGangHuFromSelf();
 		}
 		else
 		{ //别人摸牌
@@ -2598,6 +2303,7 @@ public class MyMahjongScript : MonoBehaviour
     private void checkGangHuFromSelf(){
         Debug.Log("checkGangHuFromSelf");
 		int count = 0;
+        //检测手上牌是否有暗杠
 		for (int i = 0; i < handerCardList[0].Count; i++)
 		{
 			GameObject temp = handerCardList[0][i];
@@ -2607,6 +2313,18 @@ public class MyMahjongScript : MonoBehaviour
 				count++;
 			}
 		}
+        //检测碰的牌是否有杠
+        for (int i = 0; i < PengGangCardList.Count;i++){
+            try{
+                if(PengGangCardList[i].Count==3&&PengGangCardList[i][0].GetComponent<TopAndBottomCardScript>().getPoint() == MoPaiCardPoint){
+					gangKind = 0;
+					btnActionScript.showBtn(GameConfig.GANG);
+                }
+            }catch{
+                
+            }
+        }
+
 		if (count == 4)
 		{
             //自己摸的牌为暗杠
@@ -2721,7 +2439,14 @@ public class MyMahjongScript : MonoBehaviour
 		}
 		passType = "";
         //点击过的情况
-		toNext();
+		
+        if(curDirIndex==0){
+            //如果是自己摸牌点击过的时候，消失显示的按钮
+            btnActionScript.cleanBtnShow(); 
+        }else{
+            //如果是别人打牌点击的时候，
+            toNext();
+        }
 
 	}
 	/// <summary>
@@ -2743,18 +2468,20 @@ public class MyMahjongScript : MonoBehaviour
 	/// </summary>
 	public void myHupaiBtnClick()
 	{
+     
 		SoundCtrl.getInstance().playSoundByAction("hu", 0);
 		effectType = "hu";
 		pengGangHuEffectCtrl();
 		SoundCtrl.getInstance().playSoundByAction("hu", 0);
+		btnActionScript.cleanBtnShow();
 		Invoke("openGameOverPanelSignal", 3);
 	}
 
 	public void myGangBtnClick()
 	{
-		//useForGangOrPengOrChi = int.Parse (gangPaiList [0]);
 		GlobalDataScript.isDrag = true;
-		selfGangCardPoint = putOutCardPoint;
+        //杠，自摸的牌，或者别人打出来的牌
+        selfGangCardPoint = useForGangOrPengOrChi; 
 		SoundCtrl.getInstance().playSoundByAction("gang", 0);
 		btnActionScript.cleanBtnShow();
 		effectType = "gang";
@@ -2769,25 +2496,6 @@ public class MyMahjongScript : MonoBehaviour
 	public void gang()
 	{
 		UpateTimeReStart();
-		//gangKind = gangBackVo.type;
-		//int Num = 0;
-		//bool pengOrNot = false;
-		//checkHuOrGangOrPengOrChi (MoPaiCardPoint,2);
-		// GlobalDataScript.isDrag = true;
-
-
-		/*创建一个摸的牌***/
-		/**
-		SelfAndOtherPutoutCard = gangBackVo.cardList[0]; 
-		//useForGangOrPengOrChi = gangBackVo.cardList[0];
-		putCardIntoMineList (gangBackVo.cardList[0]);
-		moPai ();
-		curDirString = DirectionEnum.Bottom;
-		SetDirGameObjectAction ();
-		CardsNumChange();
-		**/
-
-
 		if (gangKind == 0)
 		{   //明杠
 			//mineList[1][selfGangCardPoint] = 3;
@@ -2881,9 +2589,8 @@ public class MyMahjongScript : MonoBehaviour
 		else if (gangKind == 1)
 		{ //===================================================================================暗杠
 
-			mineList[1][selfGangCardPoint] = 4;
+			//mineList[1][selfGangCardPoint] = 4;
 			int removeCount = 0;
-
 			for (int i = 0; i < handerCardList[0].Count; i++)
 			{
 				GameObject temp = handerCardList[0][i];
@@ -2923,9 +2630,19 @@ public class MyMahjongScript : MonoBehaviour
 			PengGangCardList.Add(tempGangList);
 		}
 
-		SetPosition(false);
 		moPai();
-		CardsNumChange();
-		GlobalDataScript.isDrag = true;
+	}
+
+    /// <summary>
+    /// 流局检测
+    /// </summary>
+    public void checkLiuju(){
+		if (allList.Count == 0)
+		{
+            CardsNumChange();
+			Invoke("openGameOverPanelSignal", 3);
+			//做流局结算
+			return;
+		}
 	}
 }

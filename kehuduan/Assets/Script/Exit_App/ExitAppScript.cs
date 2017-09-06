@@ -16,7 +16,7 @@ public class ExitAppScript : MonoBehaviour {
 
 
 	public void exit(){
-		CustomSocket.getInstance().sendMsg(new LoginRequest());
+		//CustomSocket.getInstance().sendMsg(new LoginRequest());
 
 		Application.Quit ();
 		//多态  调用退出登录接口
