@@ -323,20 +323,25 @@ public class MyMahjongScript : MonoBehaviour
 	}
 
 	public void otherMoPaiCreateGameObject(string dir){
+		int cardPoint = allList[0] / 4;
+		allList.RemoveAt(0);
 		Vector3 tempVector3 = new Vector3(0,0);
 		//Transform tempParent = null;
 		switch (dir)
 		{
 		case DirectionEnum.Top://上
+             topList[0].Add(cardPoint);	
 			//tempParent = topParent.transform;
 			tempVector3 = new Vector3(-273,0f);
 			break;
 		case DirectionEnum.Left://左
+             leftList[0].Add(cardPoint);
 			//tempParent = leftParent.transform;
 			tempVector3 = new Vector3(0, -173f);
 
 			break;
 		case DirectionEnum.Right://右
+             rightList[0].Add(cardPoint);
 			//tempParent = rightParent.transform;
 			tempVector3 = new Vector3(0, 183f);
 			break;
@@ -346,6 +351,8 @@ public class MyMahjongScript : MonoBehaviour
 		MyDebug.Log("path  = "+ path);
 		otherPickCardItem = createGameObjectAndReturn (path,parentList[getIndexByDir(dir)],tempVector3);//实例化当前摸的牌
 		otherPickCardItem.transform.localScale = Vector3.one;//原大小
+
+
 
 	}
 	private void initMyCardListAndOtherCard(int topCount,int leftCount,int rightCount){
@@ -520,13 +527,31 @@ public class MyMahjongScript : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 接收到其它人的出牌通知
+	/// 其他玩家打牌
 	/// </summary>
 	public void otherPutOutCard()
 	{
-		
-        int cardPoint = allList[0]/4;
-		allList.RemoveAt(0);
+        //此处为ai打牌的算法
+        int cardPoint = -1;
+        String dir = getDirection(curDirIndex);
+		switch (dir)
+		{
+			case DirectionEnum.Top://上
+                cardPoint = topList[0][0];
+                topList[0].RemoveAt(0);
+
+				
+				break;
+			case DirectionEnum.Left://左
+                cardPoint = leftList[0][0];
+				leftList[0].RemoveAt(0);
+
+				break;
+			case DirectionEnum.Right://右
+                cardPoint = rightList[0][0];
+				rightList[0].RemoveAt(0); ;
+				break;
+		}
         putOutCardPoint = cardPoint;
         SelfAndOtherPutoutCard = cardPoint;
         int curAvatarIndex =curDirIndex;
@@ -1666,60 +1691,13 @@ public class MyMahjongScript : MonoBehaviour
 
 
 	private string dissoliveRoomType = "0";
+    //离开房间 退回大厅
 	public void dissoliveRoomRequest(){
-		if (canClickButtonFlag) {
-			dissoliveRoomType = "0";
-			TipsManagerScript.getInstance ().loadDialog ("申请解散房间", "你确定要申请解散房间？", doDissoliveRoomRequest, cancle);
-		} else {
-			TipsManagerScript.getInstance ().setTips ("还没有开始游戏，不能申请退出房间");
-		}
-
-	}
-
-	/***
-	 * 申请解散房间回调
-	 */ 
-	GameObject dissoDialog ;
-	public void dissoliveRoomResponse( ClientResponse response){
-		MyDebug.Log ("dissoliveRoomResponse" +response.message);
-		DissoliveRoomResponseVo dissoliveRoomResponseVo = JsonMapper.ToObject<DissoliveRoomResponseVo> (response.message);
-		string plyerName = dissoliveRoomResponseVo.accountName;
-		if (dissoliveRoomResponseVo.type == "0") {
-			GlobalDataScript.isonApplayExitRoomstatus = true;
-			dissoliveRoomType = "1";
-			dissoDialog = PrefabManage.loadPerfab ("Prefab/Panel_Apply_Exit");
-			dissoDialog.GetComponent<VoteScript> ().iniUI (plyerName, avatarList);
-		} else if (dissoliveRoomResponseVo.type == "3") {
-			
-		
-			if (zhuamaPanel != null && GlobalDataScript.isonApplayExitRoomstatus ) {
-				Destroy (zhuamaPanel.GetComponent<ZhuMaScript>());
-				Destroy (zhuamaPanel);
-			}
-			GlobalDataScript.isonApplayExitRoomstatus = false;
-			if (dissoDialog != null) {
-				GlobalDataScript.isOverByPlayer = true;
-				//dissoDialog.GetComponent<VoteScript> ().removeListener ();
-				Destroy (dissoDialog.GetComponent<VoteScript> ());
-				Destroy (dissoDialog);
-			}
-		
-		}  
+        exitOrDissoliveRoom();
 	}
 
 
-	/**
-	 * 申请或同意解散房间请求
-	 * 
-	 */ 
-	public void  doDissoliveRoomRequest(){
-		DissoliveRoomRequestVo dissoliveRoomRequestVo = new DissoliveRoomRequestVo ();
-		dissoliveRoomRequestVo.roomId = GlobalDataScript.loginResponseData.roomId;
-		dissoliveRoomRequestVo.type = dissoliveRoomType;
-		string sendMsg = JsonMapper.ToJson (dissoliveRoomRequestVo);
-		CustomSocket.getInstance().sendMsg(new DissoliveRoomRequest(sendMsg));
-		GlobalDataScript.isonApplayExitRoomstatus = true;
-	}
+
 
 	private void cancle(){
 
@@ -1727,14 +1705,14 @@ public class MyMahjongScript : MonoBehaviour
 
 	private void cancle1(){
 		dissoliveRoomType = "2";
-		doDissoliveRoomRequest ();
+		//doDissoliveRoomRequest ();
 	}
 
 	public void exitOrDissoliveRoom(){
-		GlobalDataScript.loginResponseData.resetData ();//复位房间数据
-		GlobalDataScript.loginResponseData.roomId = 0;//复位房间数据
-		GlobalDataScript.roomVo.roomId = 0;
-		GlobalDataScript.soundToggle = true;
+		//GlobalDataScript.loginResponseData.resetData ();//复位房间数据
+		//GlobalDataScript.loginResponseData.roomId = 0;//复位房间数据
+		//GlobalDataScript.roomVo.roomId = 0;
+		//GlobalDataScript.soundToggle = true;
 		clean ();
 		//removeListener ();
 
@@ -2106,19 +2084,6 @@ public class MyMahjongScript : MonoBehaviour
 		case DirectionEnum.Left:
 			playerItems [3].GetComponent<PlayerItemScript> ().setPlayerOffline ();
 			break;
-		
-
-		}
-
-		//申请解散房间过程中，有人掉线，直接不能解散房间
-		if (GlobalDataScript.isonApplayExitRoomstatus) {
-			if (dissoDialog != null) {
-				//dissoDialog.GetComponent<VoteScript> ().removeListener ();
-				Destroy (dissoDialog.GetComponent<VoteScript> ());
-				Destroy (dissoDialog);
-			}
-			TipsManagerScript.getInstance ().setTips ("由于" + avatarList [index].account.nickname + "离线，系统不能解散房间。");
-
 		}
 	}
 
@@ -2187,7 +2152,10 @@ public class MyMahjongScript : MonoBehaviour
     //当自己打完牌之后轮到下家摸牌和打牌
 	public void toNext()
 	{
-        checkLiuju();
+        //如果是流局的话结束
+        if(checkLiuju()){
+            return;
+        }
         //检测碰，杠，胡
         LeavedCastNumText.text = allList.Count.ToString();
         putOutCardPointAvarIndex = getIndexByDir(getDirection(curDirIndex));
@@ -2313,15 +2281,17 @@ public class MyMahjongScript : MonoBehaviour
 				count++;
 			}
 		}
-        //检测碰的牌是否有杠
-        for (int i = 0; i < PengGangCardList.Count;i++){
-            try{
-                if(PengGangCardList[i].Count==3&&PengGangCardList[i][0].GetComponent<TopAndBottomCardScript>().getPoint() == MoPaiCardPoint){
+        //检测手上的牌和碰的牌是否有杠
+        for (int i = 0; i < handerCardList[0].Count; i++)
+        {
+            int tempCardPoint = handerCardList[0][i].GetComponent<bottomScript>().getPoint();
+            for (int j = 0; j < PengGangCardList.Count;j++){
+                int tempPengGangCard = PengGangCardList[j][0].GetComponent<TopAndBottomCardScript>().getPoint();
+                if (PengGangCardList[j].Count == 3 && tempCardPoint ==tempPengGangCard)
+				{
 					gangKind = 0;
 					btnActionScript.showBtn(GameConfig.GANG);
-                }
-            }catch{
-                
+				}
             }
         }
 
@@ -2468,13 +2438,11 @@ public class MyMahjongScript : MonoBehaviour
 	/// </summary>
 	public void myHupaiBtnClick()
 	{
-     
-		SoundCtrl.getInstance().playSoundByAction("hu", 0);
 		effectType = "hu";
 		pengGangHuEffectCtrl();
 		SoundCtrl.getInstance().playSoundByAction("hu", 0);
 		btnActionScript.cleanBtnShow();
-		Invoke("openGameOverPanelSignal", 3);
+        openGameOverPanelSignal();
 	}
 
 	public void myGangBtnClick()
@@ -2636,13 +2604,16 @@ public class MyMahjongScript : MonoBehaviour
     /// <summary>
     /// 流局检测
     /// </summary>
-    public void checkLiuju(){
+    public bool checkLiuju(){
 		if (allList.Count == 0)
 		{
             CardsNumChange();
-			Invoke("openGameOverPanelSignal", 3);
+            openGameOverPanelSignal();
 			//做流局结算
-			return;
-		}
+            return true;
+        }else{
+            return false;
+        }
+
 	}
 }

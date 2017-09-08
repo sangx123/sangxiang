@@ -27,7 +27,6 @@ public class LoginSystemScript : MonoBehaviour {
         //PrefabManage.loadPerfab("Prefab/card/PutOutCard");
         //GameObject tempGameObject = createGameObjectAndReturn("Prefab/card/PutOutCard", GameObject.Find("Panel_Start").transform, new Vector3(0, -100f));
 		//LoginCallBack();
-		RoomBackResponse ();
 		versionText.text ="版本号：" +Application.version;
 	}
 	
@@ -60,11 +59,13 @@ public class LoginSystemScript : MonoBehaviour {
 
 		tapCount += 1;
 		Invoke ("resetClickNum", 10f);
-
+       
 	}
 
 	public void doLogin(){
-		//GlobalDataScript.getInstance ().wechatOperate.login ();
+        //GlobalDataScript.getInstance ().wechatOperate.login ();
+        //RoomBackResponse();
+        LoginCallBack();
 	}
 
 	public void LoginCallBack(){
@@ -72,7 +73,7 @@ public class LoginSystemScript : MonoBehaviour {
 			watingPanel.SetActive(false);
 		}
 	
-		SoundCtrl.getInstance ().playBGM ();
+		//SoundCtrl.getInstance ().playBGM ();
 	
 			if (GlobalDataScript.homePanel != null) {
 				GlobalDataScript.homePanel.GetComponent<HomePanelScript> ().removeListener ();

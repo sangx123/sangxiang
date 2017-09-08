@@ -137,15 +137,15 @@ public class HomePanelScript : MonoBehaviour {
 	 *初始化显示界面 
 	 */
 	private void initUI(){
-		if (GlobalDataScript.loginResponseData != null) {
-			headIcon = GlobalDataScript.loginResponseData.account.headicon;
-			string nickName = GlobalDataScript.loginResponseData.account.nickname;
-			int roomCardcount = GlobalDataScript.loginResponseData.account.roomcard;
-			cardCountText.text = roomCardcount+"";
-			nickNameText.text = nickName;
-			IpText.text = "ID:" + GlobalDataScript.loginResponseData.account.uuid;
-			GlobalDataScript.loginResponseData.account.roomcard = roomCardcount;
-		}
+		//if (GlobalDataScript.loginResponseData != null) {
+		//	headIcon = GlobalDataScript.loginResponseData.account.headicon;
+		//	string nickName = GlobalDataScript.loginResponseData.account.nickname;
+		//	int roomCardcount = GlobalDataScript.loginResponseData.account.roomcard;
+		//	cardCountText.text = roomCardcount+"";
+		//	nickNameText.text = nickName;
+		//	IpText.text = "ID:" + GlobalDataScript.loginResponseData.account.uuid;
+		//	GlobalDataScript.loginResponseData.account.roomcard = roomCardcount;
+		//}
         StartCoroutine (LoadImg());
 	//	CustomSocket.getInstance ().sendMsg (new GetContactInfoRequest ());
 
@@ -203,16 +203,35 @@ public class HomePanelScript : MonoBehaviour {
 
 	/***
 	 * 打开进入房间的对话框
-	 * 
+	 * 修改为开始游戏界面
 	 */ 
 	public void openEnterRoomDialog(){
-		
-		if (GlobalDataScript.roomVo == null || GlobalDataScript.roomVo.roomId == 0) {
-			loadPerfab ("Prefab/Panel_Enter_Room");
 
-		} else {
-			TipsManagerScript.getInstance ().setTips("当前正在房间状态，无法加入新的房间");
+		//if (GlobalDataScript.roomVo == null || GlobalDataScript.roomVo.roomId == 0) {
+		//	loadPerfab ("Prefab/Panel_Enter_Room");
+
+		//} else {
+		//	TipsManagerScript.getInstance ().setTips("当前正在房间状态，无法加入新的房间");
+		//}
+		if (GlobalDataScript.gamePlayPanel != null)
+		{
+			GlobalDataScript.gamePlayPanel.GetComponent<MyMahjongScript>().exitOrDissoliveRoom();
 		}
+		//GlobalDataScript.reEnterRoomData = JsonMapper.ToObject<RoomJoinResponseVo> (response.message);
+
+		//      for (int i = 0; i < GlobalDataScript.reEnterRoomData.playerList.Count; i++) {
+		//          AvatarVO itemData = GlobalDataScript.reEnterRoomData.playerList [i];
+		//          if (itemData.account.openid == GlobalDataScript.loginResponseData.account.openid) {
+		//              //GlobalDataScript.loginResponseData.account.uuid = itemData.account.uuid;
+		//              //ChatSocket.getInstance ().sendMsg (new LoginChatRequest(GlobalDataScript.loginResponseData.account.uuid));
+		//              break;
+		//          }
+		//      }
+
+		GlobalDataScript.gamePlayPanel = PrefabManage.loadPerfab("Prefab/Panel_GamePlay");
+		//removeListener ();
+		Destroy(this);
+		Destroy(gameObject);
 	}
 
 	/**
