@@ -141,11 +141,15 @@ public class MyMahjongScript : MonoBehaviour
     private bool waitting = false;
 
     //======================新增=========================
-    List<int> allList = new List<int>();
-    List<List<int>> rightList = new List<List<int>>();
-    List<List<int>> topList = new List<List<int>>();
+   
+
+    List<int> allList = new List<int>(); //用来显示所有的牌
+										 
+	List<List<int>> rightList = new List<List<int>>();//用来解决ai怎么打牌用的
+	List<List<int>> topList = new List<List<int>>();
     List<List<int>> leftList = new List<List<int>>();
 
+    public static PutCard putOutCardStruct=new PutCard();
 
 	void Start()
 	{
@@ -1195,7 +1199,12 @@ public class MyMahjongScript : MonoBehaviour
 			//CustomSocket.getInstance ().sendMsg (new PutOutCardRequest(cardvo));
             //牌打出去后清空自己的碰杠胡按钮
             btnActionScript.cleanBtnShow();
-			toNext();
+            putOutCardStruct.CardPosition = 0;
+            putOutCardStruct.CardToNum = SelfAndOtherPutoutCard;
+            //如果自己打出去的牌ai没有要碰杠的话就继续
+            if(!checkAIPengGangHuFromPlayer()){
+               toNext(); 
+            }
             Debug.Log("cardChange finish");
            
 		}
@@ -2149,7 +2158,10 @@ public class MyMahjongScript : MonoBehaviour
 	}
 
 
-    //当自己打完牌之后轮到下家摸牌和打牌
+	//当自己打完牌之后轮到下家摸牌和打牌
+	/// <summary>
+    /// 下一家摸牌
+	/// </summary>
 	public void toNext()
 	{
         //如果是流局的话结束
@@ -2442,7 +2454,8 @@ public class MyMahjongScript : MonoBehaviour
 		pengGangHuEffectCtrl();
 		SoundCtrl.getInstance().playSoundByAction("hu", 0);
 		btnActionScript.cleanBtnShow();
-        openGameOverPanelSignal();
+        //openGameOverPanelSignal();
+        toNext();
 	}
 
 	public void myGangBtnClick()
@@ -2616,4 +2629,183 @@ public class MyMahjongScript : MonoBehaviour
         }
 
 	}
+
+    public bool checkAIPengGangHuFromPlayer(){
+        bool result = false;
+        for (int i = 0; i < 4; i++)
+        {
+            if (i == putOutCardStruct.CardPosition)
+            {
+                continue;
+            }
+            if (i ==1){
+                //检查上家的胡牌情况
+            }
+            if(i==2){
+                //检查下家的胡牌情况
+            }
+            if(i==3)
+        }
+
+
+        return result;
+    }
+
+
+	/// <summary>
+	/// 检查ai，碰，杠，胡(别人打ai碰杠胡)
+    /// 打出来的牌肯定只有一家才能碰，只有一家才能杠，3家都可以胡，
+    /// 先判断有没有人想杠的，然后判断有没有人想碰的
+    /// toNext之前先判断是否有人
+	/// </summary>
+	/// <returns><c>true</c>, if peng gang hu was checked, <c>false</c> otherwise.</returns>
+	//private bool checkAiPengGangHuFromOthersPutCard()
+	//{
+ //       if(cu)
+ //       for (int i = 0; i < 4;i++){
+ //           if (i == 0) break;
+
+ //       }
+	//	Debug.Log("checkPengGangHuFromOthersPutCard");
+	//	bool result = false;
+	//	int count = 0;
+	//	for (int i = 0; i < handerCardList[0].Count; i++)
+	//	{
+	//		GameObject temp = handerCardList[0][i];
+	//		int tempCardPoint = temp.GetComponent<bottomScript>().getPoint();
+	//		if (tempCardPoint == putOutCardPoint)
+	//		{
+	//			count++;
+	//		}
+	//	}
+	//	if (count == 2)
+	//	{
+	//		btnActionScript.showBtn(GameConfig.PENG);
+	//		result = true;
+	//	}
+	//	if (count == 3)
+	//	{
+	//		//别人打出来的牌为明杠
+	//		gangKind = 0;
+	//		btnActionScript.showBtn(GameConfig.PENG);
+	//		btnActionScript.showBtn(GameConfig.GANG);
+	//		result = true;
+
+	//	}
+	//	if (checkHuPai(putOutCardPoint))
+	//	{
+	//		btnActionScript.showBtn(GameConfig.HU);
+	//		result = true;
+	//	}
+	//	return result;
+	//}
+	///// <summary>
+	///// 检查自摸杠，或者自摸胡牌
+	///// </summary>
+	//private void checkGangHuFromSelf()
+	//{
+	//	Debug.Log("checkGangHuFromSelf");
+	//	int count = 0;
+	//	//检测手上牌是否有暗杠
+	//	for (int i = 0; i < handerCardList[0].Count; i++)
+	//	{
+	//		GameObject temp = handerCardList[0][i];
+	//		int tempCardPoint = temp.GetComponent<bottomScript>().getPoint();
+	//		if (tempCardPoint == MoPaiCardPoint)
+	//		{
+	//			count++;
+	//		}
+	//	}
+	//	//检测手上的牌和碰的牌是否有杠
+	//	for (int i = 0; i < handerCardList[0].Count; i++)
+	//	{
+	//		int tempCardPoint = handerCardList[0][i].GetComponent<bottomScript>().getPoint();
+	//		for (int j = 0; j < PengGangCardList.Count; j++)
+	//		{
+	//			int tempPengGangCard = PengGangCardList[j][0].GetComponent<TopAndBottomCardScript>().getPoint();
+	//			if (PengGangCardList[j].Count == 3 && tempCardPoint == tempPengGangCard)
+	//			{
+	//				gangKind = 0;
+	//				btnActionScript.showBtn(GameConfig.GANG);
+	//			}
+	//		}
+	//	}
+
+	//	if (count == 4)
+	//	{
+	//		//自己摸的牌为暗杠
+	//		gangKind = 1;
+	//		btnActionScript.showBtn(GameConfig.GANG);
+	//	}
+	//	if (checkHuPai())
+	//	{
+	//		btnActionScript.showBtn(GameConfig.HU);
+	//	}
+	//}
 }
+//===========================================================重要===============================================================
+/*ai与玩家碰杠胡分析
+4中情况下讨论问题
+///1， 自己打出牌之后直接   ToNext(叫牌用)   
+/// ①，先判断ai是否有胡牌               有的话ai胡牌，最后一个胡牌的人 胡牌之后继续ToNext（桌上最后一张牌来判断）
+/// ②，没有ai胡牌的话判断ai是否有杠，    有的话ai杠牌，摸牌，打牌         重新ToNext判断（桌上最后打的一张牌来判断）
+/// ③，没有ai杠牌的话然后判断ai是否有碰， 有的话ai碰牌打牌（桌上最后打的一张牌来判断）
+/// ④，都没有的情况下    下家摸牌                              
+///2， ai打出牌之后，如果自己没有碰杠胡的话  ToNext 
+/// 需要修改
+///ai打出牌之后，
+///二，
+/// 
+/// ①，先判断ai是否有胡牌               有的话ai胡牌，最后一个胡牌的人 
+/// 1.2然后检测自己是否有胡牌 如果别人有胡牌的话 就只显示显示胡，
+/// 
+/// ②，没有ai胡牌的话判断ai是否有杠，    有的话ai杠牌，摸牌，打牌         重新ToNext判断（桌上最后打的一张牌来判断）
+/// 判断自己是否有杠牌 有的话显示杠牌
+/// ③，没有ai杠牌的话然后判断ai是否有碰， 有的话ai碰牌打牌（桌上最后打的一张牌来判断）  
+///3， 自己胡牌的时候ToNext 下一家直接接牌
+///4， 别人打的牌 自己点过的时候 ToNext
+/// 
+/// 
+/// 1，ai有胡牌，自己有胡牌杠牌，   情况1=====》ai胡牌，自己这边只能显示是否胡牌
+///                             =====》点击胡，下一家，点击过也是下一家
+/// 2，ai有胡牌，自己没有胡牌，有杠牌====》ai胡牌，自己这边什么都不显示
+/// 3，ai没有胡牌，ai有杠牌，自己有胡牌  情况2===》显示胡牌，点击过的时候，ai碰杠
+///                               ===》点击胡的时候，直接下家摸牌
+/// 4，ai没有胡牌，ai有杠牌，自己没有胡牌，自己没有杠牌===》ai碰杠
+/// 5，ai没有胡牌，ai没有杠牌，自己有胡牌===》显示胡牌。点击过的   直接下家摸牌
+/// 6，ai没有胡牌，ai没有杠牌，自己有杠牌===》显示杠牌
+/// 
+/// 
+/// 当ai出牌之后：
+/// 1，判断ai是否有胡牌aiHuFlag ，aiHuFlag=true有的话ai直接先胡牌  
+/// 情况1（1）
+/// aiHuFlag=true
+/// zijiHuFlag=true
+/// 2，判断自己是否有胡牌zijiHuFlag，zijiHuFlag=true有的话只显示胡和过，
+///    有的话，点击胡pass：toNext，胡也toNext
+/// 情况4（2）
+///  aiHuFlag=true
+///  zijiHuFlag=false
+///  直接toNext
+///  情况2（5，3）
+/// aiHuFlag =false;
+/// zijiHuFlag=true
+/// 3,zijiHuFlag=true 自己有胡牌，
+///   继续检查自己的碰杠胡，自己有碰杠话显示，可以直接碰杠胡
+///   自己点击过的时候，检测ai是否有碰杠，有的话直接碰杠
+/// 情况3（6，4）
+/// aiHuFlag =false;
+/// zijiHuFlag=false  检测自己碰杠如果有的话 显示碰杠，没有的话 检测ai的碰杠，ai直接碰杠
+/// 
+/// 
+/// 
+/// 打出来的牌进行状态检测
+/// leftHu，topHu，rightHu，bottomHu
+/// 打牌人的索引cardPositionIndex 
+/// 
+/// 根据这个索引按顺序判断轮到谁接牌
+/// 
+/// 最新一张牌的状态判断
+/// isGangCard是否是杠牌，进行杠上花的检测
+/// 
+*/

@@ -1,12 +1,17 @@
 ﻿<Properties StartupConfiguration="{01278091-48EA-3A10-0751-D230C4907E84}|">
   <MonoDevelop.Ide.ItemProperties.kehuduan PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Game_Scenes/MyMahjongScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/IOSIpv6.cs">
     <Files>
       <File FileName="Assets/Script/Exit_App/ExitAppScript.cs" Line="27" Column="25" />
       <File FileName="Assets/Script/Game_Scenes/Over_Game/GameOverScript.cs" Line="367" Column="67" />
       <File FileName="Assets/Script/Login_Panle_Event/LoginSystemScript.cs" Line="76" Column="37" />
-      <File FileName="Assets/Script/Home_Panel_Event/HomePanelScript.cs" Line="218" Column="86" />
-      <File FileName="Assets/Script/Game_Scenes/MyMahjongScript.cs" Line="2604" Column="16" />
+      <File FileName="Assets/Script/Home_Panel_Event/HomePanelScript.cs" Line="40" Column="1" />
+      <File FileName="Assets/Script/Game_Scenes/MyMahjongScript.cs" Line="2647" Column="19" />
+      <File FileName="../../../Downloads/download.php" Line="1" Column="1" />
+      <File FileName="Assets/Script/utilTool/HuUtil.cs" Line="282" Column="5" />
+      <File FileName="Assets/Script/InitializationConfigScritp.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/IOSIpv6.cs" Line="13" Column="17" />
+      <File FileName="Assets/Animations/UI_MicPhoneScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

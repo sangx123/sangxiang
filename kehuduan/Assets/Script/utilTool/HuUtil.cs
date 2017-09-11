@@ -254,6 +254,8 @@ public static class HuUtil
 		return count4;
 	}
 
+
+
 	/// <summary>
 	/// 转换成1到27对应的牌的个数数组
 	/// </summary>
@@ -262,8 +264,9 @@ public static class HuUtil
 	public static List<int> ToCardAndCardNumArray(List<int> list)
 	{
 		List<int> paiList = new List<int>();
+		//添加第一个空数据
 		paiList.Add(0);
-		for (int i = 0; i < 27; i++)
+		for (int i = 1; i <= 27; i++)
 		{
 			paiList.Add(0);
 			for (int j = 0; j < list.Count; j++)
@@ -276,6 +279,7 @@ public static class HuUtil
 		}
 		return paiList;
 	}
+
 	/// <summary>
 	/// 将对，胡牌判断
 	/// </summary>
