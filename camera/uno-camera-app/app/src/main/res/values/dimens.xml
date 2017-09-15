@@ -1,0 +1,95 @@
+<resources>
+
+	<!-- Default screen margins, per the Android Design guidelines. -->
+	<dimen name="activity_horizontal_margin">16dp</dimen>
+	<dimen name="activity_vertical_margin">16dp</dimen>
+
+	<dimen name="settingsSidePadding">35dp</dimen>
+
+	<dimen name="camera_list_item_half_padding">6dp</dimen>
+
+	<!-- MELODY values -->
+	<dimen name="melody_raw_height">40dp</dimen>
+
+
+	<dimen name="event_log_motion_image_width">183dp</dimen>
+	<dimen name="event_log_motion_image_height">110dp</dimen>
+
+	<dimen name="motion_event_image_height">200dp</dimen>
+	<dimen name="motion_event_image_width">355dp</dimen>
+
+	<!-- VideoView values -->
+	<dimen name="bottom_video_view_height_landscape">125dp</dimen>
+	<dimen name="bottom_video_view_width_landscape">140dp</dimen>
+	<dimen name="bottom_video_view_margin_bottom_landscape">50dp</dimen>
+
+	<!-- Tag setup values -->
+	<dimen name="after_fixing_tag_layout_padding_bottom">30dp</dimen>
+	<dimen name="after_fixing_tag_layout_padding_top">30dp</dimen>
+	<dimen name="after_fixing_tag_layout_padding_left">20dp</dimen>
+	<dimen name="after_fixing_tag_layout_padding_right">20dp</dimen>
+	<dimen name="wait_10_sec_layout_margin_top">30dp</dimen>
+	<dimen name="wait_10_sec_layout_margin_left">20dp</dimen>
+	<dimen name="wait_10_sec_layout_margin_right">40dp</dimen>
+	<dimen name="setup_tag_continue_height">40dp</dimen>
+	<dimen name="setup_tag_text_size">14sp</dimen>
+
+	<dimen name="number_picker_halfday_width">70dp</dimen>
+	<integer name="mvr_crud_time_ratio_1">2</integer>
+	<integer name="mvr_crud_time_ratio_2">3</integer>
+	<dimen name="camera_bottom_line">40dp</dimen>
+	<!-- Offline Mode warning view -->
+	<dimen name="offline_mode_warning_view_padding">5dip</dimen>
+	<dimen name="offline_mode_warning_view_text_margin_left">10dip</dimen>
+	<dimen name="offline_mode_warning_view_text_size">17sp</dimen>
+	<dimen name="offline_mode_warning_view_desc_size">14sp</dimen>
+
+	<dimen name="quick_mode_settings_view_text_size">15sp</dimen>
+	<dimen name="quick_mode_setting_padding_top">30dp</dimen>
+
+	<integer name="default_circle_indicator_orientation">0</integer>
+	<bool name="default_circle_indicator_centered">true</bool>
+	<bool name="default_circle_indicator_snap">false</bool>
+	<dimen name="default_circle_indicator_radius">4dp</dimen>
+	<dimen name="default_circle_indicator_stroke_width">0dp</dimen>
+
+	<dimen name="event_button_start_margin">25dp</dimen>
+	<dimen name="event_history_text_size">15sp</dimen>
+	<dimen name="event_count_text_size">13sp</dimen>
+	<dimen name="event_recent_text_size">12sp</dimen>
+	<dimen name="event_history_header_start_margin">20dp</dimen>
+	<dimen name="event_history_header_height">55dp</dimen>
+	<dimen name="event_promot_button_end_margin">12dp</dimen>
+	<dimen name="event_history_date_height">34dp</dimen>
+
+	<dimen name="floating_action_button_size">56dp</dimen>
+	<dimen name="elevation_3">3dp</dimen>
+	<dimen name="thumb_width">15dp</dimen>
+	<dimen name="thumb_height">15dp</dimen>
+
+	<dimen name="event_notification_image_width">126dp</dimen>
+	<dimen name="event_notification_image_height">76dp</dimen>
+
+	<dimen name="viewfinder_player_height">210dp</dimen>
+
+	<dimen name="ota_view_margin">20dp</dimen>
+	<dimen name="ota_please_wait_size">22sp</dimen>
+
+    <!--Nest product dimensions start here-->
+
+    <dimen name="nest_logo_top_margin">20dp</dimen>
+	<dimen name="get_started_button_size">60dp</dimen>
+    <dimen name="congratulation_margin_top">163dp</dimen>
+    <dimen name="congratulation_sub_msg">20dp</dimen>
+    <dimen name="congrats_get_started">80dp</dimen>
+    <dimen name="congrats_sub_text_width">270dp</dimen>
+    <dimen name="nest_logos_height">78dp</dimen>
+    <dimen name="nest_dashboard_height">131dp</dimen>
+	<dimen name="nest_home_height">85dp</dimen>
+	<dimen name="nest_dashboard_main_height">180dp</dimen>
+	<dimen name="nest_smoke_warning_height">277dp</dimen>
+
+	<dimen name="plan_camera_list_bottom_margin">45dp</dimen>
+
+</resources>
+

@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+  <ImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
+      android:src="@drawable/background_sensor"/>
+
+  <TextView
+      android:id="@+id/choose_camera_text"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="20dp"
+      android:layout_marginTop="20dp"
+      android:text="@string/choose_camera_to_add_moto_tag"
+      style="@style/TextAppearance.AppCompat.Medium"
+      android:textColor="@color/white"/>
+
+  <TextView
+      android:id="@+id/select_one_camera_text"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:padding="5dp"
+      android:gravity="center"
+      android:layout_centerVertical="true"
+      android:background="@color/white"
+      android:layout_below="@id/choose_camera_text"
+      android:text="@string/select_one_to_mototag_setup"
+      style="@style/TextAppearance.AppCompat.Medium"
+      android:textColor="@color/dark_grey"/>
+
+  <ListView
+      android:id="@+id/choose_camera_list"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/select_one_camera_text"
+      android:padding="20dp"/>
+
+
+</RelativeLayout>

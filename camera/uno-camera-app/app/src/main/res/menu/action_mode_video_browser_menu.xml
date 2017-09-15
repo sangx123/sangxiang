@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+      android:id="@+id/menu_select_all"
+      android:icon="@drawable/ic_select_all_white_48dp"
+      android:title="Select All"
+      app:showAsAction="always"/>
+  <item
+      android:id="@+id/menu_delete"
+      android:icon="@drawable/vector_drawable_delete_enable"
+      android:title="@string/Delete"
+      app:showAsAction="always"/>
+
+  <item
+      android:id="@+id/menu_share"
+      android:icon="@drawable/share_enabled"
+      android:title="@string/Delete"
+      app:showAsAction="always"/>
+
+</menu>

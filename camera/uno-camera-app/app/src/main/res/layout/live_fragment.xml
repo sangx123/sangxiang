@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/content_frame"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent">
+
+    <base.hubble.CustomVerticalScrollView
+        android:id="@+id/vscroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <base.hubble.CustomHorizontalScrollView
+            android:id="@+id/hscroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.media.ffmpeg.android.FFMpegMovieViewAndroid
+                    android:id="@+id/imageVideo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+        </base.hubble.CustomHorizontalScrollView>
+    </base.hubble.CustomVerticalScrollView>
+
+    <TextView
+        android:id="@+id/txtCamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round_corner"
+        android:shadowColor="@color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:textColor="@color/white"/>
+    <RelativeLayout
+        android:id="@+id/layout_frame_video"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textFrameRate"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:background="@drawable/temp_bg"
+            android:gravity="center"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/textResolution"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textFrameRate"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/temp_bg"
+            android:gravity="center"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/textBitrate"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textResolution"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/temp_bg"
+            android:gravity="center"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/textGlobalBitrate"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textBitrate"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/temp_bg"
+            android:gravity="center"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:visibility="visible"/>
+
+        <LinearLayout
+            android:id="@+id/layoutWifiSignal"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/textGlobalBitrate"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/temp_bg"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_connection_type"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/setup_wifi_green"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/textWifiSignal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/left_side_menu_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/safe_mode_background">
+
+        <include
+            android:id="@+id/left_side_menu"
+            layout="@layout/bb_side_menu_landscape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"/>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/zoomBarContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+
+        <com.hubble.ui.VerticalSeekBar
+            android:id="@+id/zoomBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/seekbar_scrubber_progress_horizontal_holo_light"
+            android:thumb="@drawable/seekbar_scrubber_control_selector_holo_light"/>
+    </FrameLayout>
+
+
+</RelativeLayout>

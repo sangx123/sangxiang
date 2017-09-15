@@ -1,0 +1,1 @@
+gradlew --parallel --daemon assembleHubbleRelease -x lint

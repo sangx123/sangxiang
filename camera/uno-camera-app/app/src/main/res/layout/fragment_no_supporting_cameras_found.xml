@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+  <ImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
+      android:src="@drawable/background_sensor"/>
+
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="center"
+      android:baselineAligned="false">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:background="#24fffcef">
+
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/imageView_no_camera_info"
+          android:src="@drawable/info_icon_no_supported_camera"
+          android:padding="5dp"/>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          style="@style/TextAppearance.AppCompat.Large"
+          android:text="@string/no_supporting_cameras_found"
+          android:layout_gravity="center_vertical"
+          android:textColor="@color/white"
+          android:id="@+id/textView_no_supporting_cameras"
+          android:layout_weight="0.7"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="40dp">
+
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/imageView_banner_focus86"
+          android:src="@drawable/banner_focus86"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+      <Button
+          android:id="@+id/buy_focus_86_camera"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/buy_f86_camera"
+          android:layout_weight="0.5"
+          android:layout_gravity="bottom"
+          android:textStyle="bold"
+          android:textSize="16dp"
+          android:background="@android:color/black"
+          android:textColor="#ff68ac1b"/>
+
+      <Button
+          android:id="@+id/install_F86_camera"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/install_camera"
+          android:layout_weight="0.5"
+          android:layout_gravity="bottom"
+          android:textStyle="bold"
+          android:textSize="16dp"
+          android:background="@android:color/black"
+          android:textColor="#ff33639b"/>
+    </LinearLayout>
+  </LinearLayout>
+</RelativeLayout>

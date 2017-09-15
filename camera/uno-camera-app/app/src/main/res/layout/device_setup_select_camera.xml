@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/header_setup"
+        layout="@layout/activity_toolbar" />
+
+
+    <LinearLayout
+        android:id="@+id/select_orbit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="122dp"
+        android:orientation="vertical"
+        android:background="@drawable/setup_select_orbit"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_blue"
+            android:textSize="18sp"
+            android:fontFamily="Roboto-Regular"
+            android:text="@string/setup_select_orbit"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="28dp"/>
+        
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#80999999"/>
+
+
+    <LinearLayout
+        android:id="@+id/select_73_layout"
+        android:layout_width="match_parent"
+        android:layout_height="122dp"
+        android:orientation="vertical"
+        android:background="@drawable/focus_73_select"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_blue"
+            android:textSize="18sp"
+            android:fontFamily="Roboto-Regular"
+            android:text="@string/setup_select_73"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="28dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#80999999"/>
+
+
+    <LinearLayout
+        android:id="@+id/select_72_layout"
+        android:layout_width="match_parent"
+        android:layout_height="122dp"
+        android:orientation="horizontal"
+        android:background="@drawable/focus_72_select"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_blue"
+            android:textSize="18sp"
+            android:fontFamily="Roboto-Regular"
+            android:text="@string/setup_select_72"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="28dp"
+            android:paddingRight="60dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#80999999"/>
+
+
+    <LinearLayout
+        android:id="@+id/select_other_layout"
+        android:layout_width="match_parent"
+        android:layout_height="122dp"
+        android:orientation="vertical"
+        android:background="@drawable/setup_select_other"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_blue"
+            android:textSize="18sp"
+            android:fontFamily="Roboto-Regular"
+            android:text="@string/setup_select_other"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="28dp"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

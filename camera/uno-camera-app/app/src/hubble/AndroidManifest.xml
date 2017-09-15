@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+  <permission
+      android:name="com.hubbleconnected.camera.permission.C2D_MESSAGE"
+      android:protectionLevel="signature"/>
+  <uses-permission android:name="com.hubbleconnected.camera.permission.C2D_MESSAGE"/>
+
+  <application
+      android:name="com.hubble.HubbleApplication"
+      android:allowTaskReparenting="false"
+      android:icon="@drawable/ic_launcher"
+      android:installLocation="auto"
+      android:label="@string/app_brand_application_name"
+      android:largeHeap="true"
+      android:logo="@drawable/actionbar_logo"
+      android:theme="@style/Theme.Hubble"
+      tools:replace="android:label"
+      android:supportsRtl="false">
+      <provider
+          android:name="android.support.v4.content.FileProvider"
+          android:authorities="com.hubbleconnected.camera.fileprovider"
+          android:grantUriPermissions="true"
+          android:exported="false">
+          <meta-data
+              android:name="android.support.FILE_PROVIDER_PATHS"
+              android:resource="@xml/filepath" />
+      </provider>
+  </application>
+
+</manifest>

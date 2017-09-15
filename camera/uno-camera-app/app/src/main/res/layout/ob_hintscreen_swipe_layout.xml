@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent">
+	<RelativeLayout
+		android:id="@+id/ob_hint_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp">
+
+		<ImageView
+			android:id="@+id/ob_hint_image"
+			android:layout_width="match_parent"
+			android:layout_height="380dp"
+			android:layout_alignParentTop="true"
+			android:layout_marginBottom="30dp"
+			android:scaleType="fitXY"
+		/>
+		<TextView
+			android:id="@+id/ob_hint_text1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/ob_hint_image"
+			android:layout_marginBottom="5dp"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+			android:fontFamily="Roboto-Regular"
+			android:textStyle="bold"
+			android:textColor="@color/white"
+			android:textSize="24sp"
+		/>
+		<TextView
+			android:id="@+id/ob_hint_text2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/ob_hint_text1"
+			android:layout_marginBottom="10dp"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="40dp"
+			android:fontFamily="Roboto-Light"
+			android:textColor="@color/white"
+			android:textSize="18sp"
+		/>
+	</RelativeLayout>
+
+	<LinearLayout
+		android:id="@+id/ob_hint_end_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="50dp"
+		android:layout_marginRight="30dp"
+		android:layout_marginTop="80dp"
+		android:orientation="vertical"
+		android:visibility="gone">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/ob_hint_hubble_app"
+			android:textColor="@color/white"
+			android:textSize="32sp"/>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="100dp"
+			android:orientation="horizontal">
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="5dp"
+				android:src="@drawable/ob_hint_faster"
+			/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="36dp"
+				android:text="@string/faster"
+				android:textColor="@color/white"
+				android:textSize="28sp"
+				android:textStyle="bold"/>
+
+		</LinearLayout>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="60dp"
+			android:orientation="horizontal">
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:src="@drawable/ob_hint_reliable"
+			/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="30dp"
+				android:text="@string/reliable"
+				android:textColor="@color/white"
+				android:textSize="28sp"
+				android:textStyle="bold"/>
+
+		</LinearLayout>
+		<!--<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="60dp"
+			android:orientation="horizontal">
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="9dp"
+				android:src="@drawable/ob_hint_secure"
+			/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="40dp"
+				android:text="@string/secure"
+				android:textColor="@color/white"
+				android:textSize="28sp"
+				android:textStyle="bold"/>
+		</LinearLayout> -->
+	</LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header_app_settings"
+        layout="@layout/activity_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/dnd_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="Roboto-Regular"
+                    android:text="@string/do_not_disturb"
+                    android:textColor="@color/text_blue"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/path" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/drawer_list_divider" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/notification_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="Roboto-Regular"
+                    android:text="@string/app_settings_notification"
+                    android:textColor="@color/text_gray"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/sound_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/notification_txt"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="Roboto-Regular"
+                    android:text="@string/app_settings_sound"
+                    android:textColor="@color/text_blue"
+                    android:textSize="16sp" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/sound_on_off_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/notification_txt"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:checked="true"
+                    app:theme="@style/SwitchCompact_color" />
+
+                <TextView
+                    android:id="@+id/sound_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sound_txt"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="Roboto-Regular"
+                    android:text="@string/app_settings_sound_hint"
+                    android:textColor="@color/text_gray"
+                    android:textSize="12sp" />
+
+
+                <View
+                    android:id="@+id/separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignLeft="@id/sound_txt"
+                    android:layout_below="@id/sound_hint"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/drawer_list_divider" />
+
+                <TextView
+                    android:id="@+id/vibrate_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="Roboto-Regular"
+                    android:text="@string/app_settings_vibrate"
+                    android:textColor="@color/text_blue"
+                    android:textSize="16sp" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/vibrate_on_off_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/separator"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"
+                    app:theme="@style/SwitchCompact_color" />
+
+                <TextView
+                    android:id="@+id/vibrate_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/vibrate_txt"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="Roboto-Regular"
+                    android:text="@string/app_settings_vibrate_hint"
+                    android:textColor="@color/text_gray"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/drawer_list_divider" />
+
+            <LinearLayout
+                android:id="@+id/selecttimeformat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="Roboto-Regular"
+                    android:text="@string/time_format"
+                    android:textColor="@color/main_blue"
+                    android:textSize="16sp" />
+
+                <RadioGroup
+                    android:id="@+id/rg_timeformat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_twelve"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/time_am_pm"
+                        android:textColor="@color/main_blue" />
+
+                    <RadioButton
+                        android:id="@+id/rb_twentyfour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/time_non_am_pm"
+                        android:textColor="@color/main_blue" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/drawer_list_divider" />
+
+            <LinearLayout
+                android:id="@+id/selecttempformat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="Roboto-Regular"
+                    android:text="@string/temperature"
+                    android:textColor="@color/main_blue"
+                    android:textSize="16sp" />
+
+                <RadioGroup
+                    android:id="@+id/tempformat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_celsius"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dp"
+                        android:text="\u00B0C"
+
+                        android:textColor="@color/main_blue" />
+
+                    <RadioButton
+                        android:id="@+id/rb_fh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:paddingRight="10dp"
+                        android:text="\u00B0F"
+                        android:textColor="@color/main_blue" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/drawer_list_divider" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="Roboto-Medium"
+                    android:text="@string/background_monitoring"
+                    android:textColor="@color/text_blue"
+                    android:textSize="16sp" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/bgmonitor_on_off_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:checked="true"
+                    app:theme="@style/SwitchCompact_color" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/drawer_list_divider" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/timeout_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="Roboto-Medium"
+                    android:text="@string/enable_video_timeout_alert"
+                    android:textColor="@color/text_blue"
+                    android:textSize="16sp" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/timeout_on_off_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:checked="true"
+                    app:theme="@style/SwitchCompact_color" />
+
+                <TextView
+                    android:id="@+id/timeout_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/timeout_txt"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="Roboto-Regular"
+                    android:text="@string/remote_timeout_msg"
+                    android:textColor="@color/text_gray"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/drawer_list_divider" />
+
+            <TextView
+                android:id="@+id/sendlogs_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="Roboto-Medium"
+                android:text="@string/send_application_log"
+                android:textColor="@color/text_blue"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

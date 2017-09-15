@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/root_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/sensor_bg_instruction">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center"
+      android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_singlecam_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <LinearLayout
+        android:id="@+id/relative2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/my_singlecam_toolbar"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+      <TextView
+          android:id="@+id/camera_instruction_setupComplete"
+          style="@style/Base.TextAppearance.AppCompat.Medium"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="20dp"
+          android:gravity="left"
+          android:textSize="23sp"
+          android:text="@string/name_your_open_sensor"
+          android:textColor="@android:color/white"
+          android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/renameCam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_name_sensor"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-10dp"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:gravity="left"
+            android:layout_marginLeft="10dp"
+            android:textColor="@android:color/white"
+            android:text="@string/eg_sensor"/>
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="2"
+          android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/t2"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="@string/tip_sensor"
+            android:textColor="@android:color/white"/>
+      </RelativeLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:background="@color/transparent_light_white"
+          android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/connect_btn"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/black" />
+
+        <Button
+            android:id="@+id/end_screen_btn_live_view"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="@string/continue_cap"
+            android:textColor="@color/bright_blue"/>
+      </LinearLayout>
+    </LinearLayout>
+  </LinearLayout>
+</FrameLayout>

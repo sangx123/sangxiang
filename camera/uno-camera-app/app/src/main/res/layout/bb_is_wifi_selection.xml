@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/root_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <ImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
+      android:src="@drawable/blur_default"/>
+
+  <LinearLayout
+      android:id="@+id/wifi_selection_selectWifiHolder"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/transparent_light_white"
+      android:gravity="center"
+      android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_singlecam_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <TextView
+        android:id="@+id/txtSelectWiFi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/select_wifi_network"
+        android:textColor="@color/registration_text"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+      <TextView
+        android:id="@+id/txt_camera_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"/>
+
+    <ListView
+        android:id="@+id/wifi_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:fadingEdge="vertical"
+        android:fadingEdgeLength="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/bright_blue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent_light_white"
+        android:orientation="horizontal">
+
+      <Button
+          android:id="@+id/buttonSkipWiFiSetup"
+          style="?android:attr/borderlessButtonStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="@string/skip"
+          android:textColor="@color/primary_text_disabled_material_dark"/>
+
+      <Button
+          android:id="@+id/buttonConnect"
+          style="?android:attr/borderlessButtonStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="@string/connect"
+          android:textColor="@color/bright_blue"/>
+    </LinearLayout>
+  </LinearLayout>
+</FrameLayout>

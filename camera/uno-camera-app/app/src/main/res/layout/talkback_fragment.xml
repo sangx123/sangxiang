@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/talkback_root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transperent_color">
+
+  <ImageView
+      android:id="@+id/close_talkback"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentRight="true"
+      android:layout_marginTop="12dp"
+      android:layout_marginRight="12dp"
+      android:padding="2dp"
+      android:src="@drawable/close"/>
+
+
+  <TextView
+      android:id="@+id/textTalkback_land"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:text="@string/touch_to_talk"
+      android:textColor="@color/textColor"
+      android:textSize="15sp"
+      android:visibility="gone"/>
+
+  <ImageView
+      android:id="@+id/ripple2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:src="@drawable/ripple_1"
+      android:visibility="invisible"/>
+
+  <ImageView
+      android:id="@+id/ripple1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:src="@drawable/ripple_1"
+      android:visibility="invisible"/>
+
+  <ImageView
+      android:id="@+id/imgTalkback"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:layout_centerHorizontal="true"
+      android:src="@drawable/talk" />
+
+
+
+  <!--<ImageView
+      android:id="@+id/imgStop"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:src="@drawable/stop"
+      android:visibility="gone" />-->
+
+<!--  <ImageView
+      android:id="@+id/imgTalkback"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:src="@drawable/camera_action_mic"/>-->
+
+ <!-- <TextView
+      android:id="@+id/textTalkback"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/imgTalkback"
+      android:layout_centerHorizontal="true"
+      android:gravity="center"
+      android:text="@string/touch_to_talk"
+      android:textColor="@color/textColor"
+      android:textSize="30sp"/>-->
+
+  <TextView
+      android:id="@+id/textTalkback"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/imgTalkback"
+      android:layout_centerHorizontal="true"
+      android:fontFamily="Roboto-Regular"
+      android:text="@string/viewfinder_mic"
+      android:textColor="@color/white"
+      android:textSize="12sp" />
+
+</RelativeLayout>

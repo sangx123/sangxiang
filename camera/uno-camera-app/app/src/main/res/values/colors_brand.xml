@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="app_neutral_background">#36474f</color>
+  <color name="app_theme_color">#253238</color>
+  <color name="app_action_bar_color">#36474f</color>
+
+  <color name="app_text_color">#ffffffff</color>
+  <color name="app_text_color_inverted">#ff000000</color>
+
+  <color name="app_text_on_highlight_color">#ff000000</color>
+  <color name="app_hint_text_on_highlight_color">#ff191919</color>
+
+
+  <color name="app_login_button_background">#00acf7</color>
+  <color name="app_login_button_textcolor">#ffffff</color>
+
+</resources>

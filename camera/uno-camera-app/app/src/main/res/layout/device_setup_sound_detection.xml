@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/header_setup"
+        layout="@layout/activity_toolbar" />
+
+    <ImageView
+        android:id="@+id/sound_detection_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_setup"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/sounddetection"/>
+
+    <TextView
+        android:id="@+id/sound_detection_txt"
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sound_detection_img"
+        android:layout_marginTop="31dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/text_blue"
+        android:textSize="20sp"
+        android:fontFamily="Roboto-Light"
+        android:text="@string/setup_sound_detection"/>
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/sound_on_off_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sound_detection_txt"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:checked="true"
+        app:theme="@style/SwitchCompact_color" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sound_detection_txt"
+        android:layout_marginTop="50dp"
+        android:layout_toLeftOf="@id/sound_on_off_switch"
+        android:layout_marginRight="27dp"
+        android:textColor="@color/text_blue"
+        android:textSize="24sp"
+        android:fontFamily="Roboto-Regular"
+        android:text="@string/no"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sound_detection_txt"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@id/sound_on_off_switch"
+        android:layout_marginLeft="27dp"
+        android:textColor="@color/text_blue"
+        android:textSize="24sp"
+        android:fontFamily="Roboto-Regular"
+        android:text="@string/yes"/>
+
+    <Button
+        android:id="@+id/sound_detection_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:fontFamily="Roboto-Bold"
+        android:text="@string/skip"
+        android:textColor="@color/text_blue"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/sound_detection_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:fontFamily="Roboto-Bold"
+        android:text="@string/Next"
+        android:textColor="@color/text_blue"
+        android:textSize="20sp" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_soundSensitivity"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:orientation="vertical"
+            android:layout_above="@id/sound_detection_next"
+            android:layout_marginBottom="30dp"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/sound_sensitivity"
+                android:textColor="@color/text_blue"
+                android:fontFamily="Roboto-Medium"
+                android:textSize="16sp"/>
+
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#dadada"/>
+
+                <RadioGroup
+                    android:id="@+id/sound_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/radio_sound1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/radio_toggle_btn"/>
+
+                    <RadioButton
+                        android:id="@+id/radio_sound2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/radio_toggle_btn"/>
+
+
+                    <RadioButton
+                        android:id="@+id/radio_sound3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_toggle_btn"
+                        android:paddingRight="10dp"
+                        android:checked="true"/>
+                </RadioGroup>
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header_setup"
+        layout="@layout/activity_toolbar" />
+
+    <TextView
+        android:id="@+id/ota_available_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:fontFamily="Roboto-Regular"
+        android:textSize="20sp"
+        android:textColor="@color/text_black"
+        android:layout_below="@+id/header_setup"
+        android:text="@string/ota_update_available"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <TextView
+        android:id="@+id/ota_recommended_1_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="Roboto-Regular"
+        android:textSize="18sp"
+        android:textColor="@color/text_dark_gray"
+        android:text="@string/ota_update_available_msg"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ota_available_tv"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"/>
+
+    <TextView
+        android:id="@+id/ota_recommended_2_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="Roboto-Regular"
+        android:textSize="18sp"
+        android:textColor="@color/text_dark_gray"
+        android:text="@string/ota_update_intruction_msg"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ota_recommended_1_tv"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"/>
+
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp">
+
+        <TextView
+            android:id="@+id/continue_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/continue_text"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/main_blue"
+            android:fontFamily="Roboto-Regular"/>
+
+        <TextView
+            android:id="@+id/skip_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/skip"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="@color/main_blue"
+            android:fontFamily="Roboto-Regular"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,187 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    useLibrary  'org.apache.http.legacy'
+
+    configurations.all {
+        resolutionStrategy {
+            force 'com.google.guava:guava:20.0'
+        }
+    }
+
+        lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    sourceSets {
+        hubble {
+            manifest.srcFile 'src/hubble/AndroidManifest.xml'
+            //java.srcDirs += 'src/hubble/kotlin'
+        }
+        vtech {
+            manifest.srcFile 'src/vtech/AndroidManifest.xml'
+            java.srcDirs += 'src/vtech/java'
+            resources.srcDirs += 'src/vtech/res'
+        }
+        /*
+        hubblenew {
+            manifest.srcFile 'src/hubblenew/AndroidManifest.xml'
+            java.srcDirs += 'src/hubblenew/kotlin'
+        }
+        hubblefirmware {
+            manifest.srcFile 'src/hubblefirmware/AndroidManifest.xml'
+            java.srcDirs += 'src/hubblefirmware/kotlin'
+        }
+        inanny {
+            manifest.srcFile 'src/inanny/AndroidManifest.xml'
+            java.srcDirs += 'src/inanny/kotlin'
+        }
+        beurer {
+            manifest.srcFile 'src/beurer/AndroidManifest.xml'
+            java.srcDirs += 'src/beurer/kotlin'
+        }*/
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            jniLibs.srcDirs = ['libs/native-libs']
+           // java.srcDirs += 'src/main/kotlin'
+        }
+    }
+    productFlavors {
+        hubble {
+            applicationId "com.hubbleconnected.camera"
+            versionCode 2284
+            minSdkVersion 19
+            targetSdkVersion 21
+            versionName "2.4.2"
+         }
+    }
+
+    signingConfigs {
+        debugBuild {
+            keyAlias 'hubble'
+            keyPassword 'hubble2017'
+            storeFile file('hubble-debug.jks')
+            storePassword 'hubble2017'
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField 'boolean', 'ENABLE_SUBSCRIPTIONS', 'true'
+            buildConfigField 'boolean', 'ENABLE_MVR_SCHEDULING', 'true'
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debugBuild
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguard-rules.pro'
+        }
+        release {
+            buildConfigField 'boolean', 'ENABLE_SUBSCRIPTIONS', 'true'
+            buildConfigField 'boolean', 'ENABLE_MVR_SCHEDULING', 'true'
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules-obf-no-log.pro'
+        }
+    }
+    defaultConfig {
+        renderscriptTargetApi = 18
+        renderscriptSupportModeEnabled = true
+        multiDexEnabled true
+        applicationId 'com.hubble.hubbleapp'
+        vectorDrawables.useSupportLibrary = false
+    }
+
+    aaptOptions {
+        cruncherEnabled = true
+    }
+
+
+    dexOptions {
+        preDexLibraries = false
+        javaMaxHeapSize "2g"
+    }
+    packagingOptions {
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+    }
+}
+
+dependencies {
+    compile project(':submodules:server-api')
+    compile project(':submodules:uno-device-communication')
+    compile project(':submodules:nxdiscovery')
+    compile project(':hubblesdk')
+    compile project(':volley')
+    compile 'com.android.support:support-v13:23.2.1@aar'
+    compile 'com.android.support:appcompat-v7:23.2.1@aar'
+    compile 'com.android.support:design:23.2.1@aar'
+    compile 'com.android.support:multidex:1.0.0'
+    compile group: 'com.crittercism', name: 'crittercism-android-agent', version: '5.8.1'
+    compile 'com.google.android.gms:play-services-gcm:10.2.0'
+    compile 'com.google.android.gms:play-services-analytics:10.2.0'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.melnykov:floatingactionbutton:1.1.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.1'
+    compile 'com.squareup.picasso:picasso:2.3.4'
+    compile 'joda-time:joda-time:2.4'
+    compile 'com.android.support:cardview-v7:23.0.+'
+    compile 'com.android.support:recyclerview-v7:23.0.+'
+    compile 'com.github.machinarius:preferencefragment:0.1.1'
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile 'com.koushikdutta.ion:ion:2.+'
+    compile project(':hubble-external-libraries')
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
+//    compile files('libs/stun-client-2.0.jar')
+    compile 'de.greenrobot:eventbus:2.4.0'
+    compile project(':dfu-library:dfu')
+    compile project(':showcase-view')
+    compile files('libs/org.eclipse.paho.android.service-1.0.3-20151116.050634-226.jar')
+    compile files('libs/org.eclipse.paho.client.mqttv3-1.0.3-20151116.050526-315.jar')
+    compile 'com.larswerkman:HoloColorPicker:1.5'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
+    compile files('libs/httpclient-android-4.3.5.jar')
+    compile files('libs/httpmime-4.3.6.jar')
+    compile 'com.github.lzyzsd:circleprogress:1.1.0@aar'
+    compile 'de.hdodenhof:circleimageview:1.2.1'
+    testCompile "org.robolectric:robolectric:3.1.2"
+    testCompile 'junit:junit:4.12'
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
+        transitive = true;
+    }
+    compile 'com.yahoo.mobile.client.android.util.rangeseekbar:rangeseekbar-library:0.1.0'
+    compile ('com.zaius:androidsdk:3.0.0'){exclude module: 'library'}
+    compile project(':tlspsk-all-debug')
+}
+
+buildscript {
+    //ext.kotlin_version = '0.11.91'
+    repositories {
+        jcenter()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.22.1'
+    }
+}
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url 'https://maven.fabric.io/public' }
+    maven {
+        url  "http://maven.zaius.com"
+    }
+
+}
+apply plugin: 'com.google.gms.google-services'
+

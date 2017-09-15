@@ -1,0 +1,115 @@
+<RelativeLayout
+    android:id="@+id/patrolFragmentHolder"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true">
+
+  <RelativeLayout
+      android:id="@+id/patrolFragmentTopView"
+      android:layout_width="match_parent"
+      android:layout_height="180dp"
+      android:layout_centerHorizontal="true"
+      android:background="@android:color/transparent">
+
+    <FrameLayout
+        android:id="@+id/patrolFragmentVideoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"></FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/patrolFragmentIVLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+  </RelativeLayout>
+  <!-- The main content view -->
+
+  <FrameLayout
+      android:id="@+id/patrolFragmentBottomView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/patrolFragmentTopView"
+      android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/patrolFragmentProgressBar"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"/>
+
+    <Button
+        android:id="@+id/patrolFragment_stopButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:text="@string/stop_patrol"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:id="@+id/patrolFragmentControlHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+      <LinearLayout
+          android:id="@+id/layoutPrev"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:gravity="center">
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/patrolFragmentBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_previous"
+            app:fab_colorNormal="@color/app_highlight_color"
+            app:fab_colorRipple="@color/app_action_bar_color"/>
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:id="@+id/layoutPlay"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:orientation="vertical">
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/patrolFragmentPlayPauseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_pause"
+            app:fab_colorNormal="@color/app_highlight_color"
+            app:fab_colorRipple="@color/app_action_bar_color"/>
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:id="@+id/layoutNext"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:gravity="center">
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/patrolFragmentNextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_next"
+            app:fab_colorNormal="@color/app_highlight_color"
+            app:fab_colorRipple="@color/app_action_bar_color"/>
+      </LinearLayout>
+    </LinearLayout>
+  </FrameLayout>
+</RelativeLayout>

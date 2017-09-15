@@ -1,0 +1,8 @@
+<paths>
+    <external-path
+        name="snapshots"
+        path=""/>
+    <external-path
+        name="videos"
+        path=""/>
+</paths>

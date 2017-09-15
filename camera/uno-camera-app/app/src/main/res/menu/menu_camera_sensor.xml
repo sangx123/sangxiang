@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+      android:id="@+id/menu_show_sensor_list"
+      android:icon="@drawable/icon_add_tag_list"
+      android:title="@string/connected_sensors"
+      app:showAsAction="always"/>
+
+  <item
+      android:id="@+id/menu_ok_camera_sensor"
+      android:icon="@drawable/ic_check_white_48dp"
+      android:title="@string/ok"
+      android:visible="false"
+      app:showAsAction="always"/>
+
+  <item
+      android:id="@+id/menu_edit_camera_sensor"
+      android:icon="@android:drawable/ic_menu_edit"
+      android:title="@string/edit"
+      app:showAsAction="always"/>
+
+  <item
+      android:id="@+id/menu_camera_delete_all"
+      android:title="@string/delete_all_events"
+      app:showAsAction="never"/>
+</menu>

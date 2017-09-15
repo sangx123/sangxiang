@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_dark_grey_one">
+	<include
+		android:id="@+id/toolbar"
+		layout="@layout/viewfinder_toolbar"/>
+	<RelativeLayout
+		android:id="@+id/event_summary_header_view"
+		android:layout_width="match_parent"
+		android:layout_height="70dp"
+		android:layout_below="@id/toolbar"
+		android:background="@color/color_dark_grey_three"
+		android:gravity="center_vertical">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_marginLeft="18dp"
+			android:fontFamily="HelveticaNeue"
+			android:text="@string/daily_summary_header"
+			android:textColor="@color/color_grey_white"
+			android:textSize="16sp"/>
+
+		<ImageView
+			android:id="@+id/calender_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="@dimen/event_promot_button_end_margin"
+			android:scaleType="fitXY"
+			android:visibility="gone"
+			android:src="@drawable/calender_button"/>
+
+	</RelativeLayout>
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/event_summary_recyclerview"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_below="@id/event_summary_header_view"
+		android:scrollbars="vertical"
+	/>
+
+	<RelativeLayout
+		android:id="@+id/event_summary_no_data_layout"
+		android:layout_width="match_parent"
+		android:layout_height="fill_parent"
+		android:layout_below="@id/event_summary_header_view"
+		android:gravity="center_vertical"
+		android:visibility="gone">
+
+		<TextView
+			android:id="@+id/event_summary_no_data_header"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:fontFamily="Roboto-Regular"
+			android:text="@string/no_summary"
+			android:textColor="@color/white"
+			android:textSize="18sp"
+		/>
+
+		<TextView
+			android:id="@+id/event_summary_no_data_detail"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/event_summary_no_data_header"
+			android:layout_marginTop="10dp"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+			android:fontFamily="Roboto-Regular"
+			android:layout_centerHorizontal="true"
+			android:textColor="@color/white"
+			android:textSize="16sp"
+			/>
+
+		<Button
+			android:id="@+id/event_summary_retry"
+			android:layout_width="140dp"
+			android:layout_height="40dp"
+			android:layout_marginTop="10dp"
+			android:layout_below="@id/event_summary_no_data_detail"
+			android:layout_centerHorizontal="true"
+			android:background="@drawable/free_trial_button_background"
+			android:backgroundTint="@color/text_blue"
+			android:fontFamily="Roboto-Regular"
+			android:text="@string/retry"
+			android:textAllCaps="false"
+			android:textColor="@color/white"
+			android:textSize="18sp"
+		/>
+
+	</RelativeLayout>
+
+	<LinearLayout
+		android:id="@+id/summary_under_construction_layout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginTop="100dp"
+		android:gravity="center"
+		android:visibility="gone"
+		android:orientation="vertical">
+
+		<ImageView
+			android:layout_width="75dp"
+			android:layout_height="75dp"
+			android:scaleType="fitXY"
+			android:src="@drawable/summary_construction"
+		/>
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+		    android:gravity="center_horizontal"
+		    android:layout_marginTop="20dp"
+		    android:textSize="24dp"
+			android:fontFamily="Roboto-Regular"
+			android:textColor="@color/white"
+		    android:text="@string/summary_construction_title"
+		/>
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal"
+			android:layout_marginTop="20dp"
+			android:textSize="16dp"
+			android:fontFamily="Roboto-Light"
+			android:textColor="@color/white"
+			android:text="@string/summary_construction_text"
+		/>
+
+	</LinearLayout>
+
+	<ProgressBar
+		android:id="@+id/event_summary_progressBar"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:indeterminateTint="@color/color_text_blue"
+		android:indeterminateTintMode="src_in"
+		android:visibility="gone"/>
+
+</RelativeLayout>

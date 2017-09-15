@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0a0a0b">
+
+	<RelativeLayout
+		android:id="@+id/event_full_screen_parent"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		>
+
+		<ImageView
+			android:id="@+id/event_image"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@color/selected_list_item"
+			android:scaleType="fitXY"
+		/>
+
+		<ImageView
+			android:id="@+id/event_play_image"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:scaleType="fitXY"
+			android:src="@drawable/play_video"
+			android:visibility="gone"
+		/>
+
+		<TextView
+			android:id="@+id/event_text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentTop="true"
+			android:layout_marginLeft="20dp"
+			android:layout_marginTop="20dp"
+			android:fontFamily="Roboto-Medium"
+			android:textColor="@color/white"
+			android:textSize="16sp"/>
+
+		<TextView
+			android:id="@+id/event_time"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/event_text"
+			android:layout_marginLeft="20dp"
+			android:fontFamily="Roboto-Medium"
+			android:textColor="@color/white"
+			android:textSize="12sp"/>
+
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentTop="true"
+			android:layout_marginRight="20dp"
+			android:layout_marginTop="20dp"
+			android:gravity="right"
+			android:orientation="horizontal">
+
+			<ImageView
+				android:id="@+id/event_download"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="16dp"
+				android:scaleType="fitXY"
+				android:src="@drawable/save_event"
+			/>
+
+			<ImageView
+				android:id="@+id/event_delete"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="16dp"
+				android:scaleType="fitXY"
+				android:src="@drawable/delete_event"
+			/>
+
+			<ImageView
+				android:id="@+id/event_share"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="18dp"
+				android:scaleType="fitXY"
+				android:src="@drawable/share_event"
+			/>
+		</LinearLayout>
+	</RelativeLayout>
+
+
+	<ProgressBar
+		android:id="@+id/eventLog_progressBar"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:indeterminateTint="@color/color_text_blue"
+		android:indeterminateTintMode="src_in"
+		android:visibility="gone"/>
+
+</RelativeLayout>

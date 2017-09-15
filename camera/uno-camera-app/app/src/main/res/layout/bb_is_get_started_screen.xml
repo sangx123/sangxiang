@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/backgroundimage"
+                >
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+
+		android:visibility="visible"
+		>
+
+		<ImageView
+			android:id="@+id/imageView2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:src="@drawable/logo_icon_white_bg_small"/>
+
+		<TextView
+			android:id="@+id/tag_line"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="160dp"
+			android:text="@string/get_more"
+			android:textColor="#ffffff"
+			android:textSize="28sp"/>
+
+	</RelativeLayout>
+
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/explorelayout"
+		android:layout_marginLeft="30dp"
+		android:layout_marginRight="30dp"
+		android:layout_marginBottom="48dp"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/btn_login"
+			android:layout_width="0dp"
+			android:layout_height="46dp"
+			android:layout_marginRight="8dp"
+			android:layout_weight="1"
+			android:background="@drawable/vector_drawable_loginbutton"
+			android:text="@string/unologin"
+			android:textColor="#ffffff"
+			android:textSize="16sp"/>
+
+		<Button
+			android:id="@+id/btn_signup"
+			android:layout_width="0dp"
+			android:layout_height="46dp"
+			android:layout_marginLeft="8dp"
+			android:layout_weight="1"
+			android:background="@drawable/vector_drawable_signupbutton"
+			android:text="@string/unosignup"
+			android:textColor="#ffffff"
+			android:textSize="16sp"/>
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/explorelayout"
+		android:layout_width="wrap_content"
+		android:layout_height="42dp"
+		android:layout_above="@+id/imageView"
+		android:layout_centerHorizontal="true"
+		android:layout_marginBottom="36dp"
+		android:orientation="horizontal">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center_vertical|center_horizontal"
+			>
+
+			<TextView
+				android:id="@+id/tv_launch_explore_products"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:gravity="center_vertical|center_horizontal"
+				android:text="@string/explore_products"
+				android:textColor="@color/white"
+				android:textSize="16sp"/>
+
+			<ImageView
+				android:layout_width="10dp"
+				android:layout_height="15dp"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="5dp"
+				android:gravity="center_vertical|center_horizontal"
+				android:src="@drawable/vector_drawable_rightarrow"/>
+		</LinearLayout>
+	</LinearLayout>
+
+	<ImageView
+		android:id="@+id/imageView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"
+		android:layout_marginBottom="20dp"
+		android:src="@drawable/hubble_logo_white"/>
+</RelativeLayout>

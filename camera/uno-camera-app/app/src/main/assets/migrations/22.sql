@@ -1,0 +1,1 @@
+ALTER TABLE DeviceProfile ADD COLUMN liveStatus INTEGER;

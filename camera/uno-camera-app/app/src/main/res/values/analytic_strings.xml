@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- Any changes may currently need to be made in ParesAnalyticsController as well-->
+  <string name="accessing_stream_event_unexcpected_end" translatable="false">Unexpected End Of Stream</string>
+
+
+</resources>

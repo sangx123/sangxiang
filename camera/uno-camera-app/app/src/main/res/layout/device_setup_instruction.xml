@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header_setup"
+        layout="@layout/activity_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageinstruction1"
+                android:layout_width="65dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="27dp"
+                android:src="@drawable/instruction_1" />
+
+            <LinearLayout
+                android:id="@+id/instruction1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageinstruction1"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="HelveticaNeue"
+                    android:text="@string/one"
+                    android:textColor="@color/text_blue"
+                    android:textSize="21sp" />
+
+                <TextView
+                    android:id="@+id/setup_instruction_1"
+                    android:layout_width="231dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:minLines="3"
+                    android:fontFamily="Roboto-Regular"
+                    android:gravity="center_horizontal"
+                    android:text="@string/setup_instruction_one"
+                    android:textColor="@color/help_text_gray"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="317dp"
+                android:layout_height="1dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/instruction1"
+                android:layout_marginTop="26dp"
+                android:background="@color/text_blue" />
+
+            <ImageView
+                android:id="@+id/imageinstruction2"
+                android:layout_width="149dp"
+                android:layout_height="36dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/divider1"
+                android:layout_marginTop="29dp"
+                android:src="@drawable/vector_drawable_instruction_2" />
+
+            <LinearLayout
+                android:id="@+id/instruction2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageinstruction2"
+                android:layout_marginTop="19dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:fontFamily="HelveticaNeue"
+                    android:text="@string/two"
+                    android:textColor="@color/text_blue"
+                    android:textSize="21sp" />
+
+                <TextView
+                    android:id="@+id/setup_instruction_2"
+                    android:layout_width="231dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="Roboto-Regular"
+                    android:gravity="center_horizontal"
+                    android:text="@string/setup_instruction_two"
+                    android:textColor="@color/help_text_gray"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="317dp"
+                android:layout_height="1dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/instruction2"
+                android:layout_marginTop="26dp"
+                android:background="@color/text_blue" />
+
+            <ImageView
+                android:id="@+id/imageinstruction3"
+                android:layout_width="39dp"
+                android:layout_height="49dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/divider2"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/vector_drawable_instruction_3" />
+
+            <LinearLayout
+                android:id="@+id/instruction3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageinstruction3"
+                android:layout_marginTop="11dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:fontFamily="HelveticaNeue"
+                    android:text="@string/three"
+                    android:textColor="@color/text_blue"
+                    android:textSize="21sp" />
+
+                <TextView
+                    android:id="@+id/setup_instruction_3"
+                    android:layout_width="231dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="Roboto-Regular"
+                    android:gravity="center_horizontal"
+                    android:text="@string/setup_instruction_three"
+                    android:textColor="@color/help_text_gray"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="15dp">
+
+                <Button
+                    android:id="@+id/setup_instruction_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:padding="10dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:fontFamily="Roboto-Medium"
+                    android:text="@string/Cancel"
+                    android:textColor="@color/text_blue"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/setup_instruction_continue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:fontFamily="Roboto-Medium"
+                    android:text="@string/ccontinue"
+                    android:textColor="@color/text_blue"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

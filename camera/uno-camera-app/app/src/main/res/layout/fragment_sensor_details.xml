@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
+
+        <RelativeLayout
+            android:id="@+id/linear_sensor_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/sensorname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="@string/sensor_name"
+                android:paddingLeft="40dp"
+                android:fontFamily="Roboto-Regular"
+                android:textColor="#666666"
+                android:textSize="14dp"/>
+
+            <TextView
+                android:id="@+id/settings_sensor_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sensorname"
+                android:paddingLeft="40dp"
+                android:text="@string/sensor_name"
+                android:fontFamily="Roboto-Regular"
+                android:textColor="#36b1e5"
+                android:textSize="16dp"/>
+            <ImageView
+                android:id="@+id/edit_sensorname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/vector_drawable_edit"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line"
+            android:paddingBottom="10dp"/>
+
+        <RelativeLayout
+            android:id="@+id/layout_firm_ware_mtag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/sensorfirmware"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="40dp"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/firmware_version"
+                    android:fontFamily="Roboto-Regular"
+                    android:textColor="#666666"
+                    android:textSize="14dp"/>
+
+                <TextView
+                    android:id="@+id/settings_firm_ware_version"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sensorfirmware"
+                    android:paddingLeft="40dp"
+                    android:text="@string/sensor_version"
+                    android:fontFamily="Roboto-Regular"
+                    android:textColor="#666666"
+                    android:textSize="16dp"/>
+
+
+            <ImageView
+                android:id="@+id/upgrade_sensor_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/check"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:text="@string/sensor_model"
+            android:fontFamily="Roboto-Regular"
+            android:textColor="#666666"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:id="@+id/settings_model_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:fontFamily="Roboto-Regular"
+            android:textColor="#666666"
+            android:textSize="16dp"/>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:text="@string/mac_address"
+            android:fontFamily="Roboto-Regular"
+            android:textColor="#666666"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:id="@+id/settings_mac_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:text="@string/mac_address"
+            android:fontFamily="Roboto-Regular"
+            android:textColor="#666666"
+            android:textSize="16dp"/>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line"/>
+
+        <LinearLayout
+            android:id="@+id/layout_sensor_sensitivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_sensor_sensitivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sensor_sensitivity"
+                android:paddingLeft="40dp"
+                android:fontFamily="Roboto-Regular"
+                android:textColor="#666666"
+                android:textSize="14dp"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/line"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/layout_battery_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="40dp">
+
+            <TextView
+                android:id="@+id/tv_battery_level_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/battery_level"
+                android:fontFamily="Roboto-Regular"
+                android:textColor="#666666"
+                android:textSize="14dp"/>
+
+            <TextView
+                android:id="@+id/tv_battery_level_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/battery_level"
+                android:fontFamily="Roboto-Regular"
+                android:textColor="#666666"
+                android:textSize="16dp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/line_sensor_sensitivity"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/line"/>
+
+        <TextView
+            android:id="@+id/settings_remove_sensor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/remove_mototag"
+            android:fontFamily="Roboto-Regular"
+            android:textColor="#e36474"
+            android:textSize="16dp"
+           />
+
+    </LinearLayout>
+
+
+</ScrollView>

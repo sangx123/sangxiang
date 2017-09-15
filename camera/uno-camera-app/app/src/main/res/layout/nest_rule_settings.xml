@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+
+		<RelativeLayout
+			android:id="@+id/logo_container"
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/nest_logos_height">
+
+			<ImageView
+				android:layout_width="100dp"
+				android:layout_height="47dp"
+				android:layout_alignParentLeft="true"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="@dimen/get_started_button_size"
+				android:src="@drawable/work_with_nest_logo"/>
+
+			<ImageView
+				android:layout_width="1dp"
+				android:layout_height="51dp"
+				android:layout_centerInParent="true"
+				android:background="@color/color_divider"/>
+
+			<ImageView
+				android:layout_width="100dp"
+				android:layout_height="47dp"
+				android:layout_alignParentRight="true"
+				android:layout_centerVertical="true"
+				android:layout_marginRight="@dimen/get_started_button_size"
+				android:src="@drawable/white_logo_small"/>
+
+		</RelativeLayout>
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="46dp"
+			android:background="@color/text_blue"
+			android:fontFamily="sans-serif"
+			android:gravity="center"
+			android:text="@string/rule_setting"
+			android:textColor="@color/white"
+			android:textSize="19sp"
+
+		/>
+
+		<RelativeLayout
+			android:id="@+id/loading_layout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="#80000000"
+			android:clickable="true"
+			android:visibility="gone">
+
+			<ImageView
+				android:id="@+id/anim_image"
+				android:layout_width="45dp"
+				android:layout_height="45dp"
+				android:layout_centerHorizontal="true"
+				android:layout_centerVertical="true"
+				android:src="@drawable/settingup"/>
+
+		</RelativeLayout>
+
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="46dp"
+			android:background="@color/bg_next_living_room"
+			android:gravity="center"
+			android:orientation="horizontal">
+
+			<android.support.v7.widget.AppCompatSpinner
+				android:id="@+id/homeSpinner"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical|center_horizontal"
+				android:paddingLeft="5dp"
+				android:paddingRight="5dp"
+				android:popupBackground="#ffffff"
+				app:theme="@style/CompactSpinner_color"/>
+
+
+		</LinearLayout>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="2dp"
+			android:background="@color/white"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="46dp"
+			android:background="@color/bg_nest_smoke_detection"
+			android:gravity="center_vertical"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="36dp"
+				android:layout_weight="1"
+				android:fontFamily="sans-serif"
+				android:text="@string/smoke_detection"
+				android:textColor="@color/text_blue"
+				android:textSize="18sp"
+				android:textStyle="bold"/>
+
+			<android.support.v7.widget.SwitchCompat
+				android:id="@+id/switch_smokeDetection"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="18dp"/>
+		</LinearLayout>
+		<LinearLayout
+			android:id="@+id/ll_smokespinners"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="38dp"
+				android:fontFamily="sans-serif"
+				android:gravity="center"
+				android:text="@string/if_smoke_detected_from"
+				android:textColor="@color/nest_textgrey"
+				android:textSize="15sp"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="46dp"
+				android:background="@color/bg_next_living_room"
+				android:gravity="center"
+				android:orientation="horizontal">
+
+				<android.support.v7.widget.AppCompatSpinner
+					android:id="@+id/smokeDetectSpinner"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_vertical|center_horizontal"
+					android:popupBackground="#ffffff"
+					app:theme="@style/CompactSpinner_color"
+
+				/>
+
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="38dp"
+				android:fontFamily="sans-serif"
+				android:gravity="center"
+				android:text="@string/then_notify"
+				android:textColor="@color/nest_textgrey"
+				android:textSize="15sp"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="46dp"
+				android:background="@color/bg_next_living_room"
+				android:gravity="center"
+				android:orientation="horizontal">
+
+				<android.support.v7.widget.AppCompatSpinner
+					android:id="@+id/cameraSpinner"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_vertical|center_horizontal"
+					android:popupBackground="#ffffff"
+					app:theme="@style/CompactSpinner_color"/>
+
+
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="46dp"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="20dp"
+		android:orientation="horizontal">
+
+		<Button
+			android:id="@+id/btn_ruleCancel"
+			android:layout_width="wrap_content"
+			android:layout_height="46dp"
+			android:layout_marginLeft="20dp"
+			android:layout_marginRight="10dp"
+			android:layout_weight="1"
+			android:text="@string/Cancel"/>
+
+
+		<Button
+			android:id="@+id/btn_ruleSave"
+			android:layout_width="wrap_content"
+			android:layout_height="46dp"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="20dp"
+			android:layout_weight="1"
+			android:text="@string/Save"/>
+
+	</LinearLayout>
+
+</RelativeLayout>

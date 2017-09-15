@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@drawable/brand_bg"
+             android:focusable="true"
+             android:focusableInTouchMode="true"
+             android:orientation="vertical"
+             android:paddingLeft="20dp"
+             android:paddingRight="20dp">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/registration_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+          <EditText
+              android:id="@+id/registerScreen_usernameField"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="9"
+              android:hint="@string/username"
+              android:imeOptions="actionNext"
+              android:inputType="textVisiblePassword"
+              android:nextFocusDown="@+id/registerScreen_emailField"
+              android:textColor="@color/app_text_on_highlight_color"
+              android:textColorHint="@color/app_text_on_highlight_color"/>
+
+          <ImageView
+              android:id="@+id/create_account_imageView_username"
+              android:layout_width="0dp"
+              android:layout_height="24dp"
+              android:layout_gravity="end|center_vertical"
+              android:layout_marginBottom="2dp"
+              android:layout_weight="1"
+              android:src="@drawable/question_mark"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+          <AutoCompleteTextView
+              android:id="@+id/registerScreen_emailField"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="9"
+              android:hint="@string/email"
+              android:imeOptions="actionNext"
+              android:inputType="textEmailAddress"
+              android:nextFocusDown="@+id/loginScreen_userPassword"
+              android:textColor="@color/app_text_on_highlight_color"
+              android:textColorHint="@color/app_text_on_highlight_color"/>
+
+          <ImageView
+              android:id="@+id/create_account_imageView_email"
+              android:layout_width="0dp"
+              android:layout_height="24dp"
+              android:layout_gravity="end|center_vertical"
+              android:layout_marginBottom="2dp"
+              android:layout_weight="1"
+              android:src="@drawable/question_mark"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+          <EditText
+              android:id="@+id/registerScreen_userPassword"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="9"
+              android:hint="@string/password"
+              android:imeOptions="actionNext"
+              android:inputType="textPassword"
+              android:nextFocusDown="@+id/registerScreen_confirmPasswordField"
+              android:textColor="@color/app_text_on_highlight_color"
+              android:textColorHint="@color/app_text_on_highlight_color"/>
+
+          <ImageView
+              android:id="@+id/create_account_imageView_passwordStrength"
+              android:layout_width="0dp"
+              android:layout_height="24dp"
+              android:layout_gravity="end|center_vertical"
+              android:layout_marginBottom="2dp"
+              android:layout_weight="1"
+              android:src="@drawable/question_mark"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+          <EditText
+              android:id="@+id/registerScreen_confirmPasswordField"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="9"
+              android:hint="@string/confirm_pass_word"
+              android:inputType="textPassword"
+              android:textColor="@color/app_text_on_highlight_color"
+              android:textColorHint="@color/app_text_on_highlight_color"/>
+
+          <ImageView
+              android:id="@+id/create_account_imageView_confirmPasswordStrength"
+              android:layout_width="0dp"
+              android:layout_height="24dp"
+              android:layout_gravity="end|center_vertical"
+              android:layout_marginBottom="2dp"
+              android:layout_weight="1"
+              android:src="@drawable/question_mark"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+          <CheckBox
+              android:id="@+id/registerScreen_termsOfServiceCheckBox"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/i_agree_to_the"
+              android:textColor="@color/app_text_on_highlight_color"
+              android:textStyle="bold"
+              android:visibility="gone"/>
+
+          <TextView
+              android:id="@+id/registerScreen_termsOfServiceText"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:clickable="true"
+              android:text="@string/term_of_use"
+              android:textColor="@color/blue"
+              android:textSize="15sp"
+              android:textStyle="bold"
+              android:visibility="gone"/>
+        </LinearLayout>
+
+      </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:orientation="vertical">
+
+      <LinearLayout
+        android:id="@+id/registerScreen_layout_continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <Button
+          android:id="@+id/registerScreen_continueButton"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/app_login_button_background"
+          android:text="@string/continue_cap"
+          android:textColor="@color/app_login_button_textcolor"
+          android:textStyle="bold"/>
+
+        <Button
+          android:id="@+id/registerScreen_haveAccountButton"
+          style="?android:attr/borderlessButtonStyle"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/already_have_a_account"
+          android:textColor="@color/app_text_on_highlight_color"
+          android:textStyle="bold"/>
+      </LinearLayout>
+
+      <Button
+        android:id="@+id/registerScreen_createAccountButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_login_button_background"
+        android:text="@string/create_account"
+        android:textColor="@color/app_login_button_textcolor"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+    </LinearLayout>
+  </LinearLayout>
+
+  <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom|center_horizontal"
+      android:layout_margin="20dp"
+      android:src="@drawable/hubble_connected_horizontal_logo"/>
+
+</FrameLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="camera_list_item_half_padding">18dp</dimen>
+  <dimen name="motion_event_image_height">400dp</dimen>
+  <dimen name="motion_event_image_width">711dp</dimen>
+
+</resources>

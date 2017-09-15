@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <item name="drag_handle" type="id"/>
+  <item name="patrol_item_drag_handle" type="id"/>
+  <item name="app_brand" type="id">vtech</item>
+</resources>

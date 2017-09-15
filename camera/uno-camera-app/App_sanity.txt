@@ -1,0 +1,52 @@
+Sanity Test for app (Last Update: 2012/10/11)
+1. Test app install/uninstall
+2. OBSOLETE ---  Dont need to do ---- Test Scan camera
+    2.1 Login to a user account with some cameras in local 
+    2.2 Press "Search Camera" and verify that all cameras in local are shown
+3. --- 
+4. Test View camera in local mode 
+    4.1 login and try to view a camera in local network
+    4.2 Verify that the camera video is shown 
+    4.3 Verify that the camera direction can be controlled using the joystick 
+    4.4 Verify that the camera melody can be controlled 
+    4.5 Verify that the PTT feature works 
+    4.6 Verify that the snapshot feature works 
+    4.7 Verify that the recording feature works. 
+    4.8 verify that the Menu button is accessible 
+
+5. Test Add camera 
+    5.1 Login and click Add Cam
+    5.2 Verify that the app can find the correct camera 
+    5.3 Verify that the app can connect to the camera 
+    5.4 Verify that the app can connect to the selected wifi (given the key) 
+    5.5 Verify that the app can successfully add the camera to the user account 
+    5.6 Verify that the app would go back to the camera list after adding the camera. 
+6. Test Remove camera 
+    6.1 Access camera settings 
+    6.2 Try to remove the camera 
+    6.3 Verify that the camera is actually switched back to direct mode 
+    6.4 Verify that app goes back to camera list after removing and refresh the list to clear the removed camera 
+7. Test Vox feature - iHome Only
+   7.1 Enable vox on some cameras in account
+   7.2 At camera list screen, press Home key to go to home. 
+   7.3 Make some noise at the vox-enabled camera , verify that the video camera 
+   is automatically turned on at the phone. Wait ~20sec for vox to re-enable on the 
+   camera before moving on.
+   7.4 At video screen (while showing some video), press Home key to go home.
+   7.5 Make some noise at the vox-enable camera , verify that the video of the camera is shown. 
+   7.6 At login screen , press Home key. 
+   7.7 Make some noise at the vox-enable camera , verify that the video of the camera is shown. 
+8. Test Push Notification - Other phones
+   8.1 In camera list, choose submenu on a camera 
+   8.2 Enable Sound notification 
+   8.3 Make some sound at the camera, and verify that that the phone is able to receive the push notification from the server. 
+   Note: this will be in the form of Notification (on Status bar)
+   8.4 Disable Sound notification 
+   8.5 Make sure that the phone does not receive any push notification when sound is triggered at camera 
+   
+9. Test Remote Viewing - Via UPNP 
+
+10. Test Remote Viewing - Via STUN 
+
+11. Test Remote Viewing  - Via STUN/Relay
+

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/logo_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nest_logos_height">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="47dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/get_started_button_size"
+            android:src="@drawable/work_with_nest_logo" />
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="51dp"
+            android:layout_centerInParent="true"
+            android:background="@color/color_divider" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="47dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/get_started_button_size"
+            android:src="@drawable/white_logo_small" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/heading_container"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/logo_container"
+        android:background="@color/text_blue">
+
+        <TextView
+            android:id="@+id/title_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:fontFamily="sans-serif"
+            android:text="@string/nest_devices" />
+
+        <ImageView
+            android:id="@+id/img_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/settings_viewfinder" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/heading_container">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/nest_devices_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:id="@+id/loading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:clickable="true"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/anim_image"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/settingup" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/no_nest_devices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:text="@string/no_nest_devices_msg" />
+    </FrameLayout>
+
+</RelativeLayout>

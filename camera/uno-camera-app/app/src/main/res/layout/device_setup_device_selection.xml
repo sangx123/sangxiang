@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/root_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent_light_white"
+    android:orientation="vertical">
+
+  <android.support.v7.widget.Toolbar
+      android:id="@+id/my_singlecam_toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="?attr/colorPrimary"
+      android:minHeight="?attr/actionBarSize"
+      app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+      app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+  <TextView
+      style="@style/Base.TextAppearance.AppCompat.Large"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_margin="10dp"
+      android:gravity="center"
+      android:text="@string/select_device"
+      android:textColor="@color/registration_text"
+      android:textStyle="bold"/>
+
+  <ListView
+      android:id="@+id/deviceSelection_deviceListView"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:divider="@null"
+      android:dividerHeight="0dp"
+      android:fadingEdge="vertical"
+      android:fadingEdgeLength="8dp"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom"
+      android:animateLayoutChanges="true"
+      android:background="@color/transparent_light_white"
+      android:gravity="bottom"
+      android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/bright_blue"/>
+
+    <LinearLayout
+        android:id="@+id/cameraInstructions_buttonHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="horizontal">
+
+      <Button
+          android:id="@+id/camera_setup_buy_button"
+          style="?android:attr/borderlessButtonStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="@string/buy_camera"
+          android:textColor="@color/bright_green"/>
+    </LinearLayout>
+  </LinearLayout>
+
+</LinearLayout>

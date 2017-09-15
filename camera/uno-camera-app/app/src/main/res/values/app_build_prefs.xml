@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- This file is used for client-specific feature specification -->
+
+  <!-- VTech -->
+
+  <!-- Hubble -->
+  <!--
+  <bool name="enable_DND">true</bool>
+  <bool name="enable_manual_time_format_setting">true</bool>
+  -->
+</resources>

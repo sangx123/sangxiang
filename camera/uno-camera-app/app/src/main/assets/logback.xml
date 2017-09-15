@@ -1,0 +1,59 @@
+<configuration>
+
+  <property name="LOG_DIR" value="/sdcard/hubble/logs"/>
+
+  <!-- Create a logcat appender -->
+
+  <appender name="logcat"
+            class="ch.qos.logback.classic.android.LogcatAppender">
+
+    <encoder>
+
+      <pattern>
+        %msg
+      </pattern>
+    </encoder>
+  </appender>
+
+  <appender name="FILE"
+            class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+    <!-- active log file -->
+
+    <file>
+      ${LOG_DIR}/logback.log
+    </file>
+
+    <encoder>
+
+      <pattern>
+        %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+      </pattern>
+    </encoder>
+
+    <rollingPolicy
+        class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+      <!-- daily rollover period -->
+
+      <fileNamePattern>
+        ${LOG_DIR}/logback.%d.txt
+      </fileNamePattern>
+
+      <!-- keep 7 days' worth of history -->
+
+      <maxHistory>
+        7
+      </maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <root level="TRACE">
+    <appender-ref ref="FILE"/>
+  </root>
+
+  <root level="TRACE">
+    <appender-ref ref="logcat"/>
+  </root>
+
+</configuration>

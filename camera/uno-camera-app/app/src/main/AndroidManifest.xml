@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.hubbleconnected.camera"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          android:installLocation="auto">
+
+	<permission
+		android:name="com.hubbleconnected.camera.permission.C2D_MESSAGE"
+		android:protectionLevel="signature"/>
+
+	<uses-permission android:name="com.hubbleconnected.camera.permission.C2D_MESSAGE"/>
+
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+	<uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.BLUETOOTH"/>
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+	<uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+	<uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
+	<uses-permission android:name="no.nordicsemi.android.LOG"/>
+	<uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+
+	<uses-feature
+		android:name="android.hardware.bluetooth_le"
+		android:required="false"/>
+	<uses-feature
+		android:name="android.hardware.camera"
+		android:required="false"/>
+
+	<!-- used to Change Camera Image -->
+	<application
+		android:name="com.hubble.HubbleApplication"
+		android:allowBackup="false"
+		android:allowTaskReparenting="false"
+		android:supportsRtl="false"
+		tools:replace="android:supportsRtl,android:allowBackup"
+		android:largeHeap="true">
+		<uses-library
+			android:name="com.sec.android.app.multiwindow"
+			android:required="false"/>
+
+		<meta-data
+			android:name="com.sec.android.support.multiwindow"
+			android:value="true"/>
+		<meta-data
+			android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W"
+			android:value="632.0dip"/>
+		<meta-data
+			android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H"
+			android:value="598.0dip"/>
+		<meta-data
+			android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W"
+			android:value="632.0dip"/>
+		<meta-data
+			android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H"
+			android:value="598.0dip"/>
+		<meta-data
+			android:name="com.google.android.gms.version"
+			android:value="@integer/google_play_services_version"/>
+		<meta-data
+			android:name="AA_DB_NAME"
+			android:value="hubble_v21.db"/>
+		<meta-data
+			android:name="AA_DB_VERSION"
+			android:value="22"/>
+
+		<!-- ACITIVITES -->
+		<activity
+			android:name="com.blinkhd.StartActivity"
+			android:configChanges="orientation|screenSize"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.msc3.registration.SplashScreen"
+			android:configChanges="uiMode|orientation|screenSize"/>
+		<activity
+			android:name="com.nxcomm.blinkhd.ui.MainActivity"
+			android:configChanges="uiMode|orientation|screenSize"/>
+		<activity
+			android:name="com.nxcomm.blinkhd.ui.ChangePasswordActivity"
+			android:configChanges="uiMode|orientation|screenSize"/>
+		<activity
+			android:name="com.firmware.FirmwareUpdateActivity"
+			android:configChanges="uiMode|orientation|screenSize"/>
+		<activity
+			android:name="com.firmware.FirmwareCamConfigureActivity"
+			android:configChanges="uiMode|orientation|screenSize"/>
+		<activity
+			android:name="cz.havlena.ffmpeg.ui.FFMpegPlayerActivity"
+			android:configChanges="uiMode|orientation"
+			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+		<activity
+			android:name="com.msc3.ConnectToNetworkActivity"
+			android:configChanges="uiMode|orientation|screenSize"
+			android:windowSoftInputMode="adjustPan"/>
+
+		<activity
+			android:name="com.hubble.notifications.MotionEventInteractionActivity"
+			android:excludeFromRecents="true"
+			android:exported="true"
+			android:launchMode="singleInstance"
+			android:screenOrientation="portrait"
+			android:theme="@style/Base.Theme.AppCompat.Dialog"/>
+		<activity
+			android:name="com.hubble.notifications.SubscriptionNotificationActivity"
+			android:excludeFromRecents="true"
+			android:launchMode="singleInstance"
+			android:screenOrientation="portrait"
+			android:theme="@style/Base.Theme.AppCompat.Dialog"/>
+		<activity
+			android:name="com.hubble.registration.ui.SingleSensorConfigureActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden"
+			android:parentActivityName="com.blinkhd.StartActivity"
+			android:windowSoftInputMode="adjustPan"/>
+		<activity
+			android:name="com.msc3.registration.LaunchScreenActivity"
+			android:configChanges="keyboardHidden|screenSize"
+			android:screenOrientation="sensorPortrait"
+			android:windowSoftInputMode="adjustPan">
+			<intent-filter>
+				<action android:name="com.blinkhd.AUTH_TOKEN"/>
+
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.msc3.registration.LoginActivity"
+			android:configChanges="uiMode|orientation|screenSize"/>
+		<activity
+			android:name="com.msc3.registration.ForgetPasswordActivity"
+			android:configChanges="uiMode|orientation|screenSize"/>
+		<activity
+			android:name="com.msc3.registration.EmailConfirmationActivity"
+			android:configChanges="uiMode|orientation|screenSize"/>
+
+		<activity
+			android:name="com.hubble.ui.WhyHubbleActivity"
+			android:configChanges="uiMode|orientation|screenSize"
+			android:excludeFromRecents="true"
+			android:launchMode="singleInstance"/>
+
+		<activity
+			android:name="com.msc3.registration.RegisterActivity"
+			android:windowSoftInputMode="stateAlwaysHidden"
+			android:configChanges="uiMode|orientation|screenSize"/>
+		<activity
+			android:name="com.msc3.registration.OnBoardingFragment"
+			android:configChanges="uiMode|orientation|screenSize"/>
+		<activity
+			android:name="cz.havlena.ffmpeg.ui.FFMpegPlaybackActivity"
+			android:configChanges="uiMode|orientation|screenSize"
+			android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+
+				<category android:name="android.intent.category.DEFAULT"/>
+
+				<data android:mimeType="video/*"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="com.hubble.registration.ui.TermOfUseActivity"/>
+
+		<activity android:name="com.hubble.registration.ui.FirstTimeActivity"/>
+		<activity android:name="com.hubble.registration.ui.RetreiveCameraLogActivity"/>
+		<activity
+			android:name="com.media.ffmpeg.RecordStreamVideo"
+			android:screenOrientation="portrait"
+			android:theme="@style/transparent_activity"/>
+		<activity
+			android:name="com.hubble.notifications.BlankNotificationActivity"
+			android:screenOrientation="portrait"
+			android:theme="@style/transparent_activity"/>
+		<activity
+			android:name="com.hubble.subscription.ApplyPlanActivity"
+			android:label="@string/apply_plan"/>
+		<activity android:name="com.localytics.android.PushTrackingActivity"/>
+		<!-- Petcam Activities -->
+		<activity android:name="com.nxcomm.blinkhd.ui.MvrScheduleActivity"/>
+		<!-- Petcam Activities -->
+		<activity
+			android:name="com.nxcomm.blinkhd.ui.dialog.MvrScheduleCrudActivity"
+			android:configChanges="uiMode|orientation|screenSize"/>
+
+		<!-- SERVICES -->
+		<service android:name="com.hubble.registration.services.CameraDetectorService"/>
+		<service
+			android:name="com.blinkhd.UploadService"
+			android:exported="false"/>
+
+		<!-- 		   GCM Receiver -->
+		<receiver
+			android:name="com.google.android.gms.gcm.GcmReceiver"
+			android:exported="true"
+			android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+
+				<category android:name="com.blinkhd"/>
+			</intent-filter>
+		</receiver>
+		<receiver android:name="com.hubble.receivers.AppUpgradeReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.PACKAGE_REPLACED"/>
+
+				<data
+					android:path="/com.hubble.monitor"
+					android:scheme="package"/>
+			</intent-filter>
+		</receiver>
+
+		<service android:name="org.eclipse.paho.android.service.MqttService"/>
+
+		<receiver
+			android:name="com.localytics.android.PushReceiver"
+			android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+
+				<category android:name="com.msc3"/>
+			</intent-filter>
+		</receiver>
+
+		<receiver android:name="com.hubble.receivers.AppExitReceiver" android:enabled="true">
+			<intent-filter>
+				<action android:name="com.hubble.receivers.AppExit"></action>
+			</intent-filter>
+		</receiver>
+
+		<meta-data
+			android:name="LOCALYTICS_APP_KEY"
+			android:value="@string/localytics_app_key"/>
+		<meta-data
+			android:name="LOCALYTICS_NOTIFICATION_ICON"
+			android:value="@drawable/ic_stat_notification"/>
+
+		<activity
+			android:name="com.sensor.ui.AddSensorActivity"
+			android:configChanges="uiMode|keyboardHidden|orientation|screenSize"
+			android:label="@string/title_activity_select_sensor"/>
+		<activity
+			android:name="com.sensor.ui.UpgradeSensorActivity"
+			android:configChanges="uiMode|keyboardHidden|orientation|screenSize"
+			android:label="@string/title_activity_select_sensor"/>
+
+		<service android:name="com.sensor.bluetooth.BluetoothLeService"/>
+		<service
+			android:name="com.blinkhd.playback.RequestRelayFileStreamService"
+			android:exported="false"/>
+
+		<service
+			android:name="com.sensor.helper.DfuService"
+			android:exported="true"
+			android:label="nRF Toolbox DFU Proxy">
+			<intent-filter>
+				<action android:name="no.nordicsemi.android.action.DFU_UPLOAD"/>
+
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</service>
+
+		<activity
+			android:name="com.hubble.videobrowser.RecordVideoBrowserActivity"
+			android:configChanges="uiMode|keyboardHidden|orientation|screenSize"
+			android:parentActivityName="com.nxcomm.blinkhd.ui.MainActivity"
+            android:theme="@style/Theme.AppCompat" />
+		<activity
+			android:name="com.hubble.ui.BTAActivity"
+			android:screenOrientation="landscape"
+			android:theme="@style/Theme.Hubble"/>
+		<activity
+			android:name="com.hubble.setup.CameraSetUpActivity"
+			android:configChanges="orientation|keyboardHidden"
+			android:screenOrientation="portrait"/>
+		<activity
+			android:name="com.hubble.setup.CameraConnectActivity"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait"/>
+
+		<activity
+			android:name="com.hubble.ota.OtaActivity"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait"/>
+
+		<activity android:name="com.hubble.ui.ViewFinderActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize" />
+		<activity android:name="com.hubble.ui.EventHistoryFullScreenActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+		<activity android:name="com.hubble.subscription.ManagePlanActivity"
+		          android:theme="@android:style/Theme.NoTitleBar">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.hubble.ui.HintScreenActivity"
+			android:launchMode="singleTask"
+			android:screenOrientation="portrait"
+			android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
+
+
+		<activity android:name="com.nxcomm.blinkhd.ui.CameraSettingsActivity"
+		          android:screenOrientation="portrait"/>
+		<activity android:name="com.nest.common.GetStartedActivity"
+		          android:screenOrientation="portrait"/>
+		<activity android:name="com.nest.common.NestDevicesActivity"
+		          android:screenOrientation="portrait"  />
+		<activity android:name="com.nest.common.NestHomeActivity"
+		          android:screenOrientation="portrait"/>
+		<activity android:name="com.nest.common.NestRuleSettingsActivity"
+		          android:screenOrientation="portrait"/>
+		<activity
+			android:name="com.hubble.ui.eventsummary.EventSummaryFullScreen"
+			android:launchMode="singleTask"
+			android:theme="@style/Theme.AppCompat.FullScreen"
+			android:configChanges="keyboardHidden|orientation|screenSize"/>
+		<activity
+			android:name="com.hubble.subscription.OfferPopUpActivity"
+			android:excludeFromRecents="true"
+			android:exported="true"
+			android:launchMode="singleInstance"
+			android:theme="@style/Base.Theme.AppCompat.Dialog"/>
+		<activity
+			android:name="com.nxcomm.blinkhd.ui.DoNotDisturbActivity"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait"/>
+		<activity
+			android:name="com.nxcomm.blinkhd.ui.ApplicationSettingsActivity"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait"/>
+
+		<activity
+			android:name="com.hubble.notifications.SummaryNotificationActivity"
+			android:excludeFromRecents="true"
+			android:exported="true"
+			android:launchMode="singleInstance"
+			android:theme="@style/Base.Theme.AppCompat.Dialog"/>
+
+		<service android:name="com.nest.common.SmokeService"/>
+		<meta-data
+			android:name="io.fabric.ApiKey"
+			android:value="f5dd679857d1a969028f549c47936f191a846057" />
+
+		<service
+			android:name="com.hubble.subscription.ApplySubscriptionService"/>
+		<service
+			android:name="com.hubble.notifications.NotificationDismissIntentService"/>
+
+
+        <activity
+            android:name="com.nxcomm.blinkhd.ui.SessinExpireActivity"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTop"
+
+
+            android:theme="@style/AlertDialogTheme"
+            >
+        </activity>
+
+
+
+        <receiver
+            android:name="com.hubble.receivers.SessionExpireReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.hubble.receivers.SessionExpireReceiver"/>
+            </intent-filter>
+        </receiver>
+
+
+        <receiver
+            android:name="com.hubble.receivers.SessionExpireReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.hubble.receivers.SessionExpireReceiver"/>
+            </intent-filter>
+        </receiver>
+	</application>
+
+</manifest>

@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+      android:id="@+id/menu_patrol"
+      android:icon="@drawable/ic_action_patrol"
+      app:showAsAction="always"
+      android:title="@string/patrol"
+      android:visible="false"/>
+
+  <item
+    android:id="@+id/menu_app_settings"
+    android:icon="@drawable/vector_drawable_setting"
+    app:showAsAction="always"
+    android:title="@string/app_settings_title"
+      />
+
+  <item
+      android:id="@+id/menu_buy_camera"
+      android:icon="@drawable/ic_action_buy_camera"
+      app:showAsAction="ifRoom"
+      android:title="@string/buy_camera"
+      android:visible="false"/>
+
+  <item
+      android:id="@+id/menu_add_camera"
+      android:icon="@android:drawable/ic_menu_add"
+      app:showAsAction="always"
+      android:title="@string/add_camera"
+      android:visible="false"/>
+</menu>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+     <include
+          android:id="@+id/header_setup"
+          layout="@layout/activity_toolbar" />
+
+    <TextView
+        android:id="@+id/list_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/header_setup"
+        android:fontFamily="Roboto-Regular"
+        android:text="@string/setup_camera_detected"
+        android:textColor="@color/text_gray"
+        android:textSize="14sp" />
+
+     <ListView
+         android:id="@+id/camera_list"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="43dp"
+         android:divider="@color/drawer_list_divider"
+         android:dividerHeight="1dp"
+         android:layout_below="@id/list_header"
+         />
+
+
+    <Button
+        android:id="@+id/detect_camera_again_btn"
+        android:layout_width="277dp"
+        android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/setup_device_detect_button"
+        android:fontFamily="Roboto-Regular"
+        android:text="@string/setup_search_again"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/progress_image"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/settingup"
+        android:visibility="gone"/>
+
+
+
+
+</RelativeLayout>

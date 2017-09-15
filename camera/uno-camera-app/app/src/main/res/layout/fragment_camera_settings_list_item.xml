@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="?android:attr/listPreferredItemHeightSmall"
+              android:gravity="center_vertical"
+              android:minHeight="?android:attr/listPreferredItemHeightSmall"
+              android:orientation="vertical">
+
+  <TextView
+      android:id="@+id/lblListItem"
+      style="@style/Base.TextAppearance.AppCompat.Medium"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"/>
+
+  <TextView
+      android:id="@+id/lblListItemSubtext"
+      style="@style/Base.TextAppearance.AppCompat.Small"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"/>
+
+</LinearLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string-array name="resolutions" translatable="false">
+    <item>@string/resolution_360p</item>
+    <item>@string/resolution_480p</item>
+    <item>@string/resolution_720p</item>
+  </string-array>
+
+  <string-array name="bitrate" translatable="false">
+    <item>@string/bitrate_200</item>
+    <item>@string/bitrate_400</item>
+    <item>@string/bitrate_600</item>
+    <item>@string/bitrate_800</item>
+    <item>@string/bitrate_1000</item>
+  </string-array>
+
+    <string-array name="timezones" translatable="false">
+        <item>GMT -12:00 </item>
+        <item>GMT -11:00</item>
+        <item>GMT -10:00</item>
+        <item>GMT -09:30</item>
+        <item>GMT -09:00</item>
+        <item>GMT -08:00</item>
+        <item>GMT -07:00</item>
+        <item>GMT -06:00</item>
+        <item>GMT -05:00</item>
+        <item>GMT -04:30</item>
+        <item>GMT -04:00</item>
+        <item>GMT -03:30</item>
+        <item>GMT -03:00</item>
+        <item>GMT -02:00</item>
+        <item>GMT -01:00</item>
+        <item>GMT +00:00</item>
+        <item>GMT +01:00</item>
+        <item>GMT +02:00</item>
+        <item>GMT +03:00</item>
+        <item>GMT +03:30</item>
+        <item>GMT +04:00</item>
+        <item>GMT +04:30</item>
+        <item>GMT +05:00</item>
+        <item>GMT +05:30</item>
+        <item>GMT +05:45</item>
+        <item>GMT +06:00</item>
+        <item>GMT +06:30</item>
+        <item>GMT +07:00</item>
+        <item>GMT +08:00</item>
+        <item>GMT +08:45</item>
+        <item>GMT +09:00</item>
+        <item>GMT +09:30</item>
+        <item>GMT +10:00</item>
+        <item>GMT +10:30</item>
+        <item>GMT +11:00</item>
+        <item>GMT +11:30</item>
+        <item>GMT +12:00</item>
+        <item>GMT +12:45</item>
+        <item>GMT +13:00</item>
+        <item>GMT +14:00</item>
+    </string-array>
+
+  <string name="term_of_use_url" translatable="false">https://hubbleconnected.com/terms-of-service/?ModPagespeed=noscript</string>
+  <string name="server_url_endpoint">https://api.hubble.in/v1</string>
+  <!-- Also in app value_strings.xml -->
+  <string name="hubble_products_url" translatable="false">http://hubbleconnected.com/hubble-products/</string>
+  <string name="hubble_products_url_israel" translatable="false">http://www.bconnect.co.il/product-tag/motorola/</string>
+  <string name="hubble_web_app_url" translatable="false">https://app.hubbleconnected.com/</string>
+</resources>

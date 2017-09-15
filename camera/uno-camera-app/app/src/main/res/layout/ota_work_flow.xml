@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="@dimen/ota_view_margin"
+	android:background="@color/viewfinder_marine_bg"
+	android:id="@+id/main_root">
+
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/ota_please_wait"
+		android:id="@+id/please_wait_tv"
+		android:layout_marginTop="50dp"
+		android:gravity="center"
+		android:textSize="@dimen/ota_please_wait_size"
+		android:textColor="@color/textColor"
+		android:textStyle="bold"/>
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/ota_status"
+		android:id="@+id/ota_status_tv"
+	    android:layout_below="@+id/please_wait_tv"
+		android:layout_gravity="center"
+	    android:maxLines="2"
+	    android:layout_margin="40dp"
+	    android:textSize="18sp"
+	    android:textColor="@color/white"
+		/>
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/downloading"
+		android:id="@+id/ota_live_status_tv"
+		android:layout_below="@+id/ota_status_tv"
+		android:gravity="center"
+		android:layout_marginTop="10dp"
+		android:textSize="16sp"
+		android:textColor="@color/white"
+		/>
+
+	<ProgressBar
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/ota_process_pb"
+		android:layout_below="@+id/ota_live_status_tv"
+		android:layout_marginTop="25dp"
+		android:indeterminateTint="@color/color_text_blue"
+		style="?android:attr/progressBarStyleHorizontal"/>
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/percentage_status"
+		android:id="@+id/ota_percentage_tv"
+		android:layout_below="@+id/ota_process_pb"
+		android:gravity="center"
+		android:textSize="16sp"
+		android:layout_marginTop="15dp"
+		android:textColor="@color/white"
+		/>
+	<Button
+		android:id="@+id/cancel_button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/Cancel"
+		android:background="@drawable/button_bg_transparent"
+		android:gravity="center"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentStart="true"
+		android:layout_marginBottom="40dp"
+		android:textColor="@color/white"/>
+
+
+</RelativeLayout>

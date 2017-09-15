@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/header_setup"
+        layout="@layout/activity_toolbar" />
+
+    <ImageView
+        android:id="@+id/detect_wifi_img"
+        android:layout_width="94dp"
+        android:layout_height="142dp"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:layout_width="283dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/detect_wifi_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="Roboto-Regular"
+        android:textSize="18sp"
+        android:textColor="@color/text_dark_gray"
+        android:text="@string/setup_camera_wifi_detecting"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detect_wifi_img"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="Roboto-Regular"
+        android:textSize="14sp"
+        android:textColor="@color/text_dark_gray"
+        android:text="@string/setup_detecting_camera_progress"/>
+
+
+
+</RelativeLayout>

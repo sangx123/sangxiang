@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewfinder_pan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <ImageView
+        android:id="@+id/close_pan_tilt"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:padding="2dp"
+        android:src="@drawable/close"/>
+
+    <RelativeLayout
+        android:layout_width="123dp"
+        android:layout_height="119dp"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:layout_width="133dp"
+            android:layout_height="129dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/navigatebuttonbg"/>
+
+        <ImageButton
+            android:id="@+id/panTiltUp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:padding="2dp"
+            android:background="@drawable/top"/>
+
+        <ImageButton
+            android:id="@+id/panTiltDown"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:padding="2dp"
+            android:background="@drawable/bottom"/>
+
+        <ImageButton
+            android:id="@+id/panTiltLeft"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="4dp"
+            android:padding="2dp"
+            android:background="@drawable/left"/>
+
+        <ImageButton
+            android:id="@+id/panTiltRight"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="4dp"
+            android:padding="2dp"
+            android:background="@drawable/right"/>
+
+        <ImageButton
+            android:id="@+id/panTiltCenter"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:background="@drawable/center_navigate"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/pan_tilt_delayed"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>
+
+
+

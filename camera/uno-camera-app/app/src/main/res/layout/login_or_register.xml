@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/root_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/brand_bg"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+  <ViewFlipper
+      android:id="@+id/loginOrRegister_viewPager"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/getStartedScreen"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        layout="@layout/bb_is_get_started_screen"/>
+
+    <include
+        android:id="@+id/loginScreen"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        layout="@layout/bb_is_login_screen"/>
+
+    <include
+        android:id="@+id/registrationScreen"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        layout="@layout/bb_is_create_an_account"/>
+  </ViewFlipper>
+
+
+</FrameLayout>

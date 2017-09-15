@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="10dp">
+
+
+  <ImageView
+      android:id="@+id/imageView_item_list_dialog_connected_mototag_icon"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:src="@drawable/icon_doormotionsensor_white"
+      android:layout_gravity="center_vertical"/>
+
+  <TextView
+      android:id="@+id/textView_item_list_dialog_connected_mototag_name"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      style="@style/TextAppearance.AppCompat.Medium"
+      android:layout_weight="4"
+      android:textColor="@color/black"
+      android:layout_gravity="center_vertical"/>
+</LinearLayout>

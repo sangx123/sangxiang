@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:baselineAligned="false">
+
+    <include
+        android:id="@+id/header_setup"
+        layout="@layout/activity_toolbar" />
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="81dp"
+        android:src="@drawable/vector_drawable_instruction_4"/>
+
+    <TextView
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/text_dark_gray"
+        android:textSize="14sp"
+        android:fontFamily="Roboto-Light"
+        android:text="@string/setup_pair"/>
+
+    <TextView
+        android:id="@+id/setup_show_pair_instruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="59dp"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/text_blue"
+        android:textSize="12sp"
+        android:fontFamily="Roboto-Light"
+        android:padding="10dp"
+        android:text="@string/setup_pair_help_string"/>
+
+    <LinearLayout
+        android:id="@+id/setup_pair_help_orbit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="59dp"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="122dp"
+            android:layout_height="106dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/orbit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/setup_pair_help_orbit_1"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/hint_text"
+            android:textSize="12sp"
+            android:fontFamily="Roboto-Regular"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/setup_pair_help_orbit_2"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/hint_text"
+            android:textSize="10sp"
+            android:fontFamily="Roboto-Regular"/>
+
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="15dp">
+
+        <Button
+            android:id="@+id/setup_instruction_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/text_blue"
+            android:textSize="18sp"
+            android:fontFamily="Roboto-Medium"
+            android:text="@string/Cancel"/>
+
+        <Button
+            android:id="@+id/setup_detect_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/text_blue"
+            android:textSize="18sp"
+            android:fontFamily="Roboto-Medium"
+            android:text="@string/setup_detect_camera"/>
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

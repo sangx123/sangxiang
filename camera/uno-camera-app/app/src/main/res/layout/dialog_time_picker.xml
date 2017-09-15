@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  android:id="@+id/root_view"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="320dp"
+  android:layout_height="wrap_content"
+  android:layout_gravity="center"
+  android:background="@drawable/custom_dialog_background"
+  android:keepScreenOn="true"
+  android:orientation="vertical">
+
+  <TextView
+    android:id="@+id/txt_set_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="10dp"
+    android:text="@string/set_start_time"
+    android:textColor="@android:color/holo_blue_light"
+    android:textSize="22sp"/>
+
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@android:color/holo_blue_light"/>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal">
+
+    <NumberPicker
+      android:id="@+id/picker_hour"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@android:color/transparent"/>
+
+    <NumberPicker
+      android:id="@+id/picker_minute"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="16dp"
+      android:background="@android:color/transparent"/>
+
+    <NumberPicker
+        android:id="@+id/picker_am_pm"
+        android:layout_width="@dimen/number_picker_halfday_width"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:background="@android:color/transparent"/>
+  </LinearLayout>
+
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@android:color/holo_blue_light"/>
+
+  <CheckBox
+    android:id="@+id/chk_exceed_next_day"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    android:text="@string/exceed_next_day"/>
+
+  <LinearLayout
+    android:id="@+id/btn_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="10dp">
+
+    <Button
+      android:id="@+id/cancel_btn"
+      style="@style/buttonStyle"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:layout_weight="1"
+      android:background="@drawable/button_neutral"
+      android:text="@string/Cancel"/>
+
+    <Button
+      android:id="@+id/connect_btn"
+      style="@style/buttonStyle"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:layout_weight="1"
+      android:background="@drawable/button_positive"
+      android:text="@string/set"/>
+  </LinearLayout>
+
+</LinearLayout>

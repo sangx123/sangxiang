@@ -1,0 +1,1 @@
+git checkout develop_new && git pull

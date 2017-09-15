@@ -1,0 +1,17 @@
+// Top level build.gradle
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:0.11.91.4"
+        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.google.gms:google-services:3.0.0'
+    }
+}
+
+allprojects {
+  repositories {
+    jcenter()
+  }
+}

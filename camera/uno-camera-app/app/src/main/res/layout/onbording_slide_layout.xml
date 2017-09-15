@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_horizontal"
+		android:layout_gravity="top"
+
+		android:src="@drawable/p_i_r_detection"
+		android:layout_centerHorizontal="true"
+		android:scaleType="fitXY"
+
+		android:id="@+id/imageView"/>
+
+	<TextView
+		android:id="@+id/onboard_welcome"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+
+		android:text="Welcome Aboard!"
+		android:textStyle="bold"
+
+		android:fontFamily="Roboto-Medium"
+		android:layout_marginTop="10dp"
+		android:paddingLeft="20dp"
+		android:paddingRight="20dp"
+		android:textSize="24sp"
+		android:textColor="@color/text_blue"
+		android:gravity="center_horizontal"
+		/>
+
+	<TextView
+		android:id="@+id/onboard_heading"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/imageView"
+		android:text="Focus 66"
+		android:textStyle="bold"
+
+		android:fontFamily="Roboto-Medium"
+		android:layout_marginTop="30dp"
+		android:paddingLeft="20dp"
+		android:paddingRight="20dp"
+		android:textSize="18sp"
+		android:textColor="#333333"
+		android:gravity="center_horizontal"
+		/>
+
+	<ImageView
+		android:id="@+id/onboarding_camera_image"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/page_1_copy"
+		android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+		android:layout_below="@+id/onboard_heading"
+		android:visibility="gone"
+		android:layout_centerHorizontal="true"/>
+
+	<TextView
+		android:id="@+id/onboarding_feature_desc"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Lets the user to select the language"
+		android:layout_below="@+id/onboarding_camera_image"
+		android:layout_marginTop="20dp"
+		android:fontFamily="Roboto-Light"
+		android:textSize="14sp"
+		android:paddingLeft="20dp"
+		android:paddingRight="20dp"
+		android:textColor="@color/text_gray"
+		android:gravity="center_horizontal"
+		android:layout_gravity="center_horizontal|bottom"/>
+
+</RelativeLayout>

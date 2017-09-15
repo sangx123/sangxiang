@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent">
+
+  <ImageView
+      android:id="@+id/upper_bar"
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:layout_alignParentTop="true"
+      android:scaleType="fitXY"
+      android:background="@color/hairline_stroke"/>
+
+  <!-- Please set it in code after loading -->
+
+  <TextView
+      android:id="@+id/textTitle"
+      android:layout_width="225dp"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:layout_marginLeft="16dp"
+      android:layout_below="@+id/upper_bar"
+      android:layout_marginTop="16dp"
+      android:layout_marginBottom="16dp"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:textColor="@color/black"
+      android:background="@android:color/transparent"
+      android:textSize="22sp"/>
+
+  <!-- Just set it when set userEmail in landscape mode -->
+
+  <TextView
+      android:id="@+id/textTitle_landscape"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:layout_marginLeft="16dp"
+      android:layout_below="@+id/upper_bar"
+      android:layout_marginTop="16dp"
+      android:layout_marginBottom="16dp"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:textColor="@color/black"
+      android:textSize="22sp"
+      android:background="@android:color/transparent"
+      android:visibility="invisible"/>
+
+  <ImageView
+      android:id="@+id/lower_bar"
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:layout_below="@+id/textTitle"
+      android:scaleType="fitXY"
+      android:background="@color/hairline_stroke"/>
+
+  <TextView
+      android:id="@+id/txtDate"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_centerVertical="true"
+      android:layout_marginRight="15dp"
+      android:text=""
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:textColor="@color/black"
+      android:textSize="20sp"
+      android:background="@android:color/transparent"
+      android:visibility="invisible"/>
+
+  <Button
+      android:id="@+id/LoginOnTop"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_centerVertical="true"
+      android:layout_marginRight="8dp"
+      android:text="@string/login"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:textColor="@color/black"
+      android:textSize="20sp"
+      android:background="@android:color/transparent"
+      android:visibility="invisible"/>
+
+  <ImageButton
+      android:id="@+id/buttonAdd"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:layout_alignRight="@+id/txtDate"
+      android:layout_below="@+id/upper_bar"
+      android:padding="10dp"
+      android:layout_marginTop="10dp"
+      android:background="@android:color/transparent"
+      android:src="@drawable/add_btn_state"
+      android:visibility="invisible"/>
+
+  <ImageButton
+      android:id="@+id/buttonRefreshDevice"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/refresh"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:textColor="@color/black"
+      android:layout_alignParentRight="true"
+      android:layout_centerVertical="true"
+      android:layout_marginRight="80dp"
+      android:background="@android:color/transparent"
+      android:src="@drawable/refresh_btn_state"
+      android:visibility="invisible"/>
+
+</RelativeLayout>

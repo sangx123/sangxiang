@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="160dp"
+                android:layout_height="90dp">
+
+	<ImageView
+		android:id="@+id/gallery_image_view"
+		android:layout_width="160dp"
+		android:layout_height="90dp"
+		android:scaleType="fitXY"
+	/>
+
+	<TextView
+		android:id="@+id/gallery_time_view"
+		android:layout_width="160dp"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_margin="5dp"
+		android:fontFamily="Roboto-Regular"
+		android:textSize="10sp"
+		android:textColor="@color/white"
+	/>
+
+	<ImageView
+		android:id="@+id/gallery_summary_view"
+		android:layout_width="13dp"
+		android:layout_height="13dp"
+		android:layout_marginBottom="5dp"
+		android:layout_marginLeft="10dp"
+		android:layout_alignBottom="@id/gallery_image_view"
+		android:layout_alignLeft="@id/gallery_image_view"
+		android:scaleType="fitXY"
+		android:src="@drawable/gallery_summary"
+		android:visibility="gone"/>
+
+	<ImageView
+		android:id="@+id/gallery_play_view"
+		android:layout_width="15dp"
+		android:layout_height="7dp"
+		android:layout_marginBottom="5dp"
+		android:layout_marginLeft="10dp"
+		android:layout_alignBottom="@id/gallery_image_view"
+		android:layout_alignLeft="@id/gallery_image_view"
+		android:scaleType="fitXY"
+		android:src="@drawable/gallery_video"
+		android:visibility="invisible"/>
+	<ImageView
+		android:id="@+id/gallery_select_holder"
+		android:layout_width="16dp"
+		android:layout_height="16dp"
+		android:layout_marginRight="10dp"
+		android:layout_marginBottom="5dp"
+		android:layout_alignBottom="@id/gallery_image_view"
+		android:layout_alignRight="@id/gallery_image_view"
+		android:scaleType="fitXY"
+		android:src="@drawable/item_select_holder"
+		android:visibility="invisible"/>
+
+	<ImageView
+		android:id="@+id/gallery_select_tickMark"
+		android:layout_width="16dp"
+		android:layout_height="16dp"
+		android:layout_marginRight="10dp"
+		android:layout_marginBottom="5dp"
+		android:layout_alignBottom="@id/gallery_image_view"
+		android:layout_alignRight="@id/gallery_image_view"
+		android:scaleType="fitXY"
+		android:src="@drawable/item_selected"
+		android:visibility="invisible"
+	/>
+</RelativeLayout>

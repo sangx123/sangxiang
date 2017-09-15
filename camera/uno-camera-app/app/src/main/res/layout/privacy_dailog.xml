@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/dailog_privacy"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="Roboto-Medium"
+            android:text="@string/privacy_dailog_header"
+            android:textColor="@color/color_blue"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:fontFamily="Roboto-Regular"
+            android:gravity="center"
+            android:text="@string/privacy_dailog_info"
+            android:textColor="#727272"
+            android:textSize="12sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/dontshow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="Roboto-Medium"
+                android:text="@string/privacy_dailog_donot_show"
+                android:textColor="#9b9b9b"
+                android:textSize="12sp"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#979797"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+android:gravity="center"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="0.4"
+
+                    android:fontFamily="Roboto-Bold"
+                    android:text="@string/Cancel"
+                    android:textAllCaps="false"
+                    android:textColor="#727272"
+
+                    android:textSize="16sp"/>
+
+                <View
+                    android:id="@+id/vline"
+                    android:layout_width="1dp"
+                    android:layout_height="60dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="#979797"/>
+
+                <TextView
+                    android:id="@+id/confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/line"
+                    android:gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="0.4"
+
+                    android:fontFamily="Roboto-Bold"
+                    android:text="@string/Yes"
+                    android:textAllCaps="false"
+                    android:textColor="#2399ca"
+                    android:textSize="16sp"
+
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

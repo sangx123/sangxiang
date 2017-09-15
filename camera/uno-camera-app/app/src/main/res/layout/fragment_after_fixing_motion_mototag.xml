@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+  <ImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
+      android:src="@drawable/background_sensor"/>
+
+  <LinearLayout
+      android:id="@+id/after_fixing_middle"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:baselineAligned="false"
+      android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#24fffcef"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/after_fixing_tag_layout_padding_bottom"
+        android:paddingLeft="@dimen/after_fixing_tag_layout_padding_left"
+        android:paddingRight="@dimen/after_fixing_tag_layout_padding_right"
+        android:paddingTop="@dimen/after_fixing_tag_layout_padding_top">
+
+      <TextView
+          style="@style/TextAppearance.AppCompat.Medium"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/after_fixing_mototag"
+          android:textSize="@dimen/setup_tag_text_size"
+          android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/wait_10_sec_layout_margin_left"
+        android:layout_marginRight="@dimen/wait_10_sec_layout_margin_right"
+        android:layout_marginTop="@dimen/wait_10_sec_layout_margin_top"
+        android:orientation="vertical">
+
+      <TextView
+          style="@style/TextAppearance.AppCompat.Medium"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/press_button_mototag_instruction"
+          android:textSize="@dimen/setup_tag_text_size"
+          android:textColor="@color/white"
+          android:textStyle="bold"/>
+
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_margin="20dp"
+          android:src="@drawable/banner_mototag02"/>
+
+    </LinearLayout>
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentRight="true"
+      android:layout_below="@id/after_fixing_middle"
+      android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/continue_after_fixing"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setup_tag_continue_height"
+        android:layout_gravity="bottom"
+        android:background="@android:color/black"
+        android:gravity="right|center_vertical"
+        android:paddingRight="40dp"
+        android:text="@string/continue_cap"
+        android:textColor="@color/main_blue"
+        android:textStyle="bold"/>
+  </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header_setup"
+        layout="@layout/activity_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="33dp"
+                android:fontFamily="Roboto-Medium"
+                android:gravity="center_horizontal"
+                android:text="@string/setup_focus_camera"
+                android:textColor="@color/text_blue"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="168dp"
+                android:layout_height="92dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="14dp"
+                android:src="@drawable/focuscameras" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="#979797" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="33dp"
+                android:fontFamily="Roboto-Medium"
+                android:gravity="center_horizontal"
+                android:text="@string/setup_mtb_camera"
+                android:textColor="@color/text_blue"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="168dp"
+                android:layout_height="92dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="14dp"
+                android:src="@drawable/m_t_b" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="#979797" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="33dp"
+                android:fontFamily="Roboto-Medium"
+                android:gravity="center_horizontal"
+                android:text="@string/setup_orbit_camera"
+                android:textColor="@color/text_blue"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="168dp"
+                android:layout_height="92dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="14dp"
+                android:src="@drawable/orbit" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
