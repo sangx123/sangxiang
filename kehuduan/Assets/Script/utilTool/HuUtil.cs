@@ -28,6 +28,39 @@ public static class HuUtil
 
 	private static int JIANG;
 
+
+	/// <summary>
+	/// 四川麻将胡牌判断
+	/// </summary>
+	/// <returns><c>true</c>, if pai was hued, <c>false</c> otherwise.</returns>
+	/// <param name="list">List.</param>
+	public static bool huPai(List<int> list)
+	{
+		list.Sort();
+		bool result = false;
+		int currentMenshu = HuUtil.checkMeShu(list);
+		if (currentMenshu < 3)
+		{
+			if (HuUtil.IsQiDui(list))
+			{
+				result = true;
+			}
+			if (HuUtil.IsHuPengPeng(list))
+			{
+				result = true;
+			}
+
+			if (HuUtil.isNomalHuPai(list))
+			{
+				result = true;
+			}
+
+		}
+		return result;
+
+	}
+
+
 	/// <summary>
 	/// 清一色，缺门分析
 	/// </summary>

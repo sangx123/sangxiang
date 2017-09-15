@@ -27,4 +27,34 @@ public class PutCard {
         CardPosition = -1;
         CardToNum = -1;
     }
+    /// <summary>
+    /// 自己打牌
+    /// </summary>
+    /// <param name="cardNum">打出牌的索引</param>
+    public void SelfPutOutCard(int cardNum){
+		leftHu = false;
+		TopHu = false;
+		RightHu = false;
+		BottomHu = false;
+		IsGangCard = false;
+		CardPosition = 0;
+        CardToNum = cardNum;  
+    }
+
+    /// <summary>
+    /// 别人打牌
+    /// </summary>
+    /// <param name="cardNum">打出牌的索引，打牌人的对应的牌位置</param>
+	public void OtherPutOutCard(int cardNum,int position)
+	{
+		leftHu = false;
+		TopHu = false;
+		RightHu = false;
+		BottomHu = false;
+		IsGangCard = false;
+		CardPosition = position;
+		CardToNum = cardNum;
+	}
+
+
 }
