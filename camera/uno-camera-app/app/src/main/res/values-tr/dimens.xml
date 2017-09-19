@@ -1,8 +1,0 @@
-<resources>
-
-  <dimen name="number_picker_halfday_width">140dp</dimen>
-  <integer name="mvr_crud_time_ratio_1">2</integer>
-  <integer name="mvr_crud_time_ratio_2">5</integer>
-
-</resources>
-

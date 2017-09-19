@@ -1,1 +1,0 @@
-ALTER TABLE DeviceProfile ADD COLUMN free_trial_days_left INTEGER;

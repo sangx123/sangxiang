@@ -1,7 +1,0 @@
-#!/bin/sh
-if [ $# -eq 0 ]
-  then
-    echo "No arguments supplied - supply app brand (Hubble|Vtech)"
-else 
-  ./gradlew --parallel --daemon assemble$1Debug -x lint install$1Debug
-fi

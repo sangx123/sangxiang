@@ -1,1 +1,0 @@
-ALTER TABLE DeviceEvent ADD device_name TEXT;

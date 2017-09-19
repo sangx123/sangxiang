@@ -1,1 +1,0 @@
-ALTER TABLE DeviceProfile ADD free_trial_quota INTEGER;

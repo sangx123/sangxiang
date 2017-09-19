@@ -1,2 +1,0 @@
-DROP TABLE IF EXISTS Attributes;
-CREATE TABLE Attributes(Id INTEGER PRIMARY KEY,motion_status TEXT,motion_sensitivity TEXT,sound_status TEXT,sound_sensitivity TEXT,high_temp_status TEXT,high_tem_threshold TEXT,low_temp_status TEXT,low_temp_threshold TEXT,storage_mode TEXT,streammode TEXT,p2p_protocol TEXT);

@@ -2598,50 +2598,12 @@ public class MyMahjongScript : MonoBehaviour
         }else{
             if(putOutCardStruct.BottomHu){
                 //自己有胡的话显示碰杠胡
+                //todo 此处多了一步胡牌检测
                 checkPlayerPengGangHuFromOthersPutCard();
             }
         }
 
-		//如果有ai胡的话
-        if (aiHuResult)
-		{
-			//判断ai是否有碰杠的牌，有的话不进行下一步
-			for (int i = 0; i < 4; i++)
-			{
-				if (i == 1)
-				{
-					//检查上家的胡牌情况
-					if (checkAiPengGangFromPlayer(rightList, putOutCardStruct.CardToNum, i))
-					{
-						pengGangResult = true;
-					}
-				}
-				else if (i == 2)
-				{
-					//检查下家的胡牌情况
-					if (checkAiPengGangFromPlayer(topList, putOutCardStruct.CardToNum, i))
-					{
-						pengGangResult = true;
-					}
-				}
-				else if (i == 3)
-				{
-					if (checkAiPengGangFromPlayer(leftList, putOutCardStruct.CardToNum, i))
-					{
-						pengGangResult = true;
-					}
-				}
-			}
-            if(!pengGangResult){
-                //如果没有ai碰杠的话直接轮到下家
-                toNext();
-            }
-		}
-		else
-		{
-			//如果有人胡牌的话就直接轮到下家接牌
-			toNext();
-		}
+		
 	}
 
 
@@ -3073,6 +3035,7 @@ public class MyMahjongScript : MonoBehaviour
 				//Destroy (tempCardList [0]);
 				tempCardList.RemoveAt(0);
 			}
+
 			Vector3 tempvector3 = new Vector3(0, 0, 0);
 			List<GameObject> tempList = new List<GameObject>();
 
@@ -3082,7 +3045,7 @@ public class MyMahjongScript : MonoBehaviour
 					for (int i = 0; i < 3; i++)
 					{
 						GameObject obj = Instantiate(Resources.Load(path)) as GameObject;
-						obj.GetComponent<TopAndBottomCardScript>().setLefAndRightPoint(cardVo.cardPoint);
+						obj.GetComponent<TopAndBottomCardScript>().setLefAndRightPoint(otherPengCard);
 						tempvector3 = new Vector3(0, -122 + PengGangList_R.Count * 95 + i * 26f);
 						//+ new Vector3(0, i * 26, 0);
 						obj.transform.parent = pengGangParenTransformR.transform;
@@ -3096,7 +3059,7 @@ public class MyMahjongScript : MonoBehaviour
 					for (int i = 0; i < 3; i++)
 					{
 						GameObject obj = Instantiate(Resources.Load(path)) as GameObject;
-						obj.GetComponent<TopAndBottomCardScript>().setPoint(cardVo.cardPoint);
+						obj.GetComponent<TopAndBottomCardScript>().setPoint(otherPengCard);
 						tempvector3 = new Vector3(251 - PengGangList_T.Count * 120f + i * 37, 0, 0);
 						obj.transform.parent = pengGangParenTransformT.transform;
 						obj.transform.localScale = Vector3.one;
@@ -3108,7 +3071,7 @@ public class MyMahjongScript : MonoBehaviour
 					for (int i = 0; i < 3; i++)
 					{
 						GameObject obj = Instantiate(Resources.Load(path)) as GameObject;
-						obj.GetComponent<TopAndBottomCardScript>().setLefAndRightPoint(cardVo.cardPoint);
+                        obj.GetComponent<TopAndBottomCardScript>().setLefAndRightPoint(otherPengCard);
 						tempvector3 = new Vector3(0, 122 - PengGangList_L.Count * 95f - i * 26f, 0);
 						obj.transform.parent = pengGangParenTransformL.transform;
 						obj.transform.localScale = Vector3.one;
