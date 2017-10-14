@@ -36,6 +36,7 @@ public class bottomScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
 
     }
+    //再拖拽过程中的事件
     public void OnDrag(PointerEventData eventData)
     {
         if (GlobalDataScript.isDrag)
@@ -46,10 +47,26 @@ public class bottomScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
     }
 
-
-    public void OnPointerDown(PointerEventData eventData)
+	//鼠标点击事件
+	//鼠标点击A对象，按下鼠标时A对象响应此事件
+	public void OnPointerDown(PointerEventData eventData)
     {
-		if (GlobalDataScript.isDrag) {
+		//以前的逻辑是第一次鼠标按下seleted设置为true
+		//当selected设置为true的时候，就执行onSendMessage事件即cardChange事件
+		//Debug.Log("OnPointerDown"+ Convert.ToString(selected));
+		if (GlobalDataScript.isHuan3zhang)
+		{
+			if (selected == false)
+			{
+				selected = true;
+				oldPosition = transform.localPosition;
+			}
+			else
+			{
+				sendObjectToCallBack();
+			}
+		}
+		else if (GlobalDataScript.isDrag) {
 			if (selected == false) {
 				selected = true;
 				oldPosition = transform.localPosition;
@@ -57,12 +74,39 @@ public class bottomScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 				sendObjectToCallBack ();
 			}
 		}
-
     }
-
+	//鼠标弹起事件
+	//鼠标点击A对象，抬起鼠标时响应
+	//无论鼠标在何处抬起（即不在A对象中）
+	//都会在A对象中响应此事件
+	//注：响应此事件的前提是A对象必须响应过OnPointerDown事件
+	//Debug.Log("OnPointerUp " + name);
     public void OnPointerUp(PointerEventData eventData)
     {
-		if (GlobalDataScript.isDrag) {
+		//以前的逻辑，如果鼠标的位置超过了一定的值就执行onSendMessage事件即cardChange事件
+		//reSetPoisitonCallBack即执行了cardSelect事件
+		Debug.Log("OnPointerUp "+Convert.ToString(selected));
+		if (GlobalDataScript.isHuan3zhang)
+		{
+			if (transform.localPosition.y > -122f)
+			{
+				sendObjectToCallBack();
+			}
+			else
+			{
+				if (dragFlag)
+				{
+					transform.localPosition = oldPosition;
+				}
+				else
+				{
+					reSetPoisitonCallBack();
+				}
+			}
+			dragFlag = false;
+		
+		}
+		else if (GlobalDataScript.isDrag) {
 			if (transform.localPosition.y > -122f) {
 				sendObjectToCallBack ();
 			} else {
@@ -79,6 +123,7 @@ public class bottomScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 	private void sendObjectToCallBack(){
 		if (onSendMessage != null)     //发送消息
 		{
+			Debug.Log("onSendMessage(gameObject)");
 			onSendMessage(gameObject);//发送当前游戏物体消息
 		}
 	}

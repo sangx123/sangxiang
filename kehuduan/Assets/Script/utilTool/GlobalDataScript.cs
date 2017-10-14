@@ -12,6 +12,8 @@ public class GlobalDataScript
 {
 
     public static bool isDrag = false;
+
+    public static bool isHuan3zhang = true;
 	/**登陆返回数据**/
 	public static AvatarVO loginResponseData;
 	/**加入房间返回数据**/
