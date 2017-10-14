@@ -49,21 +49,26 @@ public class bottomScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
 	//鼠标点击事件
 	//鼠标点击A对象，按下鼠标时A对象响应此事件
+    //鼠标点击一个的时候 让他的选中状态设置为true，其他的都设置为false
+    //在选择定缺牌的时候，其他的都不应该是false，只能有3个不是
 	public void OnPointerDown(PointerEventData eventData)
     {
 		//以前的逻辑是第一次鼠标按下seleted设置为true
 		//当selected设置为true的时候，就执行onSendMessage事件即cardChange事件
-		//Debug.Log("OnPointerDown"+ Convert.ToString(selected));
+		Debug.Log("OnPointerDown"+ Convert.ToString(selected));
 		if (GlobalDataScript.isHuan3zhang)
 		{
 			if (selected == false)
 			{
+                GlobalDataScript.huan3zhangNum++;
 				selected = true;
 				oldPosition = transform.localPosition;
 			}
 			else
 			{
-				sendObjectToCallBack();
+                GlobalDataScript.huan3zhangNum--;
+                sendObjectToCallBack();
+                selected = false;
 			}
 		}
 		else if (GlobalDataScript.isDrag) {
@@ -85,7 +90,8 @@ public class bottomScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
 		//以前的逻辑，如果鼠标的位置超过了一定的值就执行onSendMessage事件即cardChange事件
 		//reSetPoisitonCallBack即执行了cardSelect事件
-		Debug.Log("OnPointerUp "+Convert.ToString(selected));
+		//Debug.Log("OnPointerUp="+Convert.ToString(selected));
+        Debug.Log("dragFlag="+Convert.ToString(dragFlag));
 		if (GlobalDataScript.isHuan3zhang)
 		{
 			if (transform.localPosition.y > -122f)
@@ -94,6 +100,7 @@ public class bottomScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 			}
 			else
 			{
+                //表示没有拖动麻将
 				if (dragFlag)
 				{
 					transform.localPosition = oldPosition;

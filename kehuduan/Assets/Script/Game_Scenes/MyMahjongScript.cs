@@ -152,6 +152,7 @@ public class MyMahjongScript : MonoBehaviour
     public static PutCard putOutCardStruct = new PutCard();
 
     public GameObject huan3zhangPanel;
+    private List<GameObject> huan3zhangList = new List<GameObject>();
 
     void Start()
     {
@@ -231,25 +232,61 @@ public class MyMahjongScript : MonoBehaviour
     /// <param name="obj">Object.</param>
     public void cardSelect(GameObject obj)
     {
+        //在此处将牌的个数进行调整
+        //设置牌的上面还是下面
         Debug.Log("cardSelect begin");
-        for (int i = 0; i < handerCardList[0].Count; i++)
-        {
-            if (handerCardList[0][i] == null)
+        if(GlobalDataScript.isHuan3zhang){
+
+            //         for (int i = 0; i < handerCardList[0].Count; i++)
+            //{
+            //	if (handerCardList[0][i] == null)
+            //	{
+            //		handerCardList[0].RemoveAt(i);
+            //		i--;
+            //	}
+            //	else
+            //	{
+            //		handerCardList[0][i].transform.localPosition = new Vector3(handerCardList[0][i].transform.localPosition.x, -292f); //从右到左依次对齐
+            //		handerCardList[0][i].transform.GetComponent<bottomScript>().selected = false;
+            //	}
+            //}
+          
+            if (obj != null&&GlobalDataScript.huan3zhangNum <= 3)
             {
-                handerCardList[0].RemoveAt(i);
-                i--;
-            }
-            else
-            {
-                handerCardList[0][i].transform.localPosition = new Vector3(handerCardList[0][i].transform.localPosition.x, -292f); //从右到左依次对齐
-                handerCardList[0][i].transform.GetComponent<bottomScript>().selected = false;
-            }
+                bool selected = obj.transform.GetComponent<bottomScript>().selected;
+                //obj.transform.GetComponent<bottomScript>().selected = !selected;
+                //selected = obj.transform.GetComponent<bottomScript>().selected;
+                Debug.Log("cardSeletctd="+Convert.ToString(selected));
+                if(selected){
+                    obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, -272f);
+                    huan3zhangList.Add(obj);
+                }else{
+					obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, -292f);
+                    huan3zhangList.Remove(obj);
+				}
+			}
+
+        }else{
+			for (int i = 0; i < handerCardList[0].Count; i++)
+			{
+				if (handerCardList[0][i] == null)
+				{
+					handerCardList[0].RemoveAt(i);
+					i--;
+				}
+				else
+				{
+					handerCardList[0][i].transform.localPosition = new Vector3(handerCardList[0][i].transform.localPosition.x, -292f); //从右到左依次对齐
+					handerCardList[0][i].transform.GetComponent<bottomScript>().selected = false;
+				}
+			}
+			if (obj != null)
+			{
+				obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, -272f);
+				obj.transform.GetComponent<bottomScript>().selected = true;
+			} 
         }
-        if (obj != null)
-        {
-            obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, -272f);
-            obj.transform.GetComponent<bottomScript>().selected = true;
-        }
+
         Debug.Log("cardSelect finish");
     }
 
@@ -289,6 +326,7 @@ public class MyMahjongScript : MonoBehaviour
         CardsNumChange();
         huan3zhangPanel.SetActive(true);
         GlobalDataScript.isHuan3zhang = true;
+        GlobalDataScript.huan3zhangNum = 0;
         //不摸牌不读秒
         //moPai();
         //UpateTimeReStart();
@@ -935,6 +973,7 @@ public class MyMahjongScript : MonoBehaviour
             Invoke("checkAIPengGangHuFromPlayer", 2); 
             //Debug.Log("cardChange finish");
         }
+		Debug.Log("cardChange end");
 
     }
 
@@ -3254,7 +3293,42 @@ public class MyMahjongScript : MonoBehaviour
     public void huan3zhang(){
         huan3zhangPanel.SetActive(false);
         GlobalDataScript.isHuan3zhang = false;
-        moPai();
+		GlobalDataScript.huan3zhangNum = 0;
+    
+        for (int i = 0; i < huan3zhangList.Count();i++){
+			int tempCardPoint = huan3zhangList[i].GetComponent<bottomScript>().getPoint();
+            topList[0].Add(tempCardPoint);
+            //Destroy(huan3zhangList[i]);
+            mineList[0].Remove(tempCardPoint);
+			mineList[0].Add(topList[0][0]);
+			topList[0].RemoveAt(0);
+        }
+        mineList[0].Sort();
+        for (int i = 0; i < handerCardList[0].Count();i++){
+            Destroy(handerCardList[0][i]);
+        }
+        handerCardList[0].Clear();
+		for (int a = 0; a < mineList[0].Count; a++)//我的牌13张
+		{
+			GameObject gob = Instantiate(Resources.Load("prefab/card/Bottom_B")) as GameObject;
+			//GameObject.Instantiate ("");
+			if (gob != null)//
+			{
+				gob.transform.SetParent(parentList[0]);//设置父节点
+				gob.transform.localScale = new Vector3(1.1f, 1.1f, 1);
+				gob.GetComponent<bottomScript>().onSendMessage += cardChange;//发送消息fd
+				gob.GetComponent<bottomScript>().reSetPoisiton += cardSelect;
+				gob.GetComponent<bottomScript>().setPoint(mineList[0][a]);//设置指针
+				handerCardList[0].Add(gob);//增加游戏对象
+			}
+			else
+			{
+				Debug.Log("--> gob is null");//游戏对象为空
+			}
+		}
+        SetPosition(false);
+		//重新排列手上的牌
+		moPai();
     }
 }
 
