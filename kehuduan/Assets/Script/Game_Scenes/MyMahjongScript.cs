@@ -271,7 +271,10 @@ public class MyMahjongScript : MonoBehaviour
 
         initArrayList();
         curDirString = getDirection(bankerId);
-        playerItems[curDirIndex].setbankImgEnable(true);
+        playerItems[0].setbankImgEnable(true);
+		playerItems[1].setbankImgEnable(true);
+		playerItems[2].setbankImgEnable(true);
+		playerItems[3].setbankImgEnable(true);
         SetDirGameObjectAction();
         isFirstOpen = false;
         GlobalDataScript.isOverByPlayer = false;
@@ -282,7 +285,7 @@ public class MyMahjongScript : MonoBehaviour
         setAllPlayerReadImgVisbleToFalse();
         initMyCardListAndOtherCard(13, 13, 13);
         CardsNumChange();
-        moPai();
+        //moPai();
         if (curDirString == DirectionEnum.Bottom)
         {
             //isSelfPickCard = true;
@@ -3207,7 +3210,40 @@ public class MyMahjongScript : MonoBehaviour
 				break;
 		}
 	}
-    //=========================================ai操作结束=========================================
+	//=========================================ai操作结束=========================================
+    //定缺操作
+	public GameObject wanBtn;
+	public GameObject tiaoBtn;
+	public GameObject TongBtn;
+    /// <summary>
+    /// 缺万
+    /// </summary>
+    public void DingQueWanBtnClick()
+	{
+        wanBtn.SetActive(false);
+        tiaoBtn.SetActive(false);
+        TongBtn.SetActive(false);
+	}
+
+	/// <summary>
+	/// 缺条
+	/// </summary>
+	public void DingQueTiaoBtnClick()
+	{
+		wanBtn.SetActive(false);
+		tiaoBtn.SetActive(false);
+		TongBtn.SetActive(false);
+	}
+
+	/// <summary>
+	/// 缺筒
+	/// </summary>
+	public void DingQueTongBtnClick()
+	{
+		wanBtn.SetActive(false);
+		tiaoBtn.SetActive(false);
+		TongBtn.SetActive(false);
+	}
 }
 //////ai出牌之后
 //////参考逻辑
@@ -3257,3 +3293,17 @@ public class MyMahjongScript : MonoBehaviour
 ///// 情况3（6，4）
 ///// aiHuFlag =false;
 ///// zijiHuFlag=false  检测自己碰杠如果有的话 显示碰杠，没有的话 检测ai的碰杠，ai直接碰杠
+
+/// 2017 10-4
+/// 今天要做换3张，
+/// 自己定缺，
+/// ai定缺  
+/// 杠的bug修复
+/// 自己杠的话，直接弄掉手上4张牌，并且显示在桌面上
+/// 1，暗杠直接
+/// 2，明杠
+///     2.1 手上有3张牌直接杠 
+///     2.2 桌上有碰的刮风
+/// ai胡牌算法修复
+/// 
+
