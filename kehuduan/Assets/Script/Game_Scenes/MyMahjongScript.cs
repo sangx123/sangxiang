@@ -3254,18 +3254,14 @@ public class MyMahjongScript : MonoBehaviour
         }
     }
     //=========================================ai操作结束=========================================
-    //定缺操作
-    public GameObject wanBtn;
-    public GameObject tiaoBtn;
-    public GameObject TongBtn;
+    public GameObject queyimenPanel;
     /// <summary>
     /// 缺万
     /// </summary>
     public void DingQueWanBtnClick()
     {
-        wanBtn.SetActive(false);
-        tiaoBtn.SetActive(false);
-        TongBtn.SetActive(false);
+        queyimenPanel.SetActive(false);
+        moPai();
     }
 
     /// <summary>
@@ -3273,9 +3269,8 @@ public class MyMahjongScript : MonoBehaviour
     /// </summary>
     public void DingQueTiaoBtnClick()
     {
-        wanBtn.SetActive(false);
-        tiaoBtn.SetActive(false);
-        TongBtn.SetActive(false);
+        queyimenPanel.SetActive(false);
+        moPai();
     }
 
     /// <summary>
@@ -3283,9 +3278,8 @@ public class MyMahjongScript : MonoBehaviour
     /// </summary>
     public void DingQueTongBtnClick()
     {
-        wanBtn.SetActive(false);
-        tiaoBtn.SetActive(false);
-        TongBtn.SetActive(false);
+       queyimenPanel.SetActive(false);
+        moPai();
     }
     /// <summary>
     /// 换3张
@@ -3328,7 +3322,8 @@ public class MyMahjongScript : MonoBehaviour
 		}
         SetPosition(false);
 		//重新排列手上的牌
-		moPai();
+		//moPai();
+        queyimenPanel.SetActive(true);
     }
 }
 
