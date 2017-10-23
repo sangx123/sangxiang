@@ -364,7 +364,8 @@ public class GameOverScript : MonoBehaviour {
         //if(myMaj!=null){
         //    myMaj.startGame();
         //}
-		MyMahjongScript playObj = GameObject.Find("Panel_GamePlay(Clone)").GetComponent<MyMahjongScript>();
+        //(Clone)
+		MyMahjongScript playObj = GameObject.Find("Panel_GamePlay").GetComponent<MyMahjongScript>();
         if(playObj!=null){
             playObj.startGame();
         }

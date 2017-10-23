@@ -1,17 +1,15 @@
 ﻿<Properties StartupConfiguration="{01278091-48EA-3A10-0751-D230C4907E84}|">
   <MonoDevelop.Ide.ItemProperties.kehuduan PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Game_Scenes/MyMahjongScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/utilTool/HuUtil.cs">
     <Files>
-      <File FileName="Assets/Script/utilTool/GlobalDataScript.cs" Line="22" Column="15" />
-      <File FileName="Assets/Script/Game_Scenes/MyMahjongScript.cs" Line="2249" Column="1" />
-      <File FileName="Assets/Script/mahjongCard/bottomScript.cs" Line="86" Column="16" />
+      <File FileName="Assets/Script/Game_Scenes/MyMahjongScript.cs" Line="2369" Column="25" />
+      <File FileName="Assets/Script/utilTool/MajiangResult.cs" Line="14" Column="24" />
+      <File FileName="Assets/Script/utilTool/HuUtil.cs" Line="37" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/sangxiang/Desktop/sangxiang/kehuduan/Assets/Script/Game_Scenes/MyMahjongScript.cs" relfile="Assets/Script/Game_Scenes/MyMahjongScript.cs" line="687" column="38" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />

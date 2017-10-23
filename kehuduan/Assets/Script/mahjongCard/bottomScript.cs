@@ -20,6 +20,7 @@ public class bottomScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public Text showLabel;
     public float speed = 1.0f;
     public float ShowTime = 1.5f;
+    public GameObject bgImage;
     //
     public delegate void EventHandler(GameObject obj);
     public event EventHandler onSendMessage;
