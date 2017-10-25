@@ -5,29 +5,53 @@ using UnityEngine;
 public static class HuUtil
 {
 	//胡牌
-	//胡牌
 	private const int CHK_NULL = 0;                                          //非胡类型
 	private const int CHK_CHI_HU = 1;                                        //胡类型-------普通的四个搭子一对将。如：123 345 789万 234 66筒（1番）
-	private const int CHR_QIANG_GANG = 2;                                    //抢杠
+	private const int CHR_QIANG_GANG = 2;                                    //抢杠胡
 	private const int CHR_GANG_SHANG_PAO = 3;                                //杠上炮
 	private const int CHR_GANG_KAI = 4;                                      //杠上花
 	private const int CHR_DI_HU = 5;                                         //地胡
-	private const int CHR_DA_DUI_ZI = 6;                                     //大对子-------四个搭子均为三张一样的牌。如：111 333 444万222 66筒（2番）
-	private const int CHR_QING_YI_SE = 7;                                    //清一色-------胡牌时只有一色牌。如：111 234 345 666 88万（4番）
-	private const int CHR_QI_XIAO_DUI = 8;                                   //七对-------胡牌时为7个对子。如1133446677万5588筒（4番）
-	//private const int CHR_DAI_YAO = 9;                                       //带幺---------所有牌都带1或9。如123 123 99万 123 789条。（4番）
+	//private const int CHR_DAI_YAO = 9;                                     //带幺---------所有牌都带1或9。如123 123 99万 123 789条。（4番）
 	private const int CHR_JIANG_DUI = 10;                                    //将对---------大对子，且都是258的牌
-	private const int CHR_SHU_FAN = 11;                                      //素番
-	private const int CHR_QING_DUI = 12;                                     //清对（清一色*大对子（4*2））---------清一色大对子（8番）
-	private const int CHR_LONG_QI_DUI = 13;                                  //龙七对(七对*杠数（4*2）)-------1133446666万5588筒（8番，每多一根翻倍）
-	private const int CHR_QING_QI_DUI = 14;                                  //清七对(七对*清一色（4*4）)-------清一色暗七对（16番）
 	private const int CHR_QING_YAO_JIU = 15;                                 //清幺九-------清一色带幺。（16番）
-	private const int CHR_QING_LONG_QI_DUI = 16;                             //清龙七对（七对*清一色*杠个数）-----清一色龙七对（32番，每多一根翻倍）
 	private const int CHR_TIAN_HU = 17;                                      //天胡
+  
+    public const int HU_QIDUI = 4;                                           
+    public const int HU_PIHU = 1;                                             
+    public const int HU_PENGPENG_HU= 2;                                     
+  
+ 
+	private static int JIANG;                        
+
+    public static string HuIsZiMoName(bool isZiMo){
+        return isZiMo?"自摸":"点炮";
+    }
 
 
-	private static int JIANG;
-
+    public static string HuName(int  type,MajiangResult model)
+    {
+        if (model.isQingYiSe)
+        {
+            switch (type)
+            {
+                case 1: return "清一色";
+                case 2: return "清一色大对子";
+                case 4: return model.gangCount>0?"清龙七对":"清七对";
+            }
+        }else{
+            switch (type)
+            {
+                case 1: return "屁胡";
+                case 2: return "碰碰胡";
+                case 4: return model.gangCount > 0 ? "七对" : "龙七对";
+            } 
+        }
+        return "";
+    }
+    //点炮，自摸（清一色，杠*1）
+    public static void SetHuName(MajiangResult model){
+        model.huName=HuIsZiMoName(model.isZiMo) + "(" + HuName(model.huType,model)+","+(model.gangCount>0?("根*"+model.gangCount+","):"")+")";
+    }
 
 	/// <summary>
 	/// 四川麻将胡牌判断

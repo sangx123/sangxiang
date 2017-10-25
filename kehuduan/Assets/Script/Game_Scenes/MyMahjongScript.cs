@@ -167,6 +167,10 @@ public class MyMahjongScript : MonoBehaviour
     public int rightQue;
     public int bottomQue;
 
+    private const int BottomIndex=0;
+    private const int RightIndex = 1;
+    private const int TopIndex = 2;
+    private const int LeftIndex = 3;
     //记录所有的已经出现的牌包括玩家的
     public List<int> allOutCard=new List<int>();
 
@@ -2458,17 +2462,19 @@ public class MyMahjongScript : MonoBehaviour
         //todo sangxiang
         //Destroy(handerCardList[0].RemoveAt(handerCardList[0].Count() - 1));
         //handerCardList[0].Remove(handerCardList[0].Count() - 1)
-        MajiangResult majiangResult = new MajiangResult();
-        //重新计算胡牌的分数
-        if(curDirIndex==0){
-            //自摸
-            majiangResult.isZiMo = true; 
-
-        }else{
-            //点炮
-            majiangResult.isZiMo = false;
-		}
-
+        List<int> list = new List<int>();
+        for (int i = 0; i < handerCardList[0].Count; i++)
+        {
+            GameObject temp = handerCardList[0][i];
+            int tempCardPoint = temp.GetComponent<bottomScript>().getPoint();
+            list.Add(tempCardPoint);
+        }
+        list.Sort();
+        //如果是点炮的话 将点炮的牌加入到自己牌手中
+        if (curDirIndex != 0)
+            list.Add(putOutCardStruct.CardToNum);
+        CalculateResult(list, 0, curDirIndex);
+        //胡了之后将手上的牌打出去
         if (curDirIndex == 0)
         {
             Destroy(pickCardItem);
@@ -3643,100 +3649,80 @@ public class MyMahjongScript : MonoBehaviour
         return cardpoint;
     }
 
+    /// <summary>
+    /// /胡牌计算
+    /// </summary>
+    /// <returns>The result.</returns>
+    /// <param name="list">胡牌的数字</param>
+    /// <param name="isZiMo">true自摸，false点炮</param>
+    /// <param name="huIndex">哪个玩家胡牌</param>
+    /// <param name="lastIndex">哪个玩家打的牌，哪个玩家自摸的牌</param>
+    public void CalculateResult(List<int> list,int huIndex,int lastIndex){
+        Debug.Log("赢的牌是:"+JsonMapper.ToJson(list));
+        Debug.Log("胡的index=" +huIndex+",lastIndex="+lastIndex);
+        MajiangResult model = new MajiangResult();
+        //是否自摸外面传进来
+        model.isZiMo = (huIndex==lastIndex);
 
-    public MajiangResult calculateResult(){
-        
+        //是谁胡的牌
+        model.huIndex = huIndex;
+
+        //是谁打的牌让赢的 如果是自己的话就是自摸
+        model.lastIndex = lastIndex;
+
+        //设置是否是清一色
+        int currentMenshu = HuUtil.checkMeShu(list);
+        if (currentMenshu == 1)
+            model.isQingYiSe = true;
+
+        //判断胡的类型
+        if (HuUtil.IsQiDui(list))
+        {
+            model.huType = HuUtil.HU_QIDUI;
+        }
+        else if (HuUtil.IsHuPengPeng(list))
+        {
+            model.huType = HuUtil.HU_PENGPENG_HU;
+        }
+        else if (HuUtil.isNomalHuPai(list))
+        {
+            model.huType = HuUtil.HU_PIHU;
+        }
+        int gangCardNum = 0;
+        for (int i = 0; i < PengGangCardList.Count();i++){
+            if(PengGangCardList[i].Count()==4){
+                gangCardNum++;
+            }
+        }
+
+        //计算杠的个数，手上牌杠的个数+桌上打出来牌的个数
+        model.gangCount = HuUtil.getGangNum(list)+gangCardNum;
+
+
+        if (model.isZiMo)
+        {
+            //如果是自摸的话
+            int huScore = (model.isQingYiSe ? 4 : 1) * (model.gangCount==0?1:model.gangCount * 2) * model.huType;
+            model.leftScore = (huIndex == LeftIndex)?huScore*3:-huScore;
+            model.rightScore = (huIndex == RightIndex) ? huScore * 3 : -huScore;
+            model.topScore = (huIndex == TopIndex) ? huScore * 3 : -huScore;
+            model.bottomScore =(huIndex == BottomIndex) ? huScore * 3 : -huScore;
+            HuUtil.SetHuName(model);
+        }
+        else
+        {
+            //如果是点炮的话
+            int huScore = (model.isQingYiSe ? 4 : 1) * (model.gangCount == 0 ? 1 : model.gangCount * 2) * model.huType;
+            model.leftScore = (huIndex == LeftIndex)? huScore : (lastIndex==LeftIndex?-huScore:0);
+            model.rightScore = (huIndex == RightIndex) ? huScore : (lastIndex == RightIndex ? -huScore : 0);
+            model.topScore = (huIndex == TopIndex) ? huScore : (lastIndex == TopIndex ? -huScore : 0);
+            model.bottomScore =(huIndex == BottomIndex) ? huScore : (lastIndex == BottomIndex ? -huScore : 0);
+            HuUtil.SetHuName(model);
+        }
+        //对象转字符串
+        majiangResultList.Add(model);
+        Debug.Log("胡牌结果:"+JsonMapper.ToJson(majiangResultList));
+        //return model;
     }
 }
-
-//////ai出牌之后
-//////参考逻辑
-/////2，ai打出牌之后，如果自己没有碰杠胡的话  ToNext 
-///// 需要修改
-/////ai打出牌之后，
-/////二，
-///// 
-///// ①，先判断ai是否有胡牌               有的话ai胡牌，最后一个胡牌的人 
-///// 1.2然后检测自己是否有胡牌 如果别人有胡牌的话 就只显示显示胡，
-///// 
-///// ②，没有ai胡牌的话判断ai是否有杠，    有的话ai杠牌，摸牌，打牌         重新ToNext判断（桌上最后打的一张牌来判断）
-///// 判断自己是否有杠牌 有的话显示杠牌
-///// ③，没有ai杠牌的话然后判断ai是否有碰， 有的话ai碰牌打牌（桌上最后打的一张牌来判断）  
-/////3， 自己胡牌的时候ToNext 下一家直接接牌
-/////4， 别人打的牌 自己点过的时候 ToNext
-///// 
-///// 
-///// 1，ai有胡牌，自己有胡牌杠牌，   情况1=====》ai胡牌，自己这边只能显示是否胡牌
-/////                             =====》点击胡，下一家，点击过也是下一家
-///// 2，ai有胡牌，自己没有胡牌，有杠牌====》ai胡牌，自己这边什么都不显示
-///// 3，ai没有胡牌，ai有杠牌，自己有胡牌  情况2===》显示胡牌，点击过的时候，ai碰杠
-/////                               ===》点击胡的时候，直接下家摸牌
-///// 4，ai没有胡牌，ai有杠牌，自己没有胡牌，自己没有杠牌===》ai碰杠
-///// 5，ai没有胡牌，ai没有杠牌，自己有胡牌===》显示胡牌。点击过的   直接下家摸牌
-///// 6，ai没有胡牌，ai没有杠牌，自己有杠牌===》显示杠牌
-///// 
-///// 
-///// 当ai出牌之后：
-///// 1，判断ai是否有胡牌aiHuFlag ，aiHuFlag=true有的话ai直接先胡牌  
-///// 情况1（1）
-///// aiHuFlag=true
-///// zijiHuFlag=true
-///// 2，判断自己是否有胡牌zijiHuFlag，zijiHuFlag=true有的话只显示胡和过，
-/////    有的话
-//点击胡pass：toNext，pass也toNext
-///// 情况4（2）
-/////  aiHuFlag=true
-/////  zijiHuFlag=false
-/////  直接toNext
-/////  情况2（5，3）
-///// aiHuFlag =false;
-///// zijiHuFlag=true
-///// 3,zijiHuFlag=true 自己有胡牌，
-/////   继续检查自己的碰杠胡，自己有碰杠话显示，可以直接碰杠胡
-/////   自己点击过的时候，检测ai是否有碰杠，有的话直接碰杠
-///// 情况3（6，4）
-///// aiHuFlag =false;
-///// zijiHuFlag=false  检测自己碰杠如果有的话 显示碰杠，没有的话 检测ai的碰杠，ai直接碰杠
-
-/// 2017 10-4
-/// 今天要做换3张，
-/// 自己定缺，
-/// ai定缺  
-/// 杠的bug修复
-/// 自己杠的话，直接弄掉手上4张牌，并且显示在桌面上
-/// 1，暗杠直接
-/// 2，明杠
-///     2.1 手上有3张牌直接杠 
-///     2.2 桌上有碰的刮风
-/// ai胡牌算法修复
-/// 
-///2017 10-21
-///ai定缺  ok 
-///把缺的牌变成灰色 ok
-///定缺的顺序没有错 ok
-/// 
-///摸牌的时候把牌变灰色 ok
-/// 
-///定缺的牌不能碰,杠,胡 ok
-
-/// ai打牌规则制定  ok
-/// ai打牌的时候先打定缺 ok 
-/// 如果定缺打完了的话，ok
-/// 就打碰碰胡        ok
-/// 单个的话打桌子上出现最多的牌（给ai权利选择了解出哪张牌以不至于死掉）//暂时没做
-/// 
-
-/// 积分和
-/// 金币功能
-/// 胡的时候返回分数,然后看是屁胡还是自摸
-/// 搞一个胡的数组显示
-/// 上家 对家 下家  自己   胡牌名称                   分数
-/// 合计                 点炮，自摸（清一色，杠*1）
-
-/// bug汇总，
-/// 1，胡的牌没地方显示
-/// 2，杠的时候，杠的牌不对
-/// 3, 最后一张牌的时候不能杠牌
-/// 4，胡了之后不能换牌只能杠
-/// 5，手上有4个杠的为什么不能胡牌
-/// 6，杠的时候牌杠牌没有消失(消除杠牌 消除错了)
+//胡牌结果:[{"leftScore":0,"rightScore":0,"topScore":0,"bottomScore":0,"gangCount":0,"huType":1,"isZiMo":false,"isQingYiSe":false,"bottomTotalScore":0,"huName":"\u70B9\u70AE(\u5C41\u80E1,)","lastIndex":2,"huIndex":0}]

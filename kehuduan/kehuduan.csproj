@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{01278091-48EA-3A10-0751-D230C4907E84}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp.dll</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
@@ -19,16 +19,11 @@
     <UnityVersion>5.6.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
-    <NoConfig>true</NoConfig>
-    <NoStdLib>true</NoStdLib>
-    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
-    <AutoUnifyAssemblyReferences>false</AutoUnifyAssemblyReferences>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
     <NoStdLib>true</NoStdLib>
     <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
-    <AutoUnifyAssemblyReferences>false</AutoUnifyAssemblyReferences>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -257,6 +252,7 @@
     <Compile Include="Assets\Script\utilTool\GlobalDataScript.cs" />
     <Compile Include="Assets\Script\utilTool\HideScript.cs" />
     <Compile Include="Assets\Script\utilTool\HuUtil.cs" />
+    <Compile Include="Assets\Script\utilTool\MajiangResult.cs" />
     <Compile Include="Assets\Script\utilTool\MyDebug.cs" />
     <Compile Include="Assets\Script\utilTool\NaiziHuScript.cs" />
     <Compile Include="Assets\Script\utilTool\NormalHuScript.cs" />
@@ -268,7 +264,6 @@
     <Compile Include="Assets\Script\utilTool\UI_Rotation.cs" />
     <Compile Include="Assets\Script\utilTool\UpdateScript.cs" />
     <Compile Include="Assets\UpdateFrame.cs" />
-    <Compile Include="Assets\Script\utilTool\MajiangResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\DOTween113\DOTween.XML" />
