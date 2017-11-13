@@ -134,6 +134,7 @@
     <Compile Include="Assets\Script\Game_Scenes\Over_Game\SignalOverItemScript.cs" />
     <Compile Include="Assets\Script\Game_Scenes\Over_Game\finalOverItem.cs" />
     <Compile Include="Assets\Script\Game_Scenes\Over_Game\yuSetScript.cs" />
+    <Compile Include="Assets\Script\Game_Scenes\PanelGameOverItemScript.cs" />
     <Compile Include="Assets\Script\Game_Scenes\PlayerItemScript.cs" />
     <Compile Include="Assets\Script\Game_Scenes\PlayerResult.cs" />
     <Compile Include="Assets\Script\Game_Scenes\StartPanelCtrlScript.cs" />

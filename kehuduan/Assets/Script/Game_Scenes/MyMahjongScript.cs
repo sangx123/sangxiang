@@ -3722,6 +3722,8 @@ public class MyMahjongScript : MonoBehaviour
         //对象转字符串
         majiangResultList.Add(model);
         Debug.Log("胡牌结果:"+JsonMapper.ToJson(majiangResultList));
+        //此处保存数据，用于在打牌之后显示
+        GlobalDataScript.MajiangResultList = majiangResultList;
         //return model;
     }
 }

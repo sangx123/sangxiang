@@ -72,7 +72,8 @@ public class GlobalDataScript
 	public static bool isOverByPlayer = false;//是否由用用户选择退出而退出的游戏
 	public static LoginVo loginVo;//登录数据
 	public static List<String> noticeMegs = new List<string>();
-
+    //用来显示麻将的结果的
+    public static List<MajiangResult> MajiangResultList = new List<MajiangResult>();
 
 	/**
 	 * 重新初始化数据

@@ -34,6 +34,7 @@ public class GameOverScript : MonoBehaviour {
 	/**分享全局结束战绩按钮**/
 	public GameObject shareFinalButton;
 
+
 	public Button closeButton;
 
 	public Text title;
@@ -95,6 +96,17 @@ public class GameOverScript : MonoBehaviour {
 
 			//getMas (allMas);
 			setSignalContent ();
+
+            //GameObject itemTemp = Instantiate(Resources.Load("Prefab/gameover/Panel_Game_Over_Item")) as GameObject;
+            //itemTemp.transform.parent = transform;
+            ////  itemTemp.transform.localScale = new Vector3(0.8f,0.8f,1f);
+            //itemTemp.transform.localScale = Vector3.one;
+            //itemTemp.GetComponent<TopAndBottomCardScript>().setPoint(itemgangData.cardPiont);
+            //itemTemp.transform.localPosition = new Vector3(startPosition + ((i * 4) + j) * 36f, 0, 0);
+
+
+
+
 		} else if (dispalyFlag == 1) {
 			signalEndPanel.SetActive (false);
 			finalEndPanel.SetActive (true);
