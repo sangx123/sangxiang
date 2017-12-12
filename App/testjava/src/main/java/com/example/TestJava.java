@@ -23,17 +23,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 public class TestJava {
 
     public static void main(String[] args) throws Exception {
-        SimpleDateFormat df ;
-        df = new SimpleDateFormat("hh:mm a");
-//                if(mIsTimeFormat12){
-//                    df = new SimpleDateFormat("hh:mm a, dd MMM ,EEEE");
-//                }else{
-//                    df = new SimpleDateFormat("HH:mm,  dd MMM ,EEEE");
-//                }
-
-        //final String date=CommonUtil.getTimeStampFromTimeZone(new Date(),deviceTimezone,df);
-        final String date=df.format(new Date());
-        System.out.print(date);
+      String str="/storage/emulated/0/hubble/Videos/010877442C05BBB1ACENFREUWC||66666@20171121_014935下午.flv";
+        str=str.substring(str.indexOf("@")+1);
+      System.out.print(str);
     }
 
 
