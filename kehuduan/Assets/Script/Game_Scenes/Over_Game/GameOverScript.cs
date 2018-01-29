@@ -39,9 +39,13 @@ public class GameOverScript : MonoBehaviour {
 
 	public Text title;
 
+    public Text bottomScore;
 
+    public Text leftScore;
 
+    public Text topScore;
 
+    public Text rightScore;
 	private List<AvatarVO> mAvatarvoList;
 	private List<int> mas_0;
 	private List<int> mas_1;
@@ -103,9 +107,6 @@ public class GameOverScript : MonoBehaviour {
             //itemTemp.transform.localScale = Vector3.one;
             //itemTemp.GetComponent<TopAndBottomCardScript>().setPoint(itemgangData.cardPiont);
             //itemTemp.transform.localPosition = new Vector3(startPosition + ((i * 4) + j) * 36f, 0, 0);
-
-
-
 
 		} else if (dispalyFlag == 1) {
 			signalEndPanel.SetActive (false);
